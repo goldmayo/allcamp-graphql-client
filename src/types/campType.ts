@@ -15,17 +15,39 @@ export type Scalars = {
 
 export type Query = {
   __typename?: "Query";
-  allCampPaged?: Maybe<Array<Maybe<CampInfo>>>;
   findCampById?: Maybe<CampInfo>;
-};
-
-export type QueryAllCampPagedArgs = {
-  page?: InputMaybe<Scalars["Int"]>;
-  size?: InputMaybe<Scalars["Int"]>;
+  searchCamps?: Maybe<CampInfoConnection>;
 };
 
 export type QueryFindCampByIdArgs = {
   contentId?: InputMaybe<Scalars["Int"]>;
+};
+
+export type QuerySearchCampsArgs = {
+  first: Scalars["Int"];
+  after?: InputMaybe<Scalars["String"]>;
+  params?: InputMaybe<CampSearchParamsDto>;
+};
+
+export type CampInfoConnection = {
+  __typename?: "CampInfoConnection";
+  totalCounts?: Maybe<Scalars["Int"]>;
+  edges?: Maybe<Array<Maybe<CampInfoEdge>>>;
+  pageInfo?: Maybe<PageInfo>;
+};
+
+export type PageInfo = {
+  __typename?: "PageInfo";
+  startCursor?: Maybe<Scalars["String"]>;
+  endCursor?: Maybe<Scalars["String"]>;
+  hasNextPage: Scalars["Boolean"];
+  hasPreviousPage: Scalars["Boolean"];
+};
+
+export type CampInfoEdge = {
+  __typename?: "CampInfoEdge";
+  node?: Maybe<CampInfo>;
+  cursor?: Maybe<Scalars["String"]>;
 };
 
 export type CampInfo = {
@@ -111,4 +133,27 @@ export type CampInfo = {
   caravInnerFclty?: Maybe<Scalars["String"]>;
   clturEvent?: Maybe<Scalars["String"]>;
   tourEraCl?: Maybe<Scalars["String"]>;
+};
+
+export type CampSearchParamsDto = {
+  facltNm?: InputMaybe<Scalars["String"]>;
+  doNm?: InputMaybe<Scalars["String"]>;
+  sigunguNm?: InputMaybe<Scalars["String"]>;
+  themaEnvrnCl?: InputMaybe<Scalars["String"]>;
+  facltDivNm?: InputMaybe<Scalars["String"]>;
+  lctCl?: InputMaybe<Scalars["String"]>;
+  gnrlSiteCo?: InputMaybe<Scalars["String"]>;
+  autoSiteCo?: InputMaybe<Scalars["String"]>;
+  glampSiteCo?: InputMaybe<Scalars["String"]>;
+  caravSiteCo?: InputMaybe<Scalars["String"]>;
+  indvdlCaravSiteCo?: InputMaybe<Scalars["String"]>;
+  siteBottomCl1?: InputMaybe<Scalars["String"]>;
+  siteBottomCl2?: InputMaybe<Scalars["String"]>;
+  siteBottomCl3?: InputMaybe<Scalars["String"]>;
+  siteBottomCl4?: InputMaybe<Scalars["String"]>;
+  siteBottomCl5?: InputMaybe<Scalars["String"]>;
+  sbrsCl?: InputMaybe<Scalars["String"]>;
+  trlerAcmpnyAt?: InputMaybe<Scalars["String"]>;
+  caravAcmpnyAt?: InputMaybe<Scalars["String"]>;
+  animalCmgCl?: InputMaybe<Scalars["String"]>;
 };

@@ -3,15 +3,20 @@ import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { initializeApollo } from "../lib/apolloClient";
-import { CampInfo } from "../types/campType";
+import { CampInfo, CampInfoConnection } from "../types/campType";
 import styles from "../styles/Home.module.css";
+import searchAllCamps from "../lib/query/searchAllcamps";
 
 interface HomeInterface {
-  data: { allCampPaged: CampInfo[] };
+  data: {
+    searchCamps: CampInfoConnection;
+  };
 }
 
 const Home: NextPage<HomeInterface> = ({ data }) => {
-  const allCamps = data.allCampPaged;
+  const allCamps = data.searchCamps;
+  console.log(allCamps);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -23,13 +28,26 @@ const Home: NextPage<HomeInterface> = ({ data }) => {
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to gocamp landing test</h1>
         <ul>
-          {allCamps.map((camps: CampInfo) => {
-            return (
-              <li key={`${camps.contentId}`}>
-                <p>{`${camps.facltNm} : ${camps.addr1} ${camps.addr2 === null ? "" : camps.addr2}`}</p>
-              </li>
-            );
-          })}
+          {allCamps.edges &&
+            allCamps.edges.map((campInfoEdge) => {
+              return (
+                <li key={`${campInfoEdge?.node?.contentId}`}>
+                  {campInfoEdge?.node?.firstImageUrl && (
+                    <Image
+                      src={`${campInfoEdge?.node?.firstImageUrl}`}
+                      alt={`${campInfoEdge?.node?.facltNm} cover image`}
+                      width={500}
+                      height={500}
+                    />
+                  )}
+                  <p>{`${campInfoEdge?.node?.facltNm}`}</p>
+                  <p>{`${campInfoEdge?.node?.doNm} ${campInfoEdge?.node?.sigunguNm} ${campInfoEdge?.node?.addr1} `}</p>
+                  <p>{`${campInfoEdge?.node?.lineIntro}`}</p>
+                  <p>{`${campInfoEdge?.node?.tel}`}</p>
+                  <p>{`${campInfoEdge?.node?.sbrsCl}`}</p>
+                </li>
+              );
+            })}
         </ul>
       </main>
 
@@ -53,20 +71,12 @@ export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
-
   const { data } = await apolloClient.query({
-    query: gql`
-      query AllCampPaged($page: Int, $size: Int) {
-        allCampPaged(page: $page, size: $size) {
-          contentId
-          facltNm
-          addr1
-          addr2
-        }
-      }
-    `,
-    variables: { page: 0, size: 10 },
+    query: searchAllCamps,
+    variables: { first: 10 },
   });
+  console.log(data);
+
   return {
     props: {
       data,

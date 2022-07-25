@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const searchCampDetailById = gql`
-    query searchCAmpDetailById($contentId: Int){
+    query searchCAmpDetailById($contentId: Int!){
         findCampById(contentId: $contentId) {
             
         }
@@ -9,7 +9,7 @@ export const searchCampDetailById = gql`
 `;
 
 export const searchAllCamps = gql`
-  query searchAllCamps($first: Int) {
+  query searchAllCamps($first: Int!, params:{}) {
     searchCamps(first: $first) {
       contentId
       firstImageUrl # 대표 이미지
@@ -25,7 +25,7 @@ export const searchAllCamps = gql`
 `;
 
 export const searchCampsByQuery = gql`
-  query searchAllCamps($first: Int, $after: Int, $params: CampSearchParamsDto) {
+  query searchAllCamps($first: Int!, $after: Int, $params: CampSearchParamsDto) {
     searchCamps(first: $first, after: $after, params: $params) {
       contentId
       firstImageUrl # 대표 이미지
@@ -40,7 +40,7 @@ export const searchCampsByQuery = gql`
   }
 `;
 export const SearchAnimalThemeCampsForCarousal = gql`
-  query searchAllCamps($first: Int, $params: CampSearchParamsDto) {
+  query searchAllCamps($first: Int!, $params: CampSearchParamsDto) {
     searchCamps(first: $first, params: $params) {
       contentId
       firstImageUrl # 대표 이미지
