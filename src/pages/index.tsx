@@ -15,8 +15,6 @@ interface HomeInterface {
 
 const Home: NextPage<HomeInterface> = ({ data }) => {
   const allCamps = data.searchCamps;
-  console.log(allCamps);
-
   return (
     <div className={styles.container}>
       <Head>
@@ -27,6 +25,7 @@ const Home: NextPage<HomeInterface> = ({ data }) => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to gocamp landing test</h1>
+        <h2 className="text-blue-500">tailwind test h2 tag</h2>
         <ul>
           {allCamps.edges &&
             allCamps.edges.map((campInfoEdge) => {
@@ -75,8 +74,6 @@ export const getStaticProps: GetStaticProps = async () => {
     query: searchAllCamps,
     variables: { first: 10 },
   });
-  console.log(data);
-
   return {
     props: {
       data,

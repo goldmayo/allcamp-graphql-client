@@ -1,13 +1,5 @@
 import { gql } from "@apollo/client";
 
-export const searchCampDetailById = gql`
-    query searchCAmpDetailById($contentId: Int!){
-        findCampById(contentId: $contentId) {
-            
-        }
-    }
-`;
-
 export const searchAllCamps = gql`
   query searchAllCamps($first: Int!, params:{}) {
     searchCamps(first: $first) {
