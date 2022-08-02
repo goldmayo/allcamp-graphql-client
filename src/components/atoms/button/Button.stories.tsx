@@ -4,31 +4,32 @@ import Button from "./Button";
 export default {
   title: "Atom/Button",
   Component: Button,
+  argTypes: {
+    size: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "xl"],
+    },
+    onClick: { action: "button clicked" },
+  },
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-// export const Default = () => {
-//   <Button
-//     type={"submit"}
-//     size={"md"}
-//     textColor={"white"}
-//     bgColor={"slate-500"}
-//     content={"button"}
-//     onClick={() => {
-//       console.log("button clicked!");
-//     }}
-//   />;
-// };
-
 export const Default = Template.bind({});
 Default.args = {
-  type: "submit",
-  size: "md",
-  textColor: "white",
-  bgColor: "slate-500",
+  textColor: "text-white",
+  bgColor: "bg-slate-500",
+  content: "캠핑장검색",
+};
+
+export const primary = Template.bind({});
+primary.args = {
+  content: "캠핑장검색",
+  style: "btn-primary",
+};
+
+export const secondary = Template.bind({});
+secondary.args = {
   content: "button",
-  onClick: () => {
-    console.log("button clicked!");
-  },
+  style: "btn-secondary",
 };

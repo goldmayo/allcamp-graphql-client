@@ -1,16 +1,19 @@
 import React, { FC } from "react";
 
 interface ButtonProps {
-  type: "button" | "submit" | "reset";
-  size: "sm" | "md" | "lg" | "xl";
+  type?: "button" | "submit" | "reset";
+  size?: "sm" | "md" | "lg" | "xl";
+  style: string;
   textColor: string;
   bgColor: string;
-  content: string;
+  content: React.ReactElement | string;
   classname?: string[];
-  onClick: () => void;
+  disabled?: boolean;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 // utils로 getSize(type, size)
+// size + w h 속성 추가
 const getSize = (size: string) => {
   switch (size) {
     case "sm":
@@ -26,13 +29,22 @@ const getSize = (size: string) => {
   }
 };
 
-const Button: FC<ButtonProps> = ({ type = "button", size, textColor, bgColor, classname, content, onClick }) => {
-  console.log(`bg-${bgColor} text-${textColor} ${getSize(size).join(" ")} ${classname ? classname.join(" ") : ""}`);
-
+const Button: FC<ButtonProps> = ({
+  type = "button",
+  size = "md",
+  style,
+  textColor,
+  bgColor,
+  disabled,
+  classname,
+  content,
+  onClick,
+}) => {
   return (
     <button
       type={type}
-      className={`bg-${bgColor} text-${textColor} ${getSize(size).join(" ")} ${classname ? classname.join(" ") : ""}`}
+      className={`${style} ${bgColor} ${textColor} ${getSize(size).join(" ")} ${classname ? classname.join(" ") : ""} `}
+      disabled={disabled}
       onClick={onClick}
     >
       {content}
