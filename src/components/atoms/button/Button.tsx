@@ -2,51 +2,33 @@ import React, { FC } from "react";
 
 interface ButtonProps {
   type?: "button" | "submit" | "reset";
-  size?: "sm" | "md" | "lg" | "xl";
-  style: string;
-  textColor: string;
-  bgColor: string;
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   content: React.ReactElement | string;
-  classname?: string[];
+  className?: string | undefined;
   disabled?: boolean;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-// utils로 getSize(type, size)
-// size + w h 속성 추가
-const getSize = (size: string) => {
+const getSpaceSize = (size: string) => {
   switch (size) {
+    case "xs":
+      return "py-2 px-3 text-xs text-center";
     case "sm":
-      return ["py-2", "px-4", "text-sm"];
+      return "py-2 px-3 text-sm text-center";
     case "md":
-      return ["py-2", "px-4", "text-base"];
+      return "py-2 px-4 text-base text-center";
     case "lg":
-      return ["py-2", "px-4", "text-lg"];
+      return "py-2.5 px-5 text-lg text-center";
     case "xl":
-      return ["py-2", "px-4", "text-xl"];
+      return "py-2.5 px-5 text-xl text-center";
     default:
-      return ["py-2", "px-4", "text-sm"];
+      return "py-2 px-4 text-base text-center";
   }
 };
 
-const Button: FC<ButtonProps> = ({
-  type = "button",
-  size = "md",
-  style,
-  textColor,
-  bgColor,
-  disabled,
-  classname,
-  content,
-  onClick,
-}) => {
+const Button: FC<ButtonProps> = ({ type = "button", content, onClick, disabled, className, size = "md" }) => {
   return (
-    <button
-      type={type}
-      className={`${style} ${bgColor} ${textColor} ${getSize(size).join(" ")} ${classname ? classname.join(" ") : ""} `}
-      disabled={disabled}
-      onClick={onClick}
-    >
+    <button type={type} className={`${getSpaceSize(size)} ${className}`} disabled={disabled} onClick={onClick}>
       {content}
     </button>
   );
