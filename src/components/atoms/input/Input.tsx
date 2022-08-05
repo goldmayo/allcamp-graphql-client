@@ -1,7 +1,7 @@
 import React, { FC, HTMLInputTypeAttribute, InputHTMLAttributes } from "react";
 
 interface InputProps {
-  value: string;
+  value?: string;
   name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   type: HTMLInputTypeAttribute;

@@ -6,7 +6,7 @@ interface ButtonProps {
   content: React.ReactElement | string;
   className?: string | undefined;
   disabled?: boolean;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const getSpaceSize = (size: string) => {

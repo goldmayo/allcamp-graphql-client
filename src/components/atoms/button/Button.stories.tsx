@@ -1,11 +1,14 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Button from "./Button";
-import styles from "./Button.module.css";
 
 export default {
   title: "Atom/Button",
   Component: Button,
   argTypes: {
+    type: {
+      control: { type: "select" },
+      options: ["button", "submit", "reset"],
+    },
     size: {
       control: { type: "select" },
       options: ["xs", "sm", "md", "lg", "xl"],
