@@ -6,19 +6,22 @@ export default {
   title: "Atom/Input",
   Component: Input,
   argTypes: {
-    onChange: { action: "onChange" },
+    onChange: { actions: "onChange" },
   },
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => {
-  const [value, setValue] = useState("");
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
-
+  const [value, setValue] = useState(args.value ?? "");
   return (
     <>
-      <Input {...args} value={value} onChange={handleChange} />
+      <Input
+        {...args}
+        onChange={(...params) => {
+          args.onChange(...params);
+          setValue(params[0].target.value);
+        }}
+        value={value}
+      />
       <pre style={{ marginTop: 10 }}>{JSON.stringify({ value }, null, 2)}</pre>
     </>
   );
@@ -26,7 +29,7 @@ const Template: ComponentStory<typeof Input> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  // value: "",
+  value: "",
   type: "email",
   placeholder: "email",
   className: "text-black font-medium  px-1.5 py-0.5 border border-black",
