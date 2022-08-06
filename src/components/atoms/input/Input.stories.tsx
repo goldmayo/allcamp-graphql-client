@@ -16,9 +16,9 @@ const Template: ComponentStory<typeof Input> = (args) => {
     <>
       <Input
         {...args}
-        onChange={(...params) => {
-          args.onChange(...params);
-          setValue(params[0].target.value);
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          args.onChange(e);
+          setValue(e.target.value);
         }}
         value={value}
       />

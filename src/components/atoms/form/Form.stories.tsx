@@ -9,14 +9,18 @@ import { action } from "@storybook/addon-actions";
 export default {
   title: "Atom/Form",
   Component: Form,
-  //   argTypes: {
-  //     onSubmit: { action: "submitted" },
-  //   },
+  argTypes: {
+    onSubmit: { action: "form submitted" },
+  },
 } as ComponentMeta<typeof Form>;
 
 const Template: ComponentStory<typeof Form> = (args) => {
   const formRef = useRef<HTMLFormElement | null>(null);
-  return <Form {...args} formRef={formRef} />;
+  const onSubmit = (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => {
+    e.preventDefault();
+    args.onSubmit(e);
+  };
+  return <Form {...args} formRef={formRef} onSubmit={onSubmit} />;
 };
 
 export const Default = Template.bind({});
@@ -44,9 +48,4 @@ Default.args = {
     </>
   ),
   className: "text-black font-medium  px-1.5 py-0.5",
-  onSubmit: (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => {
-    e.preventDefault();
-    // console.log(e.target);
-    action("submited");
-  },
 };
