@@ -1,13 +1,12 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Form from "./Form";
-import Input from "../input/Input";
-import Label from "../label/Label";
-import Button from "../button/Button";
+import Input from "../../atoms/input/Input";
+import Label from "../../atoms/label/Label";
+import Button from "../../atoms/button/Button";
 import React, { useRef } from "react";
-import { action } from "@storybook/addon-actions";
 
 export default {
-  title: "Atom/Form",
+  title: "Molecules/Form",
   Component: Form,
   argTypes: {
     onSubmit: { action: "form submitted" },
