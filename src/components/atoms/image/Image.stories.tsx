@@ -4,6 +4,9 @@ import Image from "./Image";
 export default {
   title: "Atom/Image",
   Component: Image,
+  argTypes: {
+    onClick: { actions: "onClick" },
+  },
 } as ComponentMeta<typeof Image>;
 
 const Template: ComponentStory<typeof Image> = (args) => <Image {...args} />;

@@ -7,11 +7,12 @@ interface IconProps {
   height: number;
   alt: string;
   className: string;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
-const Icon: FC<IconProps> = ({ className, path, width, height, alt }) => {
+const Icon: FC<IconProps> = ({ className, path, width, height, alt, onClick }) => {
   return (
-    <div className={className}>
+    <div className={className} onClick={onClick}>
       <Image src={path} width={width} height={height} alt={alt} />
     </div>
   );
