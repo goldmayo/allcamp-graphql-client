@@ -1,20 +1,20 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { useState } from "react";
-import Input from "./Input";
+import CheckBox from "./CheckBox";
 
 export default {
-  title: "Atom/Input",
-  Component: Input,
+  title: "Atom/CheckBox",
+  Component: CheckBox,
   argTypes: {
     onChange: { actions: "onChange" },
   },
-} as ComponentMeta<typeof Input>;
+} as ComponentMeta<typeof CheckBox>;
 
-const Template: ComponentStory<typeof Input> = (args) => {
+const Template: ComponentStory<typeof CheckBox> = (args) => {
   const [value, setValue] = useState(args.value ?? "");
   return (
     <>
-      <Input
+      <CheckBox
         {...args}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           args.onChange(e);
@@ -29,9 +29,9 @@ const Template: ComponentStory<typeof Input> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  value: "",
-  type: "email",
-  placeholder: "example@company.com",
+  value: "default",
+  name: "default",
+  id: "default",
   className: "text-black font-medium  px-1.5 py-0.5 border border-black",
   required: true,
 };

@@ -10,6 +10,6 @@ const Template: ComponentStory<typeof Label> = (args) => <Label {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  content: "Do you like cheese?",
+  content: "default label",
   className: "text-black font-medium text-center px-1 py-.5",
 };
