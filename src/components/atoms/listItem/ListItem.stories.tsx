@@ -1,18 +1,18 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Item from "./Item";
-import Image from "../image/Image";
+import ListItem from "./ListItem";
+import Image from "../image/Icon";
 import Span from "../span/Span";
 
 export default {
-  title: "Atom/Item",
-  Component: Item,
-} as ComponentMeta<typeof Item>;
+  title: "Atoms/ListItem",
+  Component: ListItem,
+} as ComponentMeta<typeof ListItem>;
 
-const Template: ComponentStory<typeof Item> = (args) => <Item {...args} />;
+const Template: ComponentStory<typeof ListItem> = (args) => <ListItem {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: (
+  children: [
     <>
       <Image
         path="/vercel.svg"
@@ -21,8 +21,8 @@ Default.args = {
         alt={"test alt description"}
         className={"flex w-12 h-12 p-1 justify-center border border-solid rounded-full border-amber-600"}
       />
-      <Span content={"vercel"} className={"text-black font-mono text-center"} />
-    </>
-  ),
+      <Span className={"text-black font-mono text-center"}>vercel</Span>
+    </>,
+  ],
   className: "text-black border flex flex-col w-20 justify-center items-center p-1",
 };

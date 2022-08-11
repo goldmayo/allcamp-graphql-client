@@ -1,15 +1,15 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Image from "./Image";
+import Icon from "./Icon";
 
 export default {
-  title: "Atom/Image",
-  Component: Image,
+  title: "Atoms/Icon",
+  Component: Icon,
   argTypes: {
     onClick: { actions: "onClick" },
   },
-} as ComponentMeta<typeof Image>;
+} as ComponentMeta<typeof Icon>;
 
-const Template: ComponentStory<typeof Image> = (args) => <Image {...args} />;
+const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

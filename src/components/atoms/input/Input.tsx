@@ -1,4 +1,4 @@
-import React, { FC, HTMLInputTypeAttribute, InputHTMLAttributes } from "react";
+import React, { FC, HTMLInputTypeAttribute } from "react";
 
 interface InputProps {
   value?: string;
@@ -9,7 +9,7 @@ interface InputProps {
   id: string | undefined;
   className: string | undefined;
   required: boolean;
-  pattern: string;
+  pattern?: string;
 }
 
 const Input: FC<InputProps> = ({ value, name, type, placeholder, id, className, required, onChange, pattern }) => {
@@ -20,7 +20,7 @@ const Input: FC<InputProps> = ({ value, name, type, placeholder, id, className, 
       type={type}
       placeholder={placeholder}
       id={id}
-      className={className}
+      className={`${className}`}
       required={required}
       onChange={onChange}
       autoComplete="off"

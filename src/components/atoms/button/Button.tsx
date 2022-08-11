@@ -3,10 +3,10 @@ import React, { FC } from "react";
 interface ButtonProps {
   type?: "button" | "submit" | "reset";
   size?: "xs" | "sm" | "md" | "lg" | "xl";
-  content: React.ReactElement | string;
   className?: string | undefined;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  children: React.ReactNode;
 }
 
 const getSpaceSize = (size: string) => {
@@ -26,10 +26,10 @@ const getSpaceSize = (size: string) => {
   }
 };
 
-const Button: FC<ButtonProps> = ({ type = "button", content, onClick, disabled, className, size = "md" }) => {
+const Button: FC<ButtonProps> = ({ type = "button", children, onClick, disabled, className, size = "md" }) => {
   return (
     <button type={type} className={`${getSpaceSize(size)} ${className}`} disabled={disabled} onClick={onClick}>
-      {content}
+      {children}
     </button>
   );
 };

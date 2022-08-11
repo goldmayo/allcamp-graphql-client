@@ -1,12 +1,12 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Form from "./Form";
-import Input from "../../atoms/input/Input";
-import Label from "../../atoms/label/Label";
-import Button from "../../atoms/button/Button";
+import Input from "../input/Input";
+import Label from "../label/Label";
+import Button from "../button/Button";
 import React, { useRef } from "react";
 
 export default {
-  title: "Molecules/Form",
+  title: "Atoms/Form",
   Component: Form,
   argTypes: {
     onSubmit: { action: "form submitted" },
@@ -26,7 +26,9 @@ export const Default = Template.bind({});
 Default.args = {
   children: (
     <>
-      <Label htmlFor="test" content="label" className="px-1 py-0.5 font-medium text-center text-black" />
+      <Label htmlFor="test" className="px-1 py-0.5 font-medium text-center text-black">
+        label
+      </Label>
       <Input
         name={"test"}
         type={"text"}
@@ -39,11 +41,12 @@ Default.args = {
       />
       <Button
         type="submit"
-        content={"submit"}
         disabled={false}
         className="font-medium text-white bg-blue-500 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
         size="xs"
-      />
+      >
+        submit
+      </Button>
     </>
   ),
   className: "text-black font-medium  px-1.5 py-0.5",

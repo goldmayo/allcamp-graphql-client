@@ -2,11 +2,11 @@ import React, { FC } from "react";
 
 interface SpanProps {
   className?: string | undefined;
-  content: React.ReactElement | string;
+  children: React.ReactNode;
 }
 
-const Span: FC<SpanProps> = ({ content, className }) => {
-  return <span className={className}>{content}</span>;
+const Span: FC<SpanProps> = ({ children, className }) => {
+  return <span className={className}>{children}</span>;
 };
 
 export default Span;

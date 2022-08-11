@@ -6,7 +6,7 @@ interface FormProps {
   };
   method: "post" | "get";
   className: string;
-  children: React.ReactElement;
+  children: React.ReactNode;
   onSubmit: (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => void;
 }
 

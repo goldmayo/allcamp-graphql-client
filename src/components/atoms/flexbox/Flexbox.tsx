@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 interface FlexboxProps {
-  children: React.ReactElement;
+  children: React.ReactNode;
   className: string;
 }
 

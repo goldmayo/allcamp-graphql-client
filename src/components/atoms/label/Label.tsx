@@ -1,15 +1,15 @@
 import React, { FC } from "react";
 
 interface LabelProps {
-  htmlFor: string;
-  content: string;
+  htmlFor: string | undefined;
   className: string | undefined;
+  children: React.ReactNode;
 }
 
-const Label: FC<LabelProps> = ({ htmlFor, content, className }) => {
+const Label: FC<LabelProps> = ({ htmlFor, children, className }) => {
   return (
     <label htmlFor={htmlFor} className={className}>
-      {content}
+      {children}
     </label>
   );
 };

@@ -3,7 +3,7 @@ import { useState } from "react";
 import CheckBox from "./CheckBox";
 
 export default {
-  title: "Atom/CheckBox",
+  title: "Atoms/CheckBox",
   Component: CheckBox,
   argTypes: {
     onChange: { actions: "onChange" },
