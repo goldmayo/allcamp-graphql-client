@@ -24,7 +24,20 @@
         }
         //캠핑장 시설
         {
-            부대시설(sbrsCl)
+            부대시설(sbrsCl) 
+            [
+                전기(FaPlug)
+                무선인터넷(FaWifi)
+                장작판매(GiWoodPile)
+                온수(TbSoup)
+                물놀이장(FaSwimmingPool)
+                놀이터(GiAirBalloon)
+                산책로(CgTrees)
+                운동장(GiSoccerField)
+                운동시설(GiShuttlecock)
+                마트 편의점(MdOutlineLocalConvenienceStore)
+                트렘폴린(GiBouncingSpring)
+            ]
             기타부대시설(sbrsEtc)
             개수대(wtrplCo)
             화장실(toiletCo)
