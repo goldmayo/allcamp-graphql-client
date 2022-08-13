@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 interface CheckBoxProps {
-  value: string;
+  checked: boolean;
   name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   id: string | undefined;
@@ -9,11 +9,11 @@ interface CheckBoxProps {
   required: boolean;
 }
 
-const CheckBox: FC<CheckBoxProps> = ({ value, name, onChange, id, className, required }) => {
+const CheckBox: FC<CheckBoxProps> = ({ checked, name, onChange, id, className, required }) => {
   return (
     <input
       className={className}
-      value={value}
+      checked={checked}
       name={name}
       type={"checkbox"}
       onChange={onChange}

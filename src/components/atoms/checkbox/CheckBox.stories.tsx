@@ -11,25 +11,25 @@ export default {
 } as ComponentMeta<typeof CheckBox>;
 
 const Template: ComponentStory<typeof CheckBox> = (args) => {
-  const [value, setValue] = useState(args.value ?? "");
+  const [checked, setChecked] = useState(args.checked ?? false);
   return (
     <>
       <CheckBox
         {...args}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           args.onChange(e);
-          setValue(e.target.value);
+          setChecked(!e.target.checked);
         }}
-        value={value}
+        checked={checked}
       />
-      <pre style={{ marginTop: 10 }}>{JSON.stringify({ value }, null, 2)}</pre>
+      <pre style={{ marginTop: 10 }}>{JSON.stringify({ checked }, null, 2)}</pre>
     </>
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  value: "default",
+  checked: false,
   name: "default",
   id: "default",
   className: "text-black font-medium  px-1.5 py-0.5 border border-black",
