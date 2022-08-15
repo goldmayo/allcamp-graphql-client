@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import ListItem from "./ListItem";
-import Image from "../image/Icon";
+import Icon from "../icon/Icon";
 import Span from "../span/Span";
 
 export default {
@@ -14,7 +14,7 @@ export const Default = Template.bind({});
 Default.args = {
   children: [
     <>
-      <Image
+      <Icon
         path="/vercel.svg"
         width={50}
         height={50}
