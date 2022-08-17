@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 
-interface FlexboxProps {
+interface FlexBoxProps {
   children: React.ReactNode;
   className: string;
 }
 
-const Flexbox: FC<FlexboxProps> = ({ children, className }) => {
+const FlexBox: FC<FlexBoxProps> = ({ children, className }) => {
   return <div className={`flex ${className}`}>{children}</div>;
 };
 
-export default Flexbox;
+export default FlexBox;

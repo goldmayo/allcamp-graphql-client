@@ -1,9 +1,7 @@
 import React, { FC } from "react";
 
 interface FormProps {
-  formRef: {
-    current: HTMLFormElement | null;
-  };
+  formRef: React.MutableRefObject<HTMLFormElement | null>;
   method: "post" | "get";
   className: string;
   children: React.ReactNode;

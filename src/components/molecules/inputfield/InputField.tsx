@@ -1,5 +1,5 @@
 import React, { FC, HTMLInputTypeAttribute } from "react";
-import Flexbox from "../../atoms/flexbox/Flexbox";
+import Flexbox from "../../atoms/flexbox/FlexBox";
 import Input from "../../atoms/input/Input";
 import Label from "../../atoms/label/Label";
 

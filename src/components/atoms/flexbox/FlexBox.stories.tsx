@@ -1,12 +1,12 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Flexbox from "./Flexbox";
+import FlexBox from "./FlexBox";
 
 export default {
-  title: "Atoms/Flexbox",
-  Component: Flexbox,
-} as ComponentMeta<typeof Flexbox>;
+  title: "Atoms/FlexBox",
+  Component: FlexBox,
+} as ComponentMeta<typeof FlexBox>;
 
-const Template: ComponentStory<typeof Flexbox> = (args) => <Flexbox {...args} />;
+const Template: ComponentStory<typeof FlexBox> = (args) => <FlexBox {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
