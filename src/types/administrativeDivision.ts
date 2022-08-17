@@ -1,5 +1,4 @@
 export const DONAME = {
-  All: "전체",
   Seoul: "서울시",
   Busan: "부산시",
   Daegu: "대구시",
@@ -23,7 +22,6 @@ export type KEY_OF_DONAME = keyof typeof DONAME;
 export type DONAME_VALUE = typeof DONAME[keyof typeof DONAME];
 
 export const SIGUNGUNAME = {
-  All: ["전체"],
   Seoul: [
     "강남구",
     "강동구",

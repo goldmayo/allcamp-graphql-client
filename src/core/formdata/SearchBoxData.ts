@@ -1,4 +1,4 @@
-import { SelectBoxData, SelectBoxOptionsData } from "../../types/SelectBoxData";
+import { SelectBoxData, SelectBoxOptionsData } from "../../types/selectBoxData";
 import {
   DONAME,
   DONAME_VALUE,
@@ -7,9 +7,9 @@ import {
   KEY_OF_DONAME,
   KEY_OF_SIGUNGUNAME,
 } from "../../types/administrativeDivision";
+import { CAMP_THEME } from "../../types/campTheme";
 
 export const doNmOptionsData: SelectBoxOptionsData[] = [
-  { id: "doName0", value: DONAME.All },
   { id: "doName1", value: DONAME.Seoul },
   { id: "doName2", value: DONAME.Busan },
   { id: "doName3", value: DONAME.Daegu },
@@ -29,6 +29,13 @@ export const doNmOptionsData: SelectBoxOptionsData[] = [
   { id: "doName17", value: DONAME.Jeju },
 ];
 
+export const doSelectData: SelectBoxData = {
+  id: "region",
+  options: doNmOptionsData,
+  labelText: "지역",
+  name: "시도",
+};
+
 export const sigunguNmOptionsData = (doName: DONAME_VALUE): SelectBoxOptionsData[] => {
   const sigunguList = SIGUNGUNAME[convertDonameKRtoEN(doName)];
   return sigunguList.map((sigungu, i = 1) => {
@@ -36,17 +43,8 @@ export const sigunguNmOptionsData = (doName: DONAME_VALUE): SelectBoxOptionsData
   });
 };
 
-export const doSelectData: SelectBoxData = {
-  id: "doNm",
-  options: doNmOptionsData,
-  labelText: "지역",
-  name: "시도",
-};
-
 const convertDonameKRtoEN = (doNameKR: DONAME_VALUE): KEY_OF_SIGUNGUNAME => {
   switch (doNameKR) {
-    case "전체":
-      return "All";
     case "서울시":
       return "Seoul";
     case "부산시":
@@ -82,4 +80,22 @@ const convertDonameKRtoEN = (doNameKR: DONAME_VALUE): KEY_OF_SIGUNGUNAME => {
     case "제주도":
       return "Jeju";
   }
+};
+
+export const campThemeOptionsData: SelectBoxOptionsData[] = [
+  { id: "campTheme1", value: CAMP_THEME.Beach },
+  { id: "campTheme2", value: CAMP_THEME.Island },
+  { id: "campTheme3", value: CAMP_THEME.Mountain },
+  { id: "campTheme4", value: CAMP_THEME.Forest },
+  { id: "campTheme5", value: CAMP_THEME.Velley },
+  { id: "campTheme6", value: CAMP_THEME.River },
+  { id: "campTheme7", value: CAMP_THEME.Lake },
+  { id: "campTheme8", value: CAMP_THEME.Downtown },
+];
+
+export const campThemeSelectData: SelectBoxData = {
+  id: "campTheme",
+  options: campThemeOptionsData,
+  labelText: "테마",
+  name: "campTheme",
 };

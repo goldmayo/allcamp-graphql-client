@@ -3,7 +3,7 @@ import Flexbox from "../../atoms/flexbox/FlexBox";
 import Input from "../../atoms/input/Input";
 import Label from "../../atoms/label/Label";
 
-interface InputFieldProps {
+interface InputLabelProps {
   id: string | undefined;
   value?: string;
   name: string;
@@ -13,13 +13,14 @@ interface InputFieldProps {
   required: boolean;
   pattern?: string;
   className: string | undefined;
+  labelTag: string;
 }
 
-const InputField: FC<InputFieldProps> = (props) => {
+const InputLabel: FC<InputLabelProps> = (props) => {
   return (
-    <Flexbox className={"flex-col border border-slate-500 w-3/12"}>
+    <Flexbox className={""}>
       <Label htmlFor={props.id} className={props.className}>
-        {props.name}
+        {props.labelTag}
       </Label>
       <Input
         id={props.id}
@@ -30,10 +31,10 @@ const InputField: FC<InputFieldProps> = (props) => {
         required={props.required}
         onChange={props.onChange}
         pattern={props.pattern}
-        className={`${props.className} `}
+        className={`${props.className} border border-black`}
       />
     </Flexbox>
   );
 };
 
-export default InputField;
+export default InputLabel;

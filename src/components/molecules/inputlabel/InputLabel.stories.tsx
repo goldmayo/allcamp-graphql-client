@@ -1,16 +1,16 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import InputField from "./InputField";
+import InputLabel from "./InputLabel";
 import { useState } from "react";
 
 export default {
-  title: "Molecules/InputField",
-  Component: InputField,
+  title: "Molecules/InputLabel",
+  Component: InputLabel,
   argTypes: {
-    onChange: { action: "InputField changed" },
+    onChange: { action: "InputLabel changed" },
   },
-} as ComponentMeta<typeof InputField>;
+} as ComponentMeta<typeof InputLabel>;
 
-const Template: ComponentStory<typeof InputField> = (args) => {
+const Template: ComponentStory<typeof InputLabel> = (args) => {
   const [value, setValue] = useState(args.value ?? "");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +19,7 @@ const Template: ComponentStory<typeof InputField> = (args) => {
   };
   return (
     <>
-      <InputField {...args} onChange={onChange} value={value} />
+      <InputLabel {...args} onChange={onChange} value={value} />
     </>
   );
 };
@@ -30,7 +30,7 @@ Default.args = {
   value: "",
   name: "캠핑장이름",
   type: "text",
-  placeholder: "캠핑장이름",
+  placeholder: "캠핑장명을 입력해주세요",
   required: false,
   className: "",
 };
