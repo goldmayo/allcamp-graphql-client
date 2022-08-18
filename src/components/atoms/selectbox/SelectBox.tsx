@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { SelectBoxOptionsData } from "../../../types/SelectBoxData";
+import { SelectBoxOptionsData } from "../../../types/selectBoxData";
 
 interface SelectBox {
   id: string | undefined;
@@ -13,14 +13,15 @@ interface SelectBox {
 const SelectBox: FC<SelectBox> = (props) => {
   return (
     <select id={props.id} name={props.name} className={props.className} onChange={props.onChange}>
-      <option value="" selected>
-        {props.placeholder}
-      </option>
-      {props.options.map((option: SelectBoxOptionsData) => (
-        <option key={option.id} value={option.value}>
-          {option.value}
-        </option>
-      ))}
+      <option value="">{props.placeholder}</option>
+      {props.options &&
+        props.options.map((option: SelectBoxOptionsData) => {
+          return (
+            <option key={option.id} value={option.value}>
+              {option.value}
+            </option>
+          );
+        })}
     </select>
   );
 };

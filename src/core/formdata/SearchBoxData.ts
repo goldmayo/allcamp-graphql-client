@@ -33,7 +33,7 @@ export const doSelectData: SelectBoxData = {
   id: "region",
   options: doNmOptionsData,
   labelText: "지역",
-  name: "시도",
+  name: "doName",
 };
 
 export const sigunguNmOptionsData = (doName: DONAME_VALUE): SelectBoxOptionsData[] => {

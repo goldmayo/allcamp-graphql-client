@@ -1,34 +1,69 @@
-import React, { FC, useState } from "react";
+import React, { FC, useCallback, useState, useEffect } from "react";
 import FlexBox from "../../atoms/flexbox/FlexBox";
 import Form from "../../atoms/form/Form";
 import SelectBox from "../../atoms/selectbox/SelectBox";
 import { campThemeSelectData, doSelectData, sigunguNmOptionsData } from "../../../core/formdata/SearchBoxData";
-import { DONAME_VALUE } from "../../../types/administrativeDivision";
+import { DONAME_VALUE, SIGUNGUNAME_VALUE } from "../../../types/administrativeDivision";
 import InputLabel from "../../molecules/inputlabel/InputLabel";
 import SelectBoxLabel from "../../molecules/selectboxlabel/SelectBoxLabel";
 import Button from "../../atoms/button/Button";
+import { SearchBoxFormInterface } from "../../../types/searchBoxForm";
+import { SelectBoxOptionsData } from "../../../types/selectBoxData";
 
 interface SearchBoxProps {
-  formRef: React.MutableRefObject<HTMLFormElement | null>;
   onSubmit: (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => void;
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  // onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const SearchBox: FC<SearchBoxProps> = (props) => {
-  const [selectedDoNm, setSelectedDoNm] = useState<DONAME_VALUE>();
   const doNameData = doSelectData;
   const campThemeData = campThemeSelectData;
+  const [selectedDoNm, setSelectedDoNm] = useState<DONAME_VALUE>();
+  const [selectedSigunguList, setSelectedSigunguList] = useState<SelectBoxOptionsData[]>([]);
+  const [formValues, setFormValues] = useState<SearchBoxFormInterface>({
+    keyword: "",
+    doName: "",
+    sigunguName: "",
+    campTheme: "",
+  });
+
+  useEffect(() => {
+    console.log("useEffect", selectedDoNm);
+    if (selectedDoNm) {
+      setSelectedSigunguList(sigunguNmOptionsData(selectedDoNm as DONAME_VALUE));
+    }
+  }, [selectedDoNm]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    if (e.target.name === "doName") {
+      setSelectedDoNm(e.currentTarget.value as DONAME_VALUE);
+      setFormValues({ ...formValues, [e.target.name]: e.target.value });
+    } else {
+      setFormValues({ ...formValues, [e.target.name]: e.target.value });
+    }
+  };
+  const handleSubmit = useCallback(
+    (event: React.MouseEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const searchQuery = {
+        keyword: formValues.keyword || "",
+        doName: formValues.doName || "",
+        sigunguName: formValues.sigunguName || "",
+        campTheme: formValues.campTheme || "",
+      };
+      console.log(searchQuery);
+    },
+    [formValues]
+  );
   return (
     <FlexBox className="">
-      <Form formRef={props.formRef} method={"get"} className={""} onSubmit={props.onSubmit}>
+      <Form method={"get"} className={""} onSubmit={handleSubmit}>
         <InputLabel
           id={"keyword"}
           name={"keyword"}
           type={"text"}
           placeholder={"캠핑장명을 입력해주세요"}
-          onChange={function (e: React.ChangeEvent<HTMLInputElement>): void {
-            e.preventDefault();
-          }}
+          onChange={handleChange}
           required={false}
           labelTag={"키워드 검색"}
           className={undefined}
@@ -39,22 +74,17 @@ const SearchBox: FC<SearchBoxProps> = (props) => {
             options={doNameData.options}
             name={doNameData.name}
             placeholder={"전체/도"}
-            onChange={function (e: React.ChangeEvent<HTMLSelectElement>) {
-              e.preventDefault();
-              setSelectedDoNm(e.currentTarget.value as DONAME_VALUE);
-            }}
+            onChange={handleChange}
             className={undefined}
             labelTag={doNameData.labelText}
           />
           <SelectBox
             id={doNameData.id}
-            options={selectedDoNm ? sigunguNmOptionsData(selectedDoNm) : []}
+            options={selectedSigunguList}
             name={"sigunguName"}
             className={undefined}
             placeholder={"전체/시/군"}
-            onChange={function (e: React.ChangeEvent<HTMLSelectElement>): void {
-              e.preventDefault();
-            }}
+            onChange={handleChange}
           />
         </FlexBox>
         <SelectBoxLabel
@@ -62,9 +92,7 @@ const SearchBox: FC<SearchBoxProps> = (props) => {
           options={campThemeData.options}
           name={campThemeData.name}
           placeholder={"전체/테마"}
-          onChange={function (e: React.ChangeEvent<HTMLSelectElement>): void {
-            e.preventDefault();
-          }}
+          onChange={handleChange}
           className={undefined}
           labelTag={campThemeData.labelText}
         />
@@ -77,21 +105,3 @@ const SearchBox: FC<SearchBoxProps> = (props) => {
 };
 
 export default SearchBox;
-
-{
-  /* <Label htmlFor={undefined} className={undefined}>
-            지역
-          </Label>
-          <SelectBox
-            id={doNameData.id}
-            options={doNameData.options}
-            name={"doName"}
-            className={undefined}
-            // onChange={props.onChange}
-            placeholder={"전체/도"}
-            onChange={function (e: React.ChangeEvent<HTMLSelectElement>) {
-              e.preventDefault();
-              setSelectedDoNm(e.currentTarget.value as DONAME_VALUE);
-            }}
-          /> */
-}

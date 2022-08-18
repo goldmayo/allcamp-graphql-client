@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import SearchBox from "./SearchBox";
 import { doSelectData } from "../../../core/formdata/SearchBoxData";
 
@@ -13,12 +13,12 @@ export default {
 } as ComponentMeta<typeof SearchBox>;
 
 const Template: ComponentStory<typeof SearchBox> = (args) => {
-  const formRef = useRef<HTMLFormElement | null>(null);
+  const [formValue, setFormValue] = useState("");
   const onSubmit = (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => {
     e.preventDefault();
     args.onSubmit(e);
   };
-  return <SearchBox {...args} formRef={formRef} onSubmit={onSubmit} />;
+  return <SearchBox {...args} onSubmit={onSubmit} />;
 };
 
 export const Default = Template.bind({});
