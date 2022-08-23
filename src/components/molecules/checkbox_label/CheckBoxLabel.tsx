@@ -8,22 +8,15 @@ interface CheckBoxLabelProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   id: string | undefined;
   className: string | undefined;
-  required: boolean;
+  required?: boolean;
 }
 
-const CheckBoxLabel: FC<CheckBoxLabelProps> = (props) => {
+const CheckBoxLabel: FC<CheckBoxLabelProps> = ({ checked, name, onChange, id, className, required = false }) => {
   return (
     <>
-      <CheckBox
-        className={props.className}
-        id={props.id}
-        checked={props.checked}
-        name={props.name}
-        onChange={props.onChange}
-        required={props.required}
-      />
-      <Label htmlFor={props.id} className="">
-        {props.name}
+      <CheckBox className={className} id={id} checked={checked} name={name} onChange={onChange} required={required} />
+      <Label htmlFor={id} className="">
+        {name}
       </Label>
     </>
   );

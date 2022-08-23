@@ -15,7 +15,7 @@ export default {
 
 const Template: ComponentStory<typeof Form> = (args) => {
   const formRef = useRef<HTMLFormElement | null>(null);
-  const onSubmit = (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => {
+  const onSubmit = (e: React.UIEvent<HTMLFormElement>) => {
     e.preventDefault();
     args.onSubmit(e);
   };

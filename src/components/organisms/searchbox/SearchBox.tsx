@@ -11,14 +11,13 @@ import { SearchBoxFormInterface } from "../../../types/searchBoxForm";
 import { SelectBoxOptionsData } from "../../../types/selectBoxData";
 
 interface SearchBoxProps {
-  onSubmit: (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => void;
+  onSubmit: (e: React.UIEvent<HTMLFormElement>) => void;
   // onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const SearchBox: FC<SearchBoxProps> = (props) => {
   const doNameData = doSelectData;
   const campThemeData = campThemeSelectData;
-  const [selectedDoNm, setSelectedDoNm] = useState<DONAME_VALUE>();
   const [selectedSigunguList, setSelectedSigunguList] = useState<SelectBoxOptionsData[]>([]);
   const [formValues, setFormValues] = useState<SearchBoxFormInterface>({
     keyword: "",
@@ -28,22 +27,21 @@ const SearchBox: FC<SearchBoxProps> = (props) => {
   });
 
   useEffect(() => {
-    console.log("useEffect", selectedDoNm);
-    if (selectedDoNm) {
-      setSelectedSigunguList(sigunguNmOptionsData(selectedDoNm as DONAME_VALUE));
+    console.log("useEffect", formValues.doName);
+    if (formValues.doName) {
+      setSelectedSigunguList(sigunguNmOptionsData(formValues.doName as DONAME_VALUE));
     }
-  }, [selectedDoNm]);
+  }, [formValues.doName]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     if (e.target.name === "doName") {
-      setSelectedDoNm(e.currentTarget.value as DONAME_VALUE);
       setFormValues({ ...formValues, [e.target.name]: e.target.value });
     } else {
       setFormValues({ ...formValues, [e.target.name]: e.target.value });
     }
   };
   const handleSubmit = useCallback(
-    (event: React.MouseEvent<HTMLFormElement>) => {
+    (event: React.UIEvent<HTMLFormElement>) => {
       event.preventDefault();
       const searchQuery = {
         keyword: formValues.keyword || "",

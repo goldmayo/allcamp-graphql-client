@@ -13,12 +13,7 @@ export default {
 } as ComponentMeta<typeof SearchBox>;
 
 const Template: ComponentStory<typeof SearchBox> = (args) => {
-  const [formValue, setFormValue] = useState("");
-  const onSubmit = (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => {
-    e.preventDefault();
-    args.onSubmit(e);
-  };
-  return <SearchBox {...args} onSubmit={onSubmit} />;
+  return <SearchBox {...args} />;
 };
 
 export const Default = Template.bind({});
