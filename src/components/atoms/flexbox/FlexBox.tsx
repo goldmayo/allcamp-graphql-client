@@ -6,7 +6,7 @@ interface FlexBoxProps {
 }
 
 const FlexBox: FC<FlexBoxProps> = ({ children, className }) => {
-  return <div className={`flex ${className}`}>{children}</div>;
+  return <div className={`flex box-content ${className}`}>{children}</div>;
 };
 
 export default FlexBox;

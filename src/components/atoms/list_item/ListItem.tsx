@@ -6,7 +6,7 @@ interface ListItemProps {
 }
 
 const ListItem: FC<ListItemProps> = ({ className, children }) => {
-  return <li className={className}>{children}</li>;
+  return <li className={`list-none ${className}`}>{children}</li>;
 };
 
 export default ListItem;

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import ListItem from "../../atoms/listitem/ListItem";
+import ListItem from "../../atoms/list_item/ListItem";
 import Span from "../../atoms/span/Span";
 
 interface SpanIconItemProps {
