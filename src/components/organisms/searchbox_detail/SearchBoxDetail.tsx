@@ -1,20 +1,31 @@
-import React from "react";
+import React, { FC } from "react";
+import { AdvancedSearchFormInterface, CategoryCheckBoxInterface } from "../../../types/searchBoxForm";
 import FlexBox from "../../atoms/flexbox/FlexBox";
 import CheckBoxLabel from "../../molecules/checkbox_label/CheckBoxLabel";
+import CategoryCheckBox from "../category_checkbox/CategoryCheckBox";
 
-interface SearchBoxDetailProps {}
+interface SearchBoxDetailProps {
+  params: AdvancedSearchFormInterface;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-const SearchBoxDetail = () => {
+const SearchBoxDetail: FC<SearchBoxDetailProps> = (props) => {
   return (
     <FlexBox className="">
-      <CheckBoxLabel
-        id={undefined}
-        name={""}
-        onChange={function (e: React.ChangeEvent<HTMLInputElement>): void {
-          throw new Error("Function not implemented.");
-        }}
-        className={undefined}
-      ></CheckBoxLabel>
+      <ul>
+        {Object.values(props.params).map((fields: CategoryCheckBoxInterface) => (
+          <CategoryCheckBox
+            key={fields.id}
+            content={fields.content}
+            id={fields.id}
+            title={fields.title}
+            name={fields.name}
+            className={fields.className}
+            warningMsg={fields.warningMsg}
+            onChange={props.onChange}
+          />
+        ))}
+      </ul>
     </FlexBox>
   );
 };
