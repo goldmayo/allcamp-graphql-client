@@ -15,6 +15,7 @@ interface HomeInterface {
 
 const Home: NextPage<HomeInterface> = ({ data }) => {
   const allCamps = data.searchCamps;
+  // console.log(allCamps);
   return (
     <div className={styles.container}>
       <Head>

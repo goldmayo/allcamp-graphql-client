@@ -44,7 +44,7 @@ HotWater.args = {
 export const SwimmingPool = Template.bind({});
 SwimmingPool.args = {
   children: <FaSwimmingPool className="" size={"35px"} />,
-  iconName: "수영장",
+  iconName: "물놀이장",
   //   className: "text-black font-medium text-center px-1 py-.5",
 };
 export const Trail = Template.bind({});

@@ -9,7 +9,7 @@ interface SpanIconItemProps {
 
 const SpanIconItem: FC<SpanIconItemProps> = ({ children, iconName }) => {
   return (
-    <ListItem className={"text-black border flex flex-col w-1/12 justify-center items-center p-0 m-0"}>
+    <ListItem className={"text-black flex flex-col justify-center items-center p-0 m-0"}>
       {children}
       <Span className={"text-xs"}>{iconName}</Span>
     </ListItem>
