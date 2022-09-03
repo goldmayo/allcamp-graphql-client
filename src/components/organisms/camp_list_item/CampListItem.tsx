@@ -57,6 +57,7 @@ const CampListItem: FC<CampListItemInterface> = (props) => {
             alt={`${props.content?.node?.facltNm} cover image`}
             className={""}
           />
+          //   default image(흑백 로고)
         )}
         <FlexBox className="flex flex-col justify-between ml-4 ">
           <Span className="">{`${props.content?.node?.facltNm}`}</Span>

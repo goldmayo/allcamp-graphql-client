@@ -31,13 +31,3 @@ export const searchCampsByQuery = gql`
     }
   }
 `;
-export const SearchAnimalThemeCampsForCarousal = gql`
-  query searchAllCamps($first: Int!, $params: CampSearchParamsDto) {
-    searchCamps(first: $first, params: $params) {
-      contentId
-      firstImageUrl # 대표 이미지
-      facltNm # 야영장명
-      lineIntro # 한줄소개
-    }
-  }
-`;
