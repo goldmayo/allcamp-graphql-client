@@ -6,15 +6,31 @@ import Span from "../../atoms/span/Span";
 
 interface CardInterface {
   className: string;
+  data: {
+    contentId: number;
+    firstImageUrl: string;
+    doNm: string;
+    sigunguNm: string;
+    facltNm: string;
+    lineIntro: string;
+  };
 }
 
 const Card: FC<CardInterface> = (props) => {
   return (
-    <Anchor href="" className={""}>
-      <FlexBox className="">
-        <Icon path={""} width={0} height={0} alt={""} className={""} />
-        <Span className="">{}</Span>
-        {/* <Icon path={""} width={0} height={0} alt={""} className={""} /> */}
+    <Anchor href={`${props.data.contentId}`} className={""}>
+      <FlexBox className="flex-col">
+        <Icon
+          path={`${props.data.firstImageUrl}`}
+          width={160}
+          height={90}
+          alt={`${props.data.facltNm}`}
+          className={""}
+        />
+        <FlexBox className="flex-col">
+          <Span className="text-xs">{`${props.data.doNm} ${props.data.sigunguNm}`}</Span>
+          <Span className="text-sm">{props.data.facltNm}</Span>
+        </FlexBox>
       </FlexBox>
     </Anchor>
   );

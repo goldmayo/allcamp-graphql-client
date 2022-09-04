@@ -31,3 +31,16 @@ export const searchCampsByQuery = gql`
     }
   }
 `;
+
+export const getRecommendedCamps = gql`
+  query searchAllCamps($first: Int!, $after: Int, $params: CampSearchParamsDto) {
+    searchCamps(first: $first, after: $after, params: $params) {
+      contentId
+      firstImageUrl # 대표 이미지
+      doNm # 도
+      sigunguNm # 시군구
+      facltNm # 야영장명
+      lineIntro # 한줄소개
+    }
+  }
+`;
