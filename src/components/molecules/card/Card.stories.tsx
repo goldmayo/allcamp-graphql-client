@@ -16,11 +16,16 @@ const defaultData = {
   doNm: "충청남도",
   sigunguNm: "보령시",
   facltNm: "대천용두야영장",
-  lineIntro: "기막힌 경관의 MBC ‘나 혼자 산다’ 촬영지",
 };
 
 export const Default = Template.bind({});
 Default.args = {
   className: "",
-  data: defaultData,
+  data: {
+    title: `${defaultData.doNm} ${defaultData.sigunguNm}`,
+    subTitle: `${defaultData.facltNm}`,
+    thumbnailUrl: `${defaultData.firstImageUrl}`,
+    thumnailAlt: `${defaultData.facltNm}`,
+    contentId: defaultData.contentId,
+  },
 };

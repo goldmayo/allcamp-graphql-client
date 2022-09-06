@@ -1,5 +1,5 @@
 import { DONAME } from "../../types/administrativeDivision";
-import { AdvancedSearchFormInterface } from "../../types/searchBoxForm";
+import { AdvancedSearchFormInterface } from "../../types/searchFormType";
 
 export const AdvancedSearchParams: AdvancedSearchFormInterface = {
   region: {

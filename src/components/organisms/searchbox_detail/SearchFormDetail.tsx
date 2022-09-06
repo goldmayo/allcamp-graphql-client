@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { AdvancedSearchFormInterface, CategoryCheckBoxInterface } from "../../../types/searchBoxForm";
+import { AdvancedSearchFormInterface, CategoryCheckBoxInterface } from "../../../types/searchFormType";
 import FlexBox from "../../atoms/flexbox/FlexBox";
 import CheckBoxLabel from "../../molecules/checkbox_label/CheckBoxLabel";
 import CategoryCheckBox from "../category_checkbox/CategoryCheckBox";

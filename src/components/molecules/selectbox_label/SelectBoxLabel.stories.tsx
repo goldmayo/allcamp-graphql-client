@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import SelectBoxLabel from "./SelectBoxLabel";
-import { campThemeSelectData, doSelectData } from "../../../core/formdata/SearchBoxData";
+import { campThemeSelectData, doSelectData } from "../../../core/formdata/SearchFormData";
 
 export default {
   title: "Molecules/SelectBoxLabel",

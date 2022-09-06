@@ -2,20 +2,20 @@ import React, { FC, useCallback, useState, useEffect } from "react";
 import FlexBox from "../../atoms/flexbox/FlexBox";
 import Form from "../../atoms/form/Form";
 import SelectBox from "../../atoms/selectbox/SelectBox";
-import { campThemeSelectData, doSelectData, sigunguNmOptionsData } from "../../../core/formdata/SearchBoxData";
+import { campThemeSelectData, doSelectData, sigunguNmOptionsData } from "../../../core/formdata/SearchFormData";
 import { DONAME_VALUE, SIGUNGUNAME_VALUE } from "../../../types/administrativeDivision";
 import InputLabel from "../../molecules/input_label/InputLabel";
 import SelectBoxLabel from "../../molecules/selectbox_label/SelectBoxLabel";
 import Button from "../../atoms/button/Button";
-import { SearchBoxFormInterface } from "../../../types/searchBoxForm";
+import { SearchBoxFormInterface } from "../../../types/searchFormType";
 import { SelectBoxOptionsData } from "../../../types/selectBoxData";
 
-interface SearchBoxProps {
+interface SearchFormProps {
   onSubmit: (e: React.UIEvent<HTMLFormElement>) => void;
   // onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const SearchBox: FC<SearchBoxProps> = (props) => {
+const SearchForm: FC<SearchFormProps> = (props) => {
   const doNameData = doSelectData;
   const campThemeData = campThemeSelectData;
   const [selectedSigunguList, setSelectedSigunguList] = useState<SelectBoxOptionsData[]>([]);
@@ -102,4 +102,4 @@ const SearchBox: FC<SearchBoxProps> = (props) => {
   );
 };
 
-export default SearchBox;
+export default SearchForm;

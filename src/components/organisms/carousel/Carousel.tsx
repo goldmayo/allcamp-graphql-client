@@ -25,7 +25,6 @@ const Carousel: FC<CarouselProps> = ({
   speed = 600,
   loop = false,
 }) => {
-  //  "ondemand" | "progressive" | "anticipated";
   const settings = useMemo<Settings>(
     () => ({
       dots: true,
