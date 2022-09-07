@@ -1,0 +1,58 @@
+import React, { FC, useId } from "react";
+import { FaPlug, FaSwimmingPool, FaWifi } from "react-icons/fa";
+import { GiCementShoes, GiKidSlide, GiSoccerField, GiTrail, GiWoodPile } from "react-icons/gi";
+import { MdOutlineLocalConvenienceStore, MdSportsTennis } from "react-icons/md";
+import { TbSoup } from "react-icons/tb";
+import SpanIconItem from "../../molecules/span_icon_item/SpanIconItem";
+
+interface AmenityListInterface {
+  sbrsCl: string;
+}
+const getAmenityIcon = (amenity: string) => {
+  switch (amenity) {
+    case "전기":
+      return <FaPlug className="" size={"35px"} />;
+    case "무선인터넷":
+      return <FaWifi className="" size={"35px"} />;
+    case "장작판매":
+      return <GiWoodPile className="" size={"35px"} />;
+    case "온수":
+      return <TbSoup className="" size={"35px"} />;
+    case "물놀이장":
+      return <FaSwimmingPool className="" size={"35px"} />;
+    case "산책로":
+      return <GiTrail className="" size={"35px"} />;
+    case "트렘폴린":
+      return <GiCementShoes className="" size={"35px"} />;
+    case "놀이터":
+      return <GiKidSlide className="" size={"35px"} />;
+    case "운동장":
+      return <GiSoccerField className="" size={"35px"} />;
+    case "운동시설":
+      return <MdSportsTennis className="" size={"35px"} />;
+    case "마트.편의점":
+      return <MdOutlineLocalConvenienceStore className="" size={"35px"} />;
+    default:
+      break;
+  }
+};
+const AmenityList: FC<AmenityListInterface> = (props) => {
+  const id = useId();
+  return (
+    <>
+      {props.sbrsCl && (
+        <ul className="flex flex-row flex-wrap justify-around ">
+          {props.sbrsCl.split(",").map((el) => {
+            return (
+              <SpanIconItem key={id} iconName={`${el}`}>
+                {getAmenityIcon(el)}
+              </SpanIconItem>
+            );
+          })}
+        </ul>
+      )}
+    </>
+  );
+};
+
+export default AmenityList;
