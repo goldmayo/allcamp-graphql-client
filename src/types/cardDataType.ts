@@ -4,4 +4,5 @@ export type CardData = {
   thumbnailUrl: string;
   thumnailAlt: string;
   contentId: number;
+  lineIntro?: string;
 };

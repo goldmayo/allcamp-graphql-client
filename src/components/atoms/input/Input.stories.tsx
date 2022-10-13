@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Input from "./Input";
 
 export default {
@@ -11,25 +11,23 @@ export default {
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => {
-  const [value, setValue] = useState(args.value ?? "");
+  const TestRef = useRef<HTMLInputElement>(null);
   return (
     <>
       <Input
         {...args}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          args.onChange(e);
-          setValue(e.target.value);
+          args.onChange && args.onChange(e);
+          console.log(e.currentTarget.value);
         }}
-        value={value}
+        ref={TestRef}
       />
-      <pre style={{ marginTop: 10 }}>{JSON.stringify({ value }, null, 2)}</pre>
     </>
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  value: "",
   type: "email",
   placeholder: "example@company.com",
   className: "text-black font-medium  px-1.5 py-0.5 border border-black",

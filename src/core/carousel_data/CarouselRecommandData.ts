@@ -1,4 +1,4 @@
-export const RecommandCarousel = [
+export const RecommandCarouselData = [
   {
     contentId: 7767,
     firstImageUrl: "https://gocamping.or.kr/upload/camp/7767/thumb/thumb_720_6897zhFRTiMXgMH1DUbtVRcI.jpg",

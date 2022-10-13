@@ -1,6 +1,7 @@
-import React, { FC, HTMLInputTypeAttribute } from "react";
+import React, { forwardRef, FC, HTMLInputTypeAttribute, RefObject } from "react";
 
 interface InputProps {
+  ref?: React.Ref<HTMLInputElement> | null;
   value?: string;
   name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -12,21 +13,24 @@ interface InputProps {
   pattern?: string;
 }
 
-const Input: FC<InputProps> = ({ value, name, type, placeholder, id, className, required, onChange, pattern }) => {
-  return (
-    <input
-      value={value}
-      name={name}
-      type={type}
-      placeholder={placeholder}
-      id={id}
-      className={`${className}`}
-      required={required}
-      onChange={onChange}
-      autoComplete="off"
-      pattern={pattern}
-    />
-  );
-};
+const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
+  ({ name, type, placeholder, id, className, required, onChange, pattern }, ref) => {
+    return (
+      <input
+        ref={ref}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        id={id}
+        className={`${className}`}
+        required={required}
+        onChange={onChange}
+        autoComplete="off"
+        pattern={pattern}
+      />
+    );
+  }
+);
+Input.displayName = "Input";
 
 export default Input;

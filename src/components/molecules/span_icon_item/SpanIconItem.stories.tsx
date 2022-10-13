@@ -1,10 +1,30 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import SpanIconItem from "./SpanIconItem";
 
-import { FaWifi, FaPlug, FaSwimmingPool } from "react-icons/fa";
-import { TbSoup } from "react-icons/tb";
+import {
+  FaWifi,
+  FaPlug,
+  FaSwimmingPool,
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+  FaCalendarCheck,
+  FaRegCalendarCheck,
+  FaGithub,
+  FaTags,
+} from "react-icons/fa";
 import { GiWoodPile, GiKidSlide, GiCementShoes, GiSoccerField, GiTrail } from "react-icons/gi";
-import { MdOutlineLocalConvenienceStore, MdSportsTennis } from "react-icons/md";
+import {
+  MdOutlineLocalConvenienceStore,
+  MdSportsTennis,
+  MdHotTub,
+  MdSearch,
+  MdMap,
+  MdClose,
+  MdChevronLeft,
+  MdChevronRight,
+} from "react-icons/md";
+import { HiHome } from "react-icons/hi";
+import { ImNewTab } from "react-icons/im";
 
 export default {
   title: "Molecules/SpanIconItem",
@@ -12,6 +32,34 @@ export default {
 } as ComponentMeta<typeof SpanIconItem>;
 
 const Template: ComponentStory<typeof SpanIconItem> = (args) => <SpanIconItem {...args} />;
+
+export const Search = Template.bind({});
+Search.args = {
+  children: <MdSearch className="" size={"35px"} />,
+  iconName: "검색",
+  //   className: "text-black font-medium text-center px-1 py-.5",
+};
+
+export const PhoneAlt = Template.bind({});
+PhoneAlt.args = {
+  children: <FaPhoneAlt className="" size={"35px"} />,
+  iconName: "전화번호",
+  //   className: "text-black font-medium text-center px-1 py-.5",
+};
+
+export const LocationOn = Template.bind({});
+LocationOn.args = {
+  children: <FaMapMarkerAlt className="" size={"35px"} />,
+  iconName: "주소",
+  //   className: "text-black font-medium text-center px-1 py-.5",
+};
+
+export const Home = Template.bind({});
+Home.args = {
+  children: <HiHome className="" size={"35px"} />,
+  iconName: "홈페이지",
+  //   className: "text-black font-medium text-center px-1 py-.5",
+};
 
 export const Plug = Template.bind({});
 Plug.args = {
@@ -36,7 +84,7 @@ WoodPile.args = {
 
 export const HotWater = Template.bind({});
 HotWater.args = {
-  children: <TbSoup className="" size={"35px"} />,
+  children: <MdHotTub className="" size={"35px"} />,
   iconName: "온수",
   //   className: "text-black font-medium text-center px-1 py-.5",
 };

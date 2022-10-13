@@ -13,26 +13,17 @@ interface CardInterface {
 const Card: FC<CardInterface> = (props) => {
   return (
     <Anchor href={`${props.data.contentId}`} className={""}>
-      <FlexBox className="flex-col mr-1 bg-slate-100">
-        {/* <Icon
-          path={`${props.data.firstImageUrl}`}
-          width={320}
-          height={180}
-          alt={`${props.data.facltNm}`}
-          className={""}
-        /> */}
+      <FlexBox className="flex-col mr-1 border bg-mono-white border-primary-bordergray">
         <Icon
           path={`${props.data.thumbnailUrl}`}
-          width={320}
-          height={180}
+          width={250}
+          height={150}
           alt={`${props.data.thumnailAlt}`}
           className={""}
         />
-        <FlexBox className="flex-col ">
-          {/* <Span className="text-xs">{`${props.data.doNm} ${props.data.sigunguNm}`}</Span>
-          <Span className="text-xs truncate ">{props.data.facltNm}</Span> */}
-          {props.data.title && <Span className="text-xs">{`${props.data.title}`}</Span>}
-          {props.data.subTitle && <Span className="text-xs truncate ">{props.data.subTitle}</Span>}
+        <FlexBox className="flex-col text-center">
+          {props.data.title && <Span className="mx-2 truncate text-body1">{`${props.data.title}`}</Span>}
+          {props.data.subTitle && <Span className="mx-2 truncate text-body3">{props.data.subTitle}</Span>}
         </FlexBox>
       </FlexBox>
     </Anchor>

@@ -22,8 +22,8 @@ export const Default = Template.bind({});
 Default.args = {
   className: "",
   data: {
-    title: `${defaultData.doNm} ${defaultData.sigunguNm}`,
-    subTitle: `${defaultData.facltNm}`,
+    title: `${defaultData.facltNm}`,
+    subTitle: `${defaultData.doNm} ${defaultData.sigunguNm}`,
     thumbnailUrl: `${defaultData.firstImageUrl}`,
     thumnailAlt: `${defaultData.facltNm}`,
     contentId: defaultData.contentId,

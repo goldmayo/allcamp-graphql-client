@@ -1,18 +1,19 @@
-import React, { FC } from "react";
+import React, { FC, forwardRef } from "react";
 import { SelectBoxOptionsData } from "../../../types/selectBoxData";
 
 interface SelectBox {
+  ref?: React.Ref<HTMLSelectElement> | null;
   id: string | undefined;
   options: SelectBoxOptionsData[];
   name: string;
   className: string | undefined;
   placeholder: string;
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const SelectBox: FC<SelectBox> = (props) => {
+const SelectBox: FC<SelectBox> = forwardRef((props, ref) => {
   return (
-    <select id={props.id} name={props.name} className={props.className} onChange={props.onChange}>
+    <select id={props.id} ref={ref} name={props.name} className={props.className} onChange={props.onChange}>
       <option value="">{props.placeholder}</option>
       {props.options &&
         props.options.map((option: SelectBoxOptionsData) => {
@@ -24,6 +25,8 @@ const SelectBox: FC<SelectBox> = (props) => {
         })}
     </select>
   );
-};
+});
+
+SelectBox.displayName = "SelectBox";
 
 export default SelectBox;

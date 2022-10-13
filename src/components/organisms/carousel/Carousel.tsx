@@ -2,6 +2,8 @@ import React, { FC, useMemo } from "react";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import NextArrow from "./NextArrow";
+import PrevArrow from "./PrevArrow";
 
 interface CarouselProps {
   /** 슬라이더 아이템 요소 */
@@ -35,6 +37,8 @@ const Carousel: FC<CarouselProps> = ({
       slidesToScroll: 4,
       autoplay: Boolean(autoplay),
       autoplaySpeed: autoplaySpeed,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />,
     }),
     [autoplay, loop, speed, autoplaySpeed]
   );

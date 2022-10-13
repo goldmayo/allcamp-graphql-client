@@ -26,9 +26,9 @@ const Template: ComponentStory<typeof InputLabel> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
+  labelTag: "캠핑장이름",
   id: "keyword",
-  value: "",
-  name: "캠핑장이름",
+  name: "keyword",
   type: "text",
   placeholder: "캠핑장명을 입력해주세요",
   required: false,

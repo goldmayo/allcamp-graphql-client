@@ -15,4 +15,5 @@ const Template: ComponentStory<typeof AmenityList> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   sbrsCl: "전기,무선인터넷,장작판매,온수,물놀이장",
+  gap: "mr-4",
 };

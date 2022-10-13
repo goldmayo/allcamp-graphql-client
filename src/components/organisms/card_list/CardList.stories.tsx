@@ -2,7 +2,6 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { CampSiteType } from "../../../core/card_list_data/CardListData";
 import CardList from "./CardList";
 
-CampSiteType;
 export default {
   title: "organisms/CardList",
   Component: CardList,

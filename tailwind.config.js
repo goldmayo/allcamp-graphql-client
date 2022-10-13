@@ -3,28 +3,59 @@ module.exports = {
   content: ["./src/pages/**/*.{js,jsx,ts,tsx}", "./src/components/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
-      sm: "480px",
-      md: "768px",
-      lg: "976px",
-      xl: "1124px",
-      xxl: "1440px",
-      // 'sm': {'min': '640px', 'max': '767px'},
-      // // => @media (min-width: 640px and max-width: 767px) { ... }
-
-      // 'md': {'min': '768px', 'max': '1023px'},
-      // // => @media (min-width: 768px and max-width: 1023px) { ... }
-
-      // 'lg': {'min': '1024px', 'max': '1279px'},
-      // // => @media (min-width: 1024px and max-width: 1279px) { ... }
-
-      // 'xl': {'min': '1280px', 'max': '1535px'},
-      // // => @media (min-width: 1280px and max-width: 1535px) { ... }
-
-      // '2xl': {'min': '1536px'},
-      // // => @media (min-width: 1536px) { ... }
+      phone: { min: "0px", max: "599px" },
+      tablet: { min: "600px", max: "1023px" },
+      laptop: { min: "1024px", max: "1439px" },
+      desktop: { min: "1440px", max: "1919px" },
+      ultra: { min: "1920px" },
     },
-
-    extend: {},
+    fontSize: {
+      headline1: ["2.125rem", "2.5rem"],
+      headline2: ["1.5rem", "1.875rem"],
+      headline3: ["1.25rem", "1.5rem"],
+      title1: ["1rem", "1.25rem"],
+      title2: ["0.875rem", "1.125rem"],
+      body1: ["1rem", "1.75rem"],
+      body2: ["0.875rem", "1.375rem"],
+      body3: ["0.75rem", "1.125rem"],
+      body4: ["0.5rem", "1.125rem"],
+      button: ["1rem", "1.25rem"],
+      caption: ["0.75rem", "1.25rem"],
+      overline: ["0.625rem", "0.875rem"],
+    },
+    fontFamily: {
+      roboto: ["Roboto", "sans-serif"],
+    },
+    extend: {
+      colors: {
+        "primary-blue": "#1B4ECE",
+        "primary-navy": "#20274D",
+        "primary-lightgray": "#F8F7F9",
+        "primary-commentgray": "#F9F9FA",
+        "primary-bordergray": "#DDDFE2",
+        "secondary-lightblue": "#5392F9",
+        "secondary-orange": "#FFA800",
+        "secondary-blueblack": "#2A2A2E",
+        "secondary-red": "#E12D2D",
+        "secondary-ivory": "#FDEEE6",
+        "monoscale-1": "#333333",
+        "monoscale-2": "#4F4F4F",
+        "monoscale-3": "#828282",
+        "monoscale-4": "#BDBDBD",
+        "monoscale-5": "#E0E0E0",
+        "mono-white": "#ffffff",
+        "mono-black": "#000000",
+        "system-success": "#00B031",
+        "system-warning": "#EBC812",
+        "system-danger": "#FB3939",
+      },
+      // dropShadow:{
+      //   '':'',
+      //   '':'',
+      //   '':'',
+      //   '':'',
+      // }
+    },
   },
   plugins: [],
 };

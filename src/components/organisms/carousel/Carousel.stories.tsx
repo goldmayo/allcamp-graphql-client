@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Card from "../../molecules/card/Card";
 import Carousel from "./Carousel";
+import { RecommandCarouselData } from "../../../core/carousel_data/CarouselRecommandData";
 
 export default {
   title: "organisms/Carousel",
@@ -112,16 +113,18 @@ const SampleData = [
     facltNm: "산중호걸 글램핑",
   },
 ];
+console.log(RecommandCarouselData);
 
 export const FamillyRecommended = Template.bind({});
 FamillyRecommended.args = {
-  children: SampleData.map((camp) => (
+  children: RecommandCarouselData.map((camp) => (
     <Card
       key={camp.contentId}
       className={""}
       data={{
-        title: `${camp.doNm} ${camp.sigunguNm}`,
-        subTitle: `${camp.facltNm}`,
+        title: `${camp.facltNm}`,
+        subTitle: `${camp.lineIntro}`,
+        // subTitle: `${camp.doNm} ${camp.sigunguNm}`,
         thumbnailUrl: `${camp.firstImageUrl}`,
         thumnailAlt: `${camp.facltNm}`,
         contentId: camp.contentId,
@@ -129,7 +132,7 @@ FamillyRecommended.args = {
     />
   )),
   // className: "w-8/12 py-6 px-8 bg-orange-300",
-  className: "w-8/12 pt-3 pb-6 px-7 bg-orange-300",
+  className: "w-8/12 pt-3 pb-6 px-7 bg-mono-white",
   autoplay: false,
   speed: 500,
   loop: false,

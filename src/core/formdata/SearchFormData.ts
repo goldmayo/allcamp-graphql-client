@@ -36,10 +36,11 @@ export const doSelectData: SelectBoxData = {
   name: "doName",
 };
 
-export const sigunguNmOptionsData = (doName: DONAME_VALUE): SelectBoxOptionsData[] => {
+export const sigunguNmOptionsData = (doName: DONAME_VALUE | ""): SelectBoxOptionsData[] => {
+  if (doName === "") return [];
   const sigunguList = SIGUNGUNAME[convertDonameKRtoEN(doName)];
   return sigunguList.map((sigungu, i = 1) => {
-    return { id: `sigunguNm${i}`, value: sigungu };
+    return { id: `${doName}sigunguNm${i}`, value: sigungu };
   });
 };
 

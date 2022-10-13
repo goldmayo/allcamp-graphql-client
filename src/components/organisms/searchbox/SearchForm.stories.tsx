@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { useRef, useState } from "react";
 import SearchForm from "./SearchForm";
 import { doSelectData } from "../../../core/formdata/SearchFormData";
+import { campThemeSelectData, sigunguNmOptionsData } from "../../../core/formdata/SearchFormData";
 
 export default {
   title: "organisms/SearchForm",
@@ -17,4 +18,7 @@ const Template: ComponentStory<typeof SearchForm> = (args) => {
 };
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  doSelectData: doSelectData,
+  campThemeSelectData: campThemeSelectData,
+};
