@@ -113,14 +113,13 @@ const SampleData = [
     facltNm: "산중호걸 글램핑",
   },
 ];
-console.log(RecommandCarouselData);
 
 export const FamillyRecommended = Template.bind({});
 FamillyRecommended.args = {
   children: RecommandCarouselData.map((camp) => (
     <Card
       key={camp.contentId}
-      className={""}
+      className=""
       data={{
         title: `${camp.facltNm}`,
         subTitle: `${camp.lineIntro}`,
@@ -131,8 +130,8 @@ FamillyRecommended.args = {
       }}
     />
   )),
-  // className: "w-8/12 py-6 px-8 bg-orange-300",
-  className: "w-8/12 pt-3 pb-6 px-7 bg-mono-white",
+  // className: "w-8/12 pt-3 pb-6 px-7 bg-mono-white flex-col justify-center",
+  className: "w-full bg-mono-white flex-col justify-center",
   autoplay: false,
   speed: 500,
   loop: false,

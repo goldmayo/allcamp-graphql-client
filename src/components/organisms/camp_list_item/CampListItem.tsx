@@ -26,7 +26,6 @@ const CampListItem: FC<CampListItemInterface> = (props) => {
             className={""}
           />
         ) : (
-          //   default image(흑백 로고)
           <Icon
             path={`/defaultCamp.svg`}
             width={300}
@@ -34,9 +33,8 @@ const CampListItem: FC<CampListItemInterface> = (props) => {
             alt={`${props.content?.node?.facltNm} cover image`}
             className={""}
           />
-          //   default image(흑백 로고)
         )}
-        <FlexBox className="flex flex-col justify-between ml-5 ">
+        <FlexBox className="flex flex-col justify-around ml-5 ">
           <Span className="font-bold text-title1">{`${props.content?.node?.facltNm}`}</Span>
           {props.content?.node?.doNm && props.content?.node?.sigunguNm && (
             <p className="text-body2">{`${props.content?.node?.doNm} ${props.content?.node?.sigunguNm}`}</p>

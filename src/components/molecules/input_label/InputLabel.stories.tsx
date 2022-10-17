@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import InputLabel from "./InputLabel";
 import { useState } from "react";
+import { MdMap } from "react-icons/md";
 
 export default {
   title: "Molecules/InputLabel",
@@ -27,6 +28,17 @@ const Template: ComponentStory<typeof InputLabel> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   labelTag: "캠핑장이름",
+  id: "keyword",
+  name: "keyword",
+  type: "text",
+  placeholder: "캠핑장명을 입력해주세요",
+  required: false,
+  className: "",
+};
+
+export const Icon = Template.bind({});
+Icon.args = {
+  labelTag: <MdMap className="px-1" size={"36px"} />,
   id: "keyword",
   name: "keyword",
   type: "text",

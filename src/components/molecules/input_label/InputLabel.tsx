@@ -13,7 +13,7 @@ interface InputLabelProps {
   required: boolean;
   pattern?: string;
   className: string | undefined;
-  labelTag: string;
+  labelTag: string | React.ReactNode;
 }
 
 const InputLabel: FC<InputLabelProps> = (props) => {

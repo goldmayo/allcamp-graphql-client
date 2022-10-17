@@ -13,7 +13,13 @@ interface SelectBox {
 
 const SelectBox: FC<SelectBox> = forwardRef((props, ref) => {
   return (
-    <select id={props.id} ref={ref} name={props.name} className={props.className} onChange={props.onChange}>
+    <select
+      id={props.id}
+      ref={ref}
+      name={props.name}
+      className={`${props.className} w-full p-2 rounded-md focus:outline-none text-monoscale-1`}
+      onChange={props.onChange}
+    >
       <option value="">{props.placeholder}</option>
       {props.options &&
         props.options.map((option: SelectBoxOptionsData) => {

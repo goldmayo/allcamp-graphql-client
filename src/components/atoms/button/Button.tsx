@@ -12,21 +12,21 @@ interface ButtonProps {
 const getSpaceSize = (size: string) => {
   switch (size) {
     case "xs":
-      return "py-2 px-3 text-xs text-center";
+      return "py-2 px-2 text-body2 text-center";
     case "sm":
-      return "py-2 px-3 text-sm text-center";
+      return "py-2 px-4 text-body1 text-center";
     case "md":
-      return "py-2 px-4 text-base text-center";
+      return "py-2.5 px-8 text-headline3 text-center ";
     case "lg":
-      return "py-2.5 px-5 text-lg text-center";
+      return "py-2.5 px-10 text-headline3 text-center";
     case "xl":
-      return "py-2.5 px-5 text-xl text-center";
+      return "py-2.5 px-12 text-headline2 text-center";
     default:
-      return "py-2 px-4 text-base text-center";
+      return "py-2 px-4 text-body1 text-center";
   }
 };
-
-const Button: FC<ButtonProps> = ({ type = "button", children, onClick, disabled, className, size = "md" }) => {
+// mx-1 rounded-md text-body1 bg-secondary-lightblue text-mono-white
+const Button: FC<ButtonProps> = ({ type = "button", children, onClick, disabled, className, size = "sm" }) => {
   return (
     <button type={type} className={`${getSpaceSize(size)} ${className}`} disabled={disabled} onClick={onClick}>
       {children}

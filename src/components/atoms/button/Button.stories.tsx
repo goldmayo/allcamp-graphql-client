@@ -22,19 +22,17 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   children: "button",
-  className: "bg-slate-500 text-white font-medium rounded-lg",
+  className: "btn-primary",
 };
 
-export const primary = Template.bind({});
-primary.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   children: "button",
-  className:
-    "bg-blue-500 text-white font-medium rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75",
+  className: "btn-primary",
 };
 
-export const secondary = Template.bind({});
-secondary.args = {
+export const Secondary = Template.bind({});
+Secondary.args = {
   children: "button",
-  className:
-    "bg-slate-500 text-white font-medium rounded-lg shadow-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-opacity-75",
+  className: "",
 };

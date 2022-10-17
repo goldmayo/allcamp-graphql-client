@@ -4,7 +4,7 @@ interface InputProps {
   ref?: React.Ref<HTMLInputElement> | null;
   value?: string;
   name: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   type: HTMLInputTypeAttribute;
   placeholder: string | undefined;
   id: string | undefined;
@@ -22,7 +22,7 @@ const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
         type={type}
         placeholder={placeholder}
         id={id}
-        className={`${className}`}
+        className={`${className} w-full p-2 rounded-md focus:outline-none placeholder:text-monoscale-1 text-monoscale-1 `}
         required={required}
         onChange={onChange}
         autoComplete="off"

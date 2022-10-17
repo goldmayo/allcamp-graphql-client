@@ -7,62 +7,35 @@ import Input from "../../atoms/input/Input";
 import { DONAME_VALUE } from "../../../types/administrativeDivision";
 import { sigunguNmOptionsData } from "../../../core/formdata/SearchFormData";
 import { SelectBoxData } from "../../../types/selectBoxData";
+import { MdMap, MdSearch } from "react-icons/md";
+import { FaTags } from "react-icons/fa";
 
 interface SearchFormProps {
   doSelectData: SelectBoxData;
   campThemeSelectData: SelectBoxData;
   onSubmit: (e: React.UIEvent<HTMLFormElement>) => void;
+  type: "landing" | "default";
 }
-/**
- * use className per each element!
- * 
- * SearchForm per page
- * Landing page[
- * input style {
- *  bg-mono-white
- *  text-mono-black
-//  *  text-headline3  
- * }
- * 
- * form style {
- *  flex-col
- *  bg-primary-lightgray
- *  dropshadow-md
- *  text-headline3
- * }
- * 
- * button style {
- *  bg-primary-blue
- *  text-mono-white
-//  *  text-headline3
- * }]
- **********************
- * else page[
- * input style {
- *  bg-mono-white
- *  text-mono-black
-//  *  text-body1  
- * }
- * 
- * form style {
- *  flex-row
- *  bg-primary-navy
- *  text-body1
- * }
- * 
- * button style {
- *  bg-primary-blue
- *  text-mono-white
-//  *  text-body1
- * }]
- * 
- */
-const SearchForm: FC<SearchFormProps> = ({ doSelectData, campThemeSelectData }) => {
+
+const SearchForm: FC<SearchFormProps> = ({ doSelectData, campThemeSelectData, type }) => {
   const keywordRef = useRef<HTMLInputElement>(null);
   const doNameRef = useRef<HTMLSelectElement>(null);
   const sigunguNameRef = useRef<HTMLSelectElement>(null);
   const campThemeRef = useRef<HTMLSelectElement>(null);
   const [selected, setSelected] = useState<DONAME_VALUE | "">("");
+
+  const SHAPE = {
+    flexDirection: type === "landing" ? "col" : "row",
+    fontSize: type === "landing" ? "text-headline3" : "text-body1",
+    space: type === "landing" ? "mb-4" : "mx-1",
+    width: {
+      keywordInput: type === "landing" ? "w-full" : " w-3/12",
+      dosiSelect: type === "landing" ? "w-full" : "w-4/12",
+      themeSelect: type === "landing" ? "w-full" : "w-2/12",
+      button: type === "landing" ? "w-full" : "w-3/12",
+    },
+    buttonSize: type === "landing" ? "lg" : "sm",
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
@@ -82,57 +55,72 @@ const SearchForm: FC<SearchFormProps> = ({ doSelectData, campThemeSelectData }) 
   };
 
   return (
-    <FlexBox className="">
-      <Form method={"get"} className={""} onSubmit={handleSubmit}>
-        <FlexBox className="flex-col">
-          <Input
-            id={"keyword"}
-            ref={keywordRef}
-            name={"keyword"}
-            type={"text"}
-            placeholder={"캠핑장명을 입력해주세요"}
-            className={"border border-primary-bordergray"}
-            required={false}
-            // pattern={}
-          />
-          <FlexBox className="">
-            <SelectBox
-              id={doSelectData.id}
-              ref={doNameRef}
-              options={doSelectData.options}
-              name={doSelectData.name}
-              className={undefined}
-              placeholder={"전체/도"}
-              onChange={handleChange}
-            />
-            <SelectBox
-              id={doSelectData.id}
-              ref={sigunguNameRef}
-              options={sigunguNmOptionsData(selected as DONAME_VALUE)}
-              name={"sigunguName"}
-              className={undefined}
-              placeholder={"전체/시/군"}
-            />
-          </FlexBox>
+    <Form
+      method={"get"}
+      className={`flex flex-${SHAPE.flexDirection} items-center justify-around w-full`}
+      onSubmit={handleSubmit}
+    >
+      <FlexBox className={`items-center justify-around ${SHAPE.width.keywordInput} h-12 ${SHAPE.space} graybox`}>
+        <MdSearch className="px-1" size={"32px"} />
+        <Input
+          id={"keyword"}
+          ref={keywordRef}
+          name={"keyword"}
+          type={"text"}
+          placeholder={"캠핑장명을 입력해주세요"}
+          className={`${SHAPE.fontSize}`}
+          required={false}
+          // pattern={}
+        />
+      </FlexBox>
+
+      <FlexBox className={`items-center justify-center w-full ${SHAPE.width.dosiSelect} ${SHAPE.space} graybox`}>
+        <FlexBox className="items-center w-6/12 h-12 ">
+          <MdMap className="px-1" size={"32px"} />
           <SelectBox
-            id={campThemeSelectData.id}
-            ref={campThemeRef}
-            options={campThemeSelectData.options}
-            name={campThemeSelectData.name}
-            className={undefined}
-            placeholder={"전체/테마"}
+            id={doSelectData.id}
+            ref={doNameRef}
+            options={doSelectData.options}
+            name={doSelectData.name}
+            className={`${SHAPE.fontSize}`}
+            placeholder={"전체/도"}
+            onChange={handleChange}
           />
-          <FlexBox className={""}>
-            <Button type="button" size="lg" className="border border-black">
-              상세검색
-            </Button>
-            <Button type="submit" size="lg" className="border border-black">
-              검색
-            </Button>
-          </FlexBox>
         </FlexBox>
-      </Form>
-    </FlexBox>
+        <FlexBox className="items-center w-6/12 h-12 border-l border-monoscale-1">
+          <MdMap className="px-1" size={"32px"} />
+          <SelectBox
+            id={doSelectData.id}
+            ref={sigunguNameRef}
+            options={sigunguNmOptionsData(selected as DONAME_VALUE)}
+            name={"sigunguName"}
+            className={`${SHAPE.fontSize}`}
+            placeholder={"전체/시/군"}
+          />
+        </FlexBox>
+      </FlexBox>
+
+      <FlexBox className={`items-center justify-around ${SHAPE.width.themeSelect} h-12 ${SHAPE.space} graybox`}>
+        <FaTags className="px-1" size={"32px"} />
+        <SelectBox
+          id={campThemeSelectData.id}
+          ref={campThemeRef}
+          options={campThemeSelectData.options}
+          name={campThemeSelectData.name}
+          className={`${SHAPE.fontSize}`}
+          placeholder={"전체/테마"}
+        />
+      </FlexBox>
+
+      <FlexBox className={`justify-center ${SHAPE.width.button} h-12`}>
+        <Button type="button" size={`${SHAPE.buttonSize as "lg" | "sm"}`} className="btn-primary">
+          상세검색
+        </Button>
+        <Button type="submit" size={`${SHAPE.buttonSize as "lg" | "sm"}`} className="btn-primary">
+          검색하기
+        </Button>
+      </FlexBox>
+    </Form>
   );
 };
 

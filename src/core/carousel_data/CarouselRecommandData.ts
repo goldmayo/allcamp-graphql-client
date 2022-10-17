@@ -8,14 +8,6 @@ export const RecommandCarouselData = [
     lineIntro: "기막힌 경관의 MBC ‘나 혼자 산다’ 촬영지",
   },
   {
-    contentId: 8014,
-    firstImageUrl: "https://gocamping.or.kr/upload/camp/8014/thumb/thumb_720_4703Qm7QalwokiTMJMJJxt8m.jpg",
-    doNm: "인천시",
-    sigunguNm: "서구",
-    facltNm: "수도권매립지 캠핑장",
-    lineIntro: "",
-  },
-  {
     contentId: 2672,
     firstImageUrl: "https://gocamping.or.kr/upload/camp/2672/thumb/thumb_720_8622MUgbQjvlvxxPtpZckjRE.jpg",
     doNm: "강원도",

@@ -8,7 +8,7 @@ interface LabelProps {
 
 const Label: FC<LabelProps> = ({ htmlFor, children, className }) => {
   return (
-    <label htmlFor={htmlFor} className={className}>
+    <label htmlFor={htmlFor} className={`${className} justify-center items-center flex`}>
       {children}
     </label>
   );
