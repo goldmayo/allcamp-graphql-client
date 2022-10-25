@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 const searchAllCamps = gql`
-  query search($first: Int!) {
-    searchCamps(first: $first, params: {}) {
+  query search($first: Int!, $after: String, $params: CampSearchParamsDto) {
+    searchCamps(first: $first, after: $after, params: $params) {
       totalCounts
       edges {
         node {
@@ -27,3 +27,27 @@ const searchAllCamps = gql`
 `;
 
 export default searchAllCamps;
+
+/**
+ * input CampSearchParamsDto {
+  facltNm: String
+  doNm: String
+  sigunguNm: String
+  themaEnvrnCl: String
+  facltDivNm: String
+  lctCl: String
+  # facility: FacilityClass
+  induty: String
+  # floor: floorMaterial
+  siteBottomCl1: String #잔디
+  siteBottomCl2: String #파쇄석
+  siteBottomCl3: String #테크
+  siteBottomCl4: String #자갈
+  siteBottomCl5: String #맨흙
+  sbrsCl: String
+  # Etc: EtcInfo
+  trlerAcmpnyAt: String #개인 트레일러 동반 여부(Y:사용, N:미사용)
+  caravAcmpnyAt: String #개인 카라반 동반 여부(Y:사용, N:미사용)
+  animalCmgCl: String #애완동물출입
+}
+ */

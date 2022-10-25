@@ -7,7 +7,7 @@ export interface SearchBoxFormInterface {
 }
 
 export interface CategoryCheckBoxInterface {
-  content: { id: string; name: string }[];
+  content: { id: string; name: string; value: string }[];
   id: string;
   title: string;
   name: string;
@@ -17,11 +17,28 @@ export interface CategoryCheckBoxInterface {
 
 export interface AdvancedSearchFormInterface {
   region: CategoryCheckBoxInterface;
-  operation: CategoryCheckBoxInterface;
   location: CategoryCheckBoxInterface;
   campsite: CategoryCheckBoxInterface;
-  floor: CategoryCheckBoxInterface;
   theme: CategoryCheckBoxInterface;
   facility: CategoryCheckBoxInterface;
+  operation: CategoryCheckBoxInterface;
+  floor: CategoryCheckBoxInterface;
   etcinfo: CategoryCheckBoxInterface;
 }
+
+export type detailedSearchParams = {
+  [index: string]: string[];
+  region: string[];
+  location: string[];
+  campsite: string[];
+  theme: string[];
+  facility: string[];
+  operation: string[];
+  floor: string[];
+  etcinfo: string[];
+};
+
+export type Category_name = keyof AdvancedSearchFormInterface;
+export type Category = {
+  [index in Category_name]: string;
+};

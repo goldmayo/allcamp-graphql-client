@@ -142,11 +142,7 @@ export type CampSearchParamsDto = {
   themaEnvrnCl?: InputMaybe<Scalars["String"]>;
   facltDivNm?: InputMaybe<Scalars["String"]>;
   lctCl?: InputMaybe<Scalars["String"]>;
-  gnrlSiteCo?: InputMaybe<Scalars["String"]>;
-  autoSiteCo?: InputMaybe<Scalars["String"]>;
-  glampSiteCo?: InputMaybe<Scalars["String"]>;
-  caravSiteCo?: InputMaybe<Scalars["String"]>;
-  indvdlCaravSiteCo?: InputMaybe<Scalars["String"]>;
+  induty?: InputMaybe<Scalars["String"]>;
   siteBottomCl1?: InputMaybe<Scalars["String"]>;
   siteBottomCl2?: InputMaybe<Scalars["String"]>;
   siteBottomCl3?: InputMaybe<Scalars["String"]>;

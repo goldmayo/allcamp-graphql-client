@@ -15,7 +15,7 @@ interface HomeInterface {
 
 const Home: NextPage<HomeInterface> = ({ data }) => {
   const allCamps = data.searchCamps;
-  // console.log(allCamps);
+  console.log(allCamps);
   return (
     <div className={styles.container}>
       <Head>
@@ -26,12 +26,11 @@ const Home: NextPage<HomeInterface> = ({ data }) => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to gocamp landing test</h1>
-        <h2 className="text-blue-500">tailwind test h2 tag</h2>
         <ul>
           {allCamps.edges &&
             allCamps.edges.map((campInfoEdge) => {
               return (
-                <li key={`${campInfoEdge?.node?.contentId}`}>
+                <li key={`${campInfoEdge?.node?.contentId}`} className={"border-b border-mono-black my-4"}>
                   {campInfoEdge?.node?.firstImageUrl && (
                     <Image
                       src={`${campInfoEdge?.node?.firstImageUrl}`}
@@ -73,8 +72,21 @@ export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
   const { data } = await apolloClient.query({
     query: searchAllCamps,
-    variables: { first: 10 },
+    variables: {
+      first: 10,
+      params: {
+        doNm: "경기도",
+        siteBottomCl1: "잔디",
+        siteBottomCl2: "파쇄석",
+        // siteBottomCl3: "테크",
+        // siteBottomCl4: "자갈",
+        // siteBottomCl5: "맨흙",
+        // induty: "자동차야영장,카라반",
+      },
+    },
   });
+  console.log(data);
+
   return {
     props: {
       data,

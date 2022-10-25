@@ -44,11 +44,9 @@ const Carousel: FC<CarouselProps> = ({
     [autoplay, loop, speed, autoplaySpeed]
   );
   return (
-    <FlexBox className="max-w-[1080px]">
       <FlexBox className={className}>
         <Slider {...settings}>{children}</Slider>
       </FlexBox>
-    </FlexBox>
   );
 };
 

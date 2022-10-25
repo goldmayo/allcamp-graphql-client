@@ -4,18 +4,36 @@ import Label from "../../atoms/label/Label";
 
 interface CheckBoxLabelProps {
   name: string;
+  value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   id: string | undefined;
   className: string | undefined;
   required?: boolean;
+  checked?: boolean;
 }
 
-const CheckBoxLabel: FC<CheckBoxLabelProps> = ({ name, onChange, id, className, required = false }) => {
+const CheckBoxLabel: FC<CheckBoxLabelProps> = ({
+  name,
+  onChange,
+  id,
+  className,
+  value,
+  required = false,
+  checked = false,
+}) => {
   return (
     <>
-      <CheckBox className={className} id={id} name={name} onChange={onChange} required={required} />
-      <Label htmlFor={id} className="pl-0.5 pr-4">
-        {name}
+      <CheckBox
+        className={`${className} cursor-pointer`}
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+        required={required}
+        checked={checked}
+      />
+      <Label htmlFor={id} className="pl-0.5 pr-4 cursor-pointer">
+        {value}
       </Label>
     </>
   );

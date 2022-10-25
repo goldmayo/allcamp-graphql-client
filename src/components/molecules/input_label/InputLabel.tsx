@@ -31,7 +31,7 @@ const InputLabel: FC<InputLabelProps> = (props) => {
         required={props.required}
         onChange={props.onChange}
         pattern={props.pattern}
-        className={`${props.className} border border-black`}
+        className={""}
       />
     </Flexbox>
   );

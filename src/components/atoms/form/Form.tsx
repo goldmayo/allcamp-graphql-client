@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 interface FormProps {
   formRef?: React.MutableRefObject<HTMLFormElement | null>;
-  method: "post" | "get";
+  method: "post" | "get" | "dialog";
   className: string;
   children: React.ReactNode;
   onSubmit: (e: React.UIEvent<HTMLFormElement>) => void;

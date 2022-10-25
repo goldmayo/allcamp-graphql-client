@@ -1,6 +1,8 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { useRef, useState } from "react";
 import CategoryCheckBox from "./CategoryCheckBox";
+import { AdvancedSearchParams } from "../../../core/formdata/SearchFormDetailData";
+import { DetailedSearchContextProvider } from "../../../context/DetailedSearchContext";
 
 export default {
   title: "organisms/CategoryCheckBox",
@@ -11,30 +13,35 @@ export default {
 } as ComponentMeta<typeof CategoryCheckBox>;
 
 const Template: ComponentStory<typeof CategoryCheckBox> = (args) => {
-  return <CategoryCheckBox {...args} />;
+  return (
+    <DetailedSearchContextProvider>
+      <CategoryCheckBox {...args} />
+    </DetailedSearchContextProvider>
+  );
 };
 const RegionData = [
-  { id: "region_1", name: "서울시" },
-  { id: "region_2", name: "부산시" },
-  { id: "region_3", name: "대구시" },
-  { id: "region_4", name: "인천시" },
-  { id: "region_5", name: "광주시" },
-  { id: "region_6", name: "대전시" },
-  { id: "region_7", name: "울산시" },
-  { id: "region_8", name: "세종시" },
-  { id: "region_9", name: "경기도" },
-  { id: "region_10", name: "강원도" },
-  { id: "region_11", name: "충청북도" },
-  { id: "region_12", name: "충청남도" },
-  { id: "region_13", name: "전라북도" },
-  { id: "region_14", name: "전라남도" },
-  { id: "region_15", name: "경상북도" },
-  { id: "region_16", name: "경상남도" },
-  { id: "region_17", name: "제주도" },
+  { id: "category_region_1", name: "region", value: "서울시" },
+  { id: "category_region_2", name: "region", value: "부산시" },
+  { id: "category_region_3", name: "region", value: "대구시" },
+  { id: "category_region_4", name: "region", value: "인천시" },
+  { id: "category_region_5", name: "region", value: "광주시" },
+  { id: "category_region_6", name: "region", value: "대전시" },
+  { id: "category_region_7", name: "region", value: "울산시" },
+  { id: "category_region_8", name: "region", value: "세종시" },
+  { id: "category_region_9", name: "region", value: "경기도" },
+  { id: "category_region_10", name: "region", value: "강원도" },
+  { id: "category_region_11", name: "region", value: "충청북도" },
+  { id: "category_region_12", name: "region", value: "충청남도" },
+  { id: "category_region_13", name: "region", value: "전라북도" },
+  { id: "category_region_14", name: "region", value: "전라남도" },
+  { id: "category_region_15", name: "region", value: "경상북도" },
+  { id: "category_region_16", name: "region", value: "경상남도" },
+  { id: "category_region_17", name: "region", value: "제주도" },
 ];
 export const ByRegion = Template.bind({});
 ByRegion.args = {
-  content: RegionData,
+  option: AdvancedSearchParams.region.content,
+  // content: RegionData,
   id: "category_region",
   title: "지역별",
   name: "region",
@@ -51,10 +58,10 @@ const OperationTypeData = [
 ];
 export const ByOperationType = Template.bind({});
 ByOperationType.args = {
-  content: OperationTypeData,
+  option: AdvancedSearchParams.operation.content,
   id: "category_opstype",
   title: "운영형태",
-  name: "opstype",
+  name: "operation",
   className: "",
   warningMsg: "",
 };
@@ -70,10 +77,10 @@ const LocationTypeData = [
 ];
 export const ByLocationType = Template.bind({});
 ByLocationType.args = {
-  content: LocationTypeData,
+  option: AdvancedSearchParams.location.content,
   id: "category_locationtype",
   title: "입지구분",
-  name: "locationtype",
+  name: "location",
   className: "",
   warningMsg: "",
 };
@@ -83,13 +90,17 @@ const CampingSiteTypeData = [
   { id: "campingsitetype2", name: "자동차야영장" },
   { id: "campingsitetype3", name: "카라반" },
   { id: "campingsitetype4", name: "글램핑" },
+  { id: "category_campingsitetype_1", name: "campsite", value: "일반야영장" },
+  { id: "category_campingsitetype_2", name: "campsite", value: "자동차야영장" },
+  { id: "category_campingsitetype_3", name: "campsite", value: "카라반" },
+  { id: "category_campingsitetype_4", name: "campsite", value: "글램핑" },
 ];
 export const ByCampingSiteType = Template.bind({});
 ByCampingSiteType.args = {
-  content: CampingSiteTypeData,
+  option: AdvancedSearchParams.campsite.content,
   id: "category_campingsitetype",
   title: "주요시설",
-  name: "campingsitetype",
+  name: "campsite",
   className: "",
   warningMsg: "",
 };
@@ -103,10 +114,10 @@ const FloorTypeData = [
 ];
 export const ByFloorType = Template.bind({});
 ByFloorType.args = {
-  content: FloorTypeData,
+  option: AdvancedSearchParams.floor.content,
   id: "category_floortype",
   title: "바닥형태",
-  name: "floortype",
+  name: "floor",
   className: "",
   warningMsg: "",
 };
@@ -127,7 +138,7 @@ const ThemeData = [
 ];
 export const ByTheme = Template.bind({});
 ByTheme.args = {
-  content: ThemeData,
+  option: AdvancedSearchParams.theme.content,
   id: "category_theme",
   title: "테마별",
   name: "theme",
@@ -150,7 +161,7 @@ const FacilityData = [
 ];
 export const ByFacility = Template.bind({});
 ByFacility.args = {
-  content: FacilityData,
+  option: AdvancedSearchParams.facility.content,
   id: "category_facility",
   title: "부대시설",
   name: "facility",
@@ -165,7 +176,7 @@ const EtcinfoData = [
 ];
 export const ByEtcinfo = Template.bind({});
 ByEtcinfo.args = {
-  content: EtcinfoData,
+  option: AdvancedSearchParams.etcinfo.content,
   id: "category_etcinfo",
   title: "기타정보",
   name: "etcinfo",
