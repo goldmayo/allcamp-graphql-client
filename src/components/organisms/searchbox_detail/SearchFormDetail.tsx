@@ -4,6 +4,9 @@ import { AdvancedSearchFormInterface, Category } from "../../../types/searchForm
 import FlexBox from "../../atoms/flexbox/FlexBox";
 import Tab from "../tab/Tab";
 import SelectedOption from "../selected_option/SelectedOption";
+import Button from "../../atoms/button/Button";
+import { useDetailedSearchDispatch } from "../../../hooks/useDetailSearch/useDetailedSearch";
+import ButtonGroup from "../button_group/ButtonGroup";
 
 interface SearchBoxDetailProps {
   params: AdvancedSearchFormInterface;
@@ -19,8 +22,13 @@ const SearchBoxDetail: FC<SearchBoxDetailProps> = (props) => {
 
   return (
     <DetailedSearchContextProvider>
-      <Tab params={props.params} />
-      <SelectedOption category={categoryList} />
+      <FlexBox className="w-full">
+        <Tab className="w-3/5" params={props.params} />
+        <FlexBox className="flex-col w-2/5">
+          <SelectedOption category={categoryList} />
+          <ButtonGroup className={"justify-center mt-4"} />
+        </FlexBox>
+      </FlexBox>
     </DetailedSearchContextProvider>
   );
 };

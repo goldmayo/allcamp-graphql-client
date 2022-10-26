@@ -37,7 +37,7 @@ const CategoryCheckBox: FC<CategoryCheckBoxProps> = (props) => {
         {props.warningMsg && (
           <>
             <br />
-            <Span className="">{props.warningMsg}</Span>
+            <Span className="text-secondary-red">{props.warningMsg}</Span>
           </>
         )}
       </ul>

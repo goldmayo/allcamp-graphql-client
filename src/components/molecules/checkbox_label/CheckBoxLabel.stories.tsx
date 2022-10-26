@@ -25,8 +25,9 @@ const Template: ComponentStory<typeof CheckBoxLabel> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  name: "서울시",
+  name: "region",
+  value: "서울시",
   id: "seoulsi",
-  className: "text-black font-medium  px-1.5 py-0.5 border border-black",
+  className: "text-black font-medium",
   required: false,
 };
