@@ -26,7 +26,7 @@ export interface AdvancedSearchFormInterface {
   etcinfo: CategoryCheckBoxInterface;
 }
 
-export type detailedSearchParams = {
+export interface AdvancedSearchParamsInterface {
   [index: string]: string[];
   region: string[];
   location: string[];
@@ -36,9 +36,9 @@ export type detailedSearchParams = {
   operation: string[];
   floor: string[];
   etcinfo: string[];
-};
+}
 
-export type Category_name = keyof AdvancedSearchFormInterface;
+export type CategoryName = keyof AdvancedSearchFormInterface;
 export type Category = {
-  [index in Category_name]: string;
+  [index in CategoryName]: string;
 };

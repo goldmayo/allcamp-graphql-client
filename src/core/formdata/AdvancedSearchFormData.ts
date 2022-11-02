@@ -1,7 +1,7 @@
 import { DONAME } from "../../types/administrativeDivision";
 import { AdvancedSearchFormInterface } from "../../types/searchFormType";
 
-export const AdvancedSearchParams: AdvancedSearchFormInterface = {
+export const AdvancedSearchFormParams: AdvancedSearchFormInterface = {
   region: {
     content: [
       { id: "category_region_1", name: "region", value: DONAME.Seoul },

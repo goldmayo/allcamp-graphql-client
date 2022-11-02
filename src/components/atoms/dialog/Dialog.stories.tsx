@@ -5,8 +5,8 @@ import { ChangeEvent, UIEvent, useRef } from "react";
 import FlexBox from "../flexbox/FlexBox";
 import Form from "../form/Form";
 import CheckBoxLabel from "../../molecules/checkbox_label/CheckBoxLabel";
-import SearchFormDetail from "../../organisms/searchbox_detail/SearchFormDetail";
-import { AdvancedSearchParams } from "../../../core/formdata/SearchFormDetailData";
+import SearchFormDetail from "../../organisms/advanced_searchbox/AdvancedSearchForm";
+import { AdvancedSearchParams } from "../../../core/formdata/AdvancedSearchFormData";
 import Span from "../span/Span";
 
 export default {
@@ -64,12 +64,20 @@ DetailedSearch.args = {
   title: "상세검색",
   children: (
     <FlexBox className="flex flex-col items-center justify-center p-6 border border-primary-bordergray">
-      <SearchFormDetail
-        params={AdvancedSearchParams}
-        onChange={function (e: ChangeEvent<HTMLInputElement>): void {
-          throw new Error("Function not implemented.");
+      <Form
+        method={"dialog"}
+        className={"w-full"}
+        onSubmit={function (e: UIEvent<HTMLFormElement, globalThis.UIEvent>): void {
+          e.stopPropagation();
         }}
-      />
+      >
+        <SearchFormDetail
+          params={AdvancedSearchParams}
+          onChange={function (e: ChangeEvent<HTMLInputElement>): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
+      </Form>
     </FlexBox>
   ),
 };

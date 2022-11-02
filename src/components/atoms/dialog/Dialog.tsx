@@ -37,6 +37,7 @@ const Modal = forwardRef<HTMLDialogElement, ModalProps>(({ className, children, 
             //@ts-ignore
             ref.current.close();
           }}
+          aria-label="Close"
         >
           <MdClose className="p-0" size={"30px"} />
         </Button>

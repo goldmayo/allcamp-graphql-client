@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { useRef, useState } from "react";
 import CategoryCheckBox from "./CategoryCheckBox";
-import { AdvancedSearchParams } from "../../../core/formdata/SearchFormDetailData";
-import { DetailedSearchContextProvider } from "../../../context/DetailedSearchContext";
+import { AdvancedSearchFormParams } from "../../../core/formdata/AdvancedSearchFormData";
+import { AdvancedSearchParamsContextProvider } from "../../../context/AdvancedSearchParamsContext";
 
 export default {
   title: "organisms/CategoryCheckBox",
@@ -14,9 +14,9 @@ export default {
 
 const Template: ComponentStory<typeof CategoryCheckBox> = (args) => {
   return (
-    <DetailedSearchContextProvider>
+    <AdvancedSearchParamsContextProvider>
       <CategoryCheckBox {...args} />
-    </DetailedSearchContextProvider>
+    </AdvancedSearchParamsContextProvider>
   );
 };
 const RegionData = [
@@ -40,7 +40,7 @@ const RegionData = [
 ];
 export const ByRegion = Template.bind({});
 ByRegion.args = {
-  option: AdvancedSearchParams.region.content,
+  option: AdvancedSearchFormParams.region.content,
   // content: RegionData,
   id: "category_region",
   title: "지역별",
@@ -58,7 +58,7 @@ const OperationTypeData = [
 ];
 export const ByOperationType = Template.bind({});
 ByOperationType.args = {
-  option: AdvancedSearchParams.operation.content,
+  option: AdvancedSearchFormParams.operation.content,
   id: "category_opstype",
   title: "운영형태",
   name: "operation",
@@ -77,7 +77,7 @@ const LocationTypeData = [
 ];
 export const ByLocationType = Template.bind({});
 ByLocationType.args = {
-  option: AdvancedSearchParams.location.content,
+  option: AdvancedSearchFormParams.location.content,
   id: "category_locationtype",
   title: "입지구분",
   name: "location",
@@ -97,7 +97,7 @@ const CampingSiteTypeData = [
 ];
 export const ByCampingSiteType = Template.bind({});
 ByCampingSiteType.args = {
-  option: AdvancedSearchParams.campsite.content,
+  option: AdvancedSearchFormParams.campsite.content,
   id: "category_campingsitetype",
   title: "주요시설",
   name: "campsite",
@@ -114,7 +114,7 @@ const FloorTypeData = [
 ];
 export const ByFloorType = Template.bind({});
 ByFloorType.args = {
-  option: AdvancedSearchParams.floor.content,
+  option: AdvancedSearchFormParams.floor.content,
   id: "category_floortype",
   title: "바닥형태",
   name: "floor",
@@ -138,7 +138,7 @@ const ThemeData = [
 ];
 export const ByTheme = Template.bind({});
 ByTheme.args = {
-  option: AdvancedSearchParams.theme.content,
+  option: AdvancedSearchFormParams.theme.content,
   id: "category_theme",
   title: "테마별",
   name: "theme",
@@ -161,7 +161,7 @@ const FacilityData = [
 ];
 export const ByFacility = Template.bind({});
 ByFacility.args = {
-  option: AdvancedSearchParams.facility.content,
+  option: AdvancedSearchFormParams.facility.content,
   id: "category_facility",
   title: "부대시설",
   name: "facility",
@@ -176,7 +176,7 @@ const EtcinfoData = [
 ];
 export const ByEtcinfo = Template.bind({});
 ByEtcinfo.args = {
-  option: AdvancedSearchParams.etcinfo.content,
+  option: AdvancedSearchFormParams.etcinfo.content,
   id: "category_etcinfo",
   title: "기타정보",
   name: "etcinfo",

@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { DetailedSearchContextProvider } from "../../../context/DetailedSearchContext";
-import { AdvancedSearchParams } from "../../../core/formdata/SearchFormDetailData";
+import { AdvancedSearchFormParams } from "../../../core/formdata/AdvancedSearchFormData";
+import { AdvancedSearchParamsContextProvider } from "../../../context/AdvancedSearchParamsContext";
+
 import Tab from "./Tab";
 
 export default {
@@ -13,13 +14,13 @@ export default {
 
 const Template: ComponentStory<typeof Tab> = (args) => {
   return (
-    <DetailedSearchContextProvider>
+    <AdvancedSearchParamsContextProvider>
       <Tab {...args} />;
-    </DetailedSearchContextProvider>
+    </AdvancedSearchParamsContextProvider>
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  params: AdvancedSearchParams,
+  params: AdvancedSearchFormParams,
 };
