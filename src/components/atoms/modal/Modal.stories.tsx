@@ -1,21 +1,19 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Button from "../button/Button";
-import Dialog from "./Dialog";
+import Modal from "./Modal";
 import { ChangeEvent, UIEvent, useRef } from "react";
 import FlexBox from "../flexbox/FlexBox";
 import Form from "../form/Form";
 import CheckBoxLabel from "../../molecules/checkbox_label/CheckBoxLabel";
-import SearchFormDetail from "../../organisms/advanced_searchbox/AdvancedSearchForm";
-import { AdvancedSearchParams } from "../../../core/formdata/AdvancedSearchFormData";
-import Span from "../span/Span";
+import AdvancedSearchForm from "../../organisms/advanced_searchbox/AdvancedSearchForm";
 
 export default {
-  title: "atoms/Dialog",
-  Component: Dialog,
+  title: "atoms/Modal",
+  Component: Modal,
   argTypes: {},
-} as ComponentMeta<typeof Dialog>;
+} as ComponentMeta<typeof Modal>;
 
-const Template: ComponentStory<typeof Dialog> = (args) => {
+const Template: ComponentStory<typeof Modal> = (args) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   return (
     <>
@@ -28,7 +26,7 @@ const Template: ComponentStory<typeof Dialog> = (args) => {
       >
         open modal
       </Button>
-      <Dialog ref={modalRef} {...args} />
+      <Modal ref={modalRef} {...args} />
     </>
   );
 };
@@ -50,7 +48,7 @@ Default.args = {
           onChange={function (e: ChangeEvent<HTMLInputElement>): void {
             throw new Error("Function not implemented.");
           }}
-          id={"dialog_default"}
+          id={"Modal_default"}
           value={"일반야영장"}
           className={undefined}
         />
@@ -71,12 +69,7 @@ DetailedSearch.args = {
           e.stopPropagation();
         }}
       >
-        <SearchFormDetail
-          params={AdvancedSearchParams}
-          onChange={function (e: ChangeEvent<HTMLInputElement>): void {
-            throw new Error("Function not implemented.");
-          }}
-        />
+        <AdvancedSearchForm />
       </Form>
     </FlexBox>
   ),

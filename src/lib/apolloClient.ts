@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { ApolloClient, HttpLink, InMemoryCache, from, NormalizedCache, NormalizedCacheObject } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
-import { concatPagination } from "@apollo/client/utilities";
+import { concatPagination, relayStylePagination } from "@apollo/client/utilities";
 import merge from "deepmerge";
 import isEqual from "lodash/isEqual";
 
@@ -27,6 +27,16 @@ function createApolloClient() {
     ssrMode: typeof window === "undefined",
     link: from([errorLink, httpLink]),
     cache: new InMemoryCache(),
+    //   {
+    //   typePolicies: {
+    //     Query: {
+    //       fields: {
+    //         searchCampsForward: relayStylePagination(),
+    //         searchCampsBackward: relayStylePagination(),
+    //       },
+    //     },
+    //   },
+    // }
   });
 }
 

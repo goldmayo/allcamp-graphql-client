@@ -1,72 +1,40 @@
 import React, { FC } from "react";
 import ListItem from "../../atoms/list_item/ListItem";
 import Anchor from "../../atoms/anchor/Anchor";
+import Button from "../../atoms/button/Button";
+import { useRouter } from "next/router";
+import Span from "../../atoms/span/Span";
+import { PageInfo } from "../../../types/campType";
 
 interface PaginationProps {
-  length: number;
+  totalCounts: number;
+  pageInfo: PageInfo;
+  limit?: number;
+  page: number;
 }
 
-const Pagination: FC<PaginationProps> = () => {
+const Pagination: FC<PaginationProps> = ({ limit = 10, ...props }) => {
+  const router = useRouter();
+  const numberOfPages = Math.ceil(props.totalCounts / limit);
+
+  const handlePaginateForWard = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+  };
+  const handlePaginateBackWard = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+  };
   return (
-    <ul className="inline-flex items-center -space-x-px">
-      <ListItem className={""}>
-        <Anchor
-          href="#"
-          className="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-        >
-          Previous
-        </Anchor>
-      </ListItem>
-      <ListItem className={""}>
-        <Anchor
-          href="#"
-          className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-        >
-          1
-        </Anchor>
-      </ListItem>
-      <ListItem className={""}>
-        <Anchor
-          href="#"
-          className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-        >
-          2
-        </Anchor>
-      </ListItem>
-      <ListItem className={""}>
-        <Anchor
-          href="#"
-          aria-current="page"
-          className="z-10 px-3 py-2 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-        >
-          3
-        </Anchor>
-      </ListItem>
-      <ListItem className={""}>
-        <Anchor
-          href="#"
-          className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-        >
-          4
-        </Anchor>
-      </ListItem>
-      <ListItem className={""}>
-        <Anchor
-          href="#"
-          className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-        >
-          5
-        </Anchor>
-      </ListItem>
-      <ListItem className={""}>
-        <Anchor
-          href="#"
-          className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-        >
-          Next
-        </Anchor>
-      </ListItem>
-    </ul>
+    <>
+      <nav>
+        <Button onClick={handlePaginateBackWard} disabled={!props.pageInfo.hasPreviousPage}>
+          &lt;
+        </Button>
+        <Span className="">{`${props.page}/${numberOfPages}`}</Span>
+        <Button onClick={handlePaginateForWard} disabled={!props.pageInfo.hasNextPage}>
+          &gt;
+        </Button>
+      </nav>
+    </>
   );
 };
 

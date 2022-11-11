@@ -8,6 +8,7 @@ import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import Span from "../../atoms/span/Span";
 import AmenityList from "../amenity_list/AmenityList";
+import Anchor from "../../atoms/anchor/Anchor";
 
 interface CampListItemInterface {
   content: CampInfoEdge;
@@ -17,25 +18,29 @@ const CampListItem: FC<CampListItemInterface> = (props) => {
   return (
     <ListItem key={`${props.content?.node?.contentId}`} className={""}>
       <FlexBox className="flex flex-row p-2.5 border justify-space bg-mono-white border-primary-bordergray rounded-md">
-        {props.content?.node?.firstImageUrl ? (
-          <Icon
-            path={`${props.content?.node?.firstImageUrl}`}
-            width={300}
-            height={210}
-            alt={`${props.content?.node?.facltNm} cover image`}
-            className={""}
-          />
-        ) : (
-          <Icon
-            path={`/defaultCamp.svg`}
-            width={300}
-            height={210}
-            alt={`${props.content?.node?.facltNm} cover image`}
-            className={""}
-          />
-        )}
+        <Anchor href={`/about/${props.content?.node?.contentId}`} className={""}>
+          {props.content?.node?.firstImageUrl ? (
+            <Icon
+              path={`${props.content?.node?.firstImageUrl}`}
+              width={300}
+              height={210}
+              alt={`${props.content?.node?.facltNm} cover image`}
+              className={""}
+            />
+          ) : (
+            <Icon
+              path={`/defaultCamp.svg`}
+              width={300}
+              height={210}
+              alt={`${props.content?.node?.facltNm} cover image`}
+              className={""}
+            />
+          )}
+        </Anchor>
         <FlexBox className="flex flex-col justify-around ml-5 ">
-          <Span className="font-bold text-title1">{`${props.content?.node?.facltNm}`}</Span>
+          <Anchor href={`/about/${props.content?.node?.contentId}`} className={""}>
+            <Span className="font-bold text-title1">{`${props.content?.node?.facltNm}`}</Span>
+          </Anchor>
           {props.content?.node?.doNm && props.content?.node?.sigunguNm && (
             <p className="text-body2">{`${props.content?.node?.doNm} ${props.content?.node?.sigunguNm}`}</p>
           )}

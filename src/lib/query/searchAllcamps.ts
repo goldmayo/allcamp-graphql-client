@@ -26,7 +26,60 @@ const searchAllCamps = gql`
   }
 `;
 
-export default searchAllCamps;
+export const searchAllCampsForward = gql`
+  query searchCampsForward($first: Int!, $after: String, $params: CampSearchParamsDto) {
+    searchCampsForward(first: $first, after: $after, params: $params) {
+      totalCounts
+      edges {
+        node {
+          contentId
+          firstImageUrl # 대표 이미지
+          doNm # 도
+          sigunguNm # 시군구
+          facltNm # 야영장명
+          lineIntro # 한줄소개
+          addr1 # 주소
+          tel # 연락처
+          sbrsCl # 부대시설
+        }
+        cursor
+      }
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+`;
+export const searchAllCampsBackward = gql`
+  query searchCampsBackward($last: Int!, $before: String, $params: CampSearchParamsDto) {
+    searchCampsBackward(last: $last, before: $before, params: $params) {
+      totalCounts
+      edges {
+        node {
+          contentId
+          firstImageUrl # 대표 이미지
+          doNm # 도
+          sigunguNm # 시군구
+          facltNm # 야영장명
+          lineIntro # 한줄소개
+          addr1 # 주소
+          tel # 연락처
+          sbrsCl # 부대시설
+        }
+        cursor
+      }
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+`;
 
 /**
  * input CampSearchParamsDto {

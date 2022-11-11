@@ -44,9 +44,9 @@ const Carousel: FC<CarouselProps> = ({
     [autoplay, loop, speed, autoplaySpeed]
   );
   return (
-      <FlexBox className={className}>
-        <Slider {...settings}>{children}</Slider>
-      </FlexBox>
+    <FlexBox className={className}>
+      <Slider {...settings}>{children}</Slider>
+    </FlexBox>
   );
 };
 

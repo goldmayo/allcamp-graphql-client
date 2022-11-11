@@ -1,4 +1,6 @@
-export const RecommandCarouselData = [
+import { RecommendCampsiteData } from "../../types/cardDataType";
+
+export const RecommandCarouselData: RecommendCampsiteData[] = [
   {
     contentId: 7767,
     firstImageUrl: "https://gocamping.or.kr/upload/camp/7767/thumb/thumb_720_6897zhFRTiMXgMH1DUbtVRcI.jpg",

@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { AdvancedSearchFormParams } from "../../../core/formdata/AdvancedSearchFormData";
 import AdvancedSearchForm from "./AdvancedSearchForm";
 
 export default {
@@ -15,6 +14,4 @@ const Template: ComponentStory<typeof AdvancedSearchForm> = (args) => {
 };
 
 export const Default = Template.bind({});
-Default.args = {
-  params: AdvancedSearchFormParams,
-};
+Default.args = {};

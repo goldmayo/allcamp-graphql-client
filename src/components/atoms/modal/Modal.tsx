@@ -23,7 +23,7 @@ const Modal = forwardRef<HTMLDialogElement, ModalProps>(({ className, children, 
     <dialog
       role={"dialog"}
       ref={ref}
-      className={`${className} p-0 w-full backdrop:bg-black backdrop:opacity-30 rounded-2xl`}
+      className={`${className} p-0 w-3/4 backdrop:bg-black backdrop:opacity-30 rounded-2xl`}
       onClick={handleClose}
       {...props}
     >

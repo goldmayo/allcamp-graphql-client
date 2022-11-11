@@ -1,4 +1,4 @@
-import React, { FC, useId } from "react";
+import React, { FC } from "react";
 import { CardData } from "../../../types/cardDataType";
 import FlexBox from "../../atoms/flexbox/FlexBox";
 import ListItem from "../../atoms/list_item/ListItem";
@@ -9,13 +9,12 @@ interface CardListInterface {
 }
 
 const CardList: FC<CardListInterface> = (props) => {
-  const cardTypeId = useId();
   return (
     <FlexBox className={""}>
-      <ul className="flex flex-row">
+      <ul className="flex flex-row justify-around">
         {props.data &&
           props.data.map((campType) => (
-            <ListItem key={cardTypeId} className={""}>
+            <ListItem key={campType.contentId} className={"mx-2"}>
               <Card className={""} data={campType} />
             </ListItem>
           ))}

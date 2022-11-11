@@ -12,17 +12,20 @@ interface CardInterface {
 
 const Card: FC<CardInterface> = (props) => {
   return (
-    <Anchor href={`${props.data.contentId}`} className="">
+    <Anchor href={`/about/${props.data.contentId}`} className="">
       <FlexBox className="flex-col mx-1 border bg-mono-white border-primary-bordergray">
         <Icon
-          path={`${props.data.thumbnailUrl}`}
+          // path={`${props.data.thumbnailUrl}`}
+          path={props.data.thumbnailUrl !== null ? `${props.data.thumbnailUrl}` : "/defaultCamp.svg"}
           width={250}
           height={150}
           alt={`${props.data.thumnailAlt}`}
           className="flex items-center justify-center"
         />
         <FlexBox className="flex-col text-center">
-          {props.data.title && <Span className="px-2 pt-1 truncate text-body1">{`${props.data.title}`}</Span>}
+          {props.data.title && (
+            <Span className="px-2 pt-1 font-semibold truncate text-body1">{`${props.data.title}`}</Span>
+          )}
           {props.data.subTitle && <Span className="px-4 pb-1 truncate text-body3">{props.data.subTitle}</Span>}
         </FlexBox>
       </FlexBox>

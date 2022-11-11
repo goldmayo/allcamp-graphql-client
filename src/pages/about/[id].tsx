@@ -1,28 +1,23 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import searchDetailById from "../../lib/query/searchDetailById";
-import { CampInfo } from "../../types/campType";
+import { CampInfo, CampInfoEdge, CampInfoConnection } from "../../types/campType";
 import Image from "next/image";
+import { GetStaticProps, GetStaticPaths, GetStaticPathsResult, NextPage } from "next";
+import { initializeApollo } from "../../lib/apolloClient";
+import { searchAllCampsBackward, searchAllCampsForward } from "../../lib/query/searchAllcamps";
+import { RecommandCarouselData } from "../../core/carousel_data/CarouselRecommandData";
 
-const CampDetail = () => {
-  const router = useRouter();
-  const { id } = router.query;
-  const { loading, error, data } = useQuery(searchDetailById, {
-    variables: {
-      contentId: id,
-    },
-  });
+interface CampDetailProps {
+  data: {
+    findCampById: CampInfo;
+  };
+}
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{`${error}`}</p>;
-  console.log(data.findCampById);
+const CampDetail: NextPage<CampDetailProps> = ({ data }) => {
   const campDetailInfo: CampInfo = data.findCampById;
-  const campsiteType = [
-    campDetailInfo.gnrlSiteCo === 0 ? "" : `일반야영장(${campDetailInfo.gnrlSiteCo}면)`,
-    campDetailInfo.caravSiteCo === 0 ? "" : `카라반(${campDetailInfo.caravSiteCo}면)`,
-    campDetailInfo.autoSiteCo === 0 ? "" : `자동차야영장(${campDetailInfo.autoSiteCo}면)`,
-    campDetailInfo.glampSiteCo === 0 ? "" : `글램핑(${campDetailInfo.glampSiteCo}면)`,
-  ];
+  // console.log(campDetailInfo);
+
   const campsiteBottomType = [
     campDetailInfo.siteBottomCl1 === 0 ? "" : `잔디(${campDetailInfo.siteBottomCl1})`,
     campDetailInfo.siteBottomCl2 === 0 ? "" : `파쇄석(${campDetailInfo.siteBottomCl2})`,
@@ -30,7 +25,6 @@ const CampDetail = () => {
     campDetailInfo.siteBottomCl4 === 0 ? "" : `자갈(${campDetailInfo.siteBottomCl4})`,
     campDetailInfo.siteBottomCl5 === 0 ? "" : `맨흙(${campDetailInfo.siteBottomCl5})`,
   ];
-
   return (
     <div>
       <h2>{campDetailInfo.facltNm}</h2>
@@ -52,7 +46,6 @@ const CampDetail = () => {
         <h3>기본정보</h3>
         <p>주소 {`${campDetailInfo.addr1} ${campDetailInfo.addr2}`}</p>
         <p>캠핑장 환경 {`${campDetailInfo.lctCl}/${campDetailInfo.facltDivNm}`}</p>
-        <p>캠핑장 유형 {`${campsiteType.join(" ")}`}</p>
         <p>캠핑장 유형 {`${campDetailInfo.induty}`}</p>
         <p>운영기간 {`${campDetailInfo.operPdCl}`}</p>
         <p>운영일 {`${campDetailInfo.operDeCl}`}</p>
@@ -72,7 +65,7 @@ const CampDetail = () => {
       </div>
       <div>
         <h3>기타 주요시설</h3>
-        <p>주요시설 {`${campsiteType.join("\n")}`}</p>
+        <p>주요시설 {`${campDetailInfo.induty}`}</p>
         <p>반려동물 동반 반려동물 동반 {`${campDetailInfo.animalCmgCl}`}</p>
         <p>개인 트레일러 동반 {`${campDetailInfo.trlerAcmpnyAt === "N" ? "불가능" : "가능"}`}</p>
         <p>개인 캠핑카 동반 {`${campDetailInfo.caravAcmpnyAt === "N" ? "불가능" : "가능"}`}</p>
@@ -106,3 +99,44 @@ const CampDetail = () => {
 };
 
 export default CampDetail;
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const apolloClient = initializeApollo();
+  //@ts-ignore
+  const campId = context?.params.id;
+  const { data } = await apolloClient.query({
+    query: searchDetailById,
+    variables: {
+      contentId: campId,
+    },
+  });
+  if (!data.findCampById) {
+    return { notFound: true };
+  }
+  console.log(data);
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+export const getStaticPaths = async () => {
+  // const apolloClient = initializeApollo();
+  // const { data } = await apolloClient.query({
+  //   query: searchAllCampsForward,
+  //   variables: {
+  //     first: 5,
+  //     params: {},
+  //   },
+  // });
+  const paths = RecommandCarouselData.map((el) => {
+    return { params: { id: el.contentId.toString() } };
+  });
+  console.log(paths);
+
+  return {
+    paths,
+    fallback: "blocking",
+  };
+};

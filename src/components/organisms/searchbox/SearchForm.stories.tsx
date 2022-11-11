@@ -1,8 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import React, { useRef, useState } from "react";
+import React from "react";
 import SearchForm from "./SearchForm";
-import { doSelectData } from "../../../core/formdata/SearchFormData";
-import { campThemeSelectData, sigunguNmOptionsData } from "../../../core/formdata/SearchFormData";
 import FlexBox from "../../atoms/flexbox/FlexBox";
 
 export default {
@@ -30,14 +28,10 @@ const Template: ComponentStory<typeof SearchForm> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  doSelectData: doSelectData,
-  campThemeSelectData: campThemeSelectData,
   type: "default",
 };
 
 export const Landing = Template.bind({});
 Landing.args = {
-  doSelectData: doSelectData,
-  campThemeSelectData: campThemeSelectData,
   type: "landing",
 };
