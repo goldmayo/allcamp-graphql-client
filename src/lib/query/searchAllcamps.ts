@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-const searchAllCamps = gql`
-  query search($first: Int!, $after: String, $params: CampSearchParamsDto) {
-    searchCamps(first: $first, after: $after, params: $params) {
+export const searchAllCamps = gql`
+  query searchCamps($first: Int, $after: String, $last: Int, $before: String, $params: CampSearchParamsDto) {
+    searchCamps(first: $first, after: $after, last: $last, before: $before, params: $params) {
       totalCounts
       edges {
         node {
@@ -19,8 +19,10 @@ const searchAllCamps = gql`
         cursor
       }
       pageInfo {
+        startCursor
         endCursor
         hasNextPage
+        hasPreviousPage
       }
     }
   }

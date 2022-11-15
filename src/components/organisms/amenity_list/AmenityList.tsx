@@ -1,4 +1,4 @@
-import React, { FC, useId } from "react";
+import React, { FC } from "react";
 import { FaPlug, FaSwimmingPool, FaWifi } from "react-icons/fa";
 import { GiCementShoes, GiKidSlide, GiSoccerField, GiTrail, GiWoodPile } from "react-icons/gi";
 import { MdOutlineLocalConvenienceStore, MdSportsTennis, MdHotTub } from "react-icons/md";
@@ -7,6 +7,7 @@ import SpanIconItem from "../../molecules/span_icon_item/SpanIconItem";
 interface AmenityListInterface {
   sbrsCl: string;
   gap: string;
+  contentId: string;
 }
 const getAmenityIcon = (amenity: string) => {
   switch (amenity) {
@@ -37,14 +38,13 @@ const getAmenityIcon = (amenity: string) => {
   }
 };
 const AmenityList: FC<AmenityListInterface> = (props) => {
-  const id = useId();
   return (
     <>
       {props.sbrsCl && (
         <ul className="flex flex-row flex-wrap justify-start">
-          {props.sbrsCl.split(",").map((el) => {
+          {props.sbrsCl.split(",").map((el, i) => {
             return (
-              <SpanIconItem key={id} iconName={`${el}`} gapSize={props.gap}>
+              <SpanIconItem key={`camp_amenity_list_${props.contentId}_${i}`} iconName={`${el}`} gapSize={props.gap}>
                 {getAmenityIcon(el)}
               </SpanIconItem>
             );

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 interface ButtonProps {
   type?: "button" | "submit" | "reset";
-  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  size?: "xs" | "sm" | "base" | "md" | "lg" | "xl";
   className?: string | undefined;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -15,6 +15,8 @@ const getSpaceSize = (size: string) => {
       return "py-2 px-2 text-body2 text-center";
     case "sm":
       return "py-2 px-4 text-body1 text-center";
+    case "base":
+      return "py-2 px-4 text-body1 text-center";
     case "md":
       return "py-2.5 px-8 text-headline3 text-center ";
     case "lg":
@@ -22,7 +24,7 @@ const getSpaceSize = (size: string) => {
     case "xl":
       return "py-2.5 px-12 text-headline2 text-center";
     default:
-      return "py-2 px-4 text-body1 text-center";
+      return "py-2 px-6 text-title3 text-center";
   }
 };
 // mx-1 rounded-md text-body1 bg-secondary-lightblue text-mono-white

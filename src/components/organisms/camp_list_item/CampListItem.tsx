@@ -16,7 +16,7 @@ interface CampListItemInterface {
 
 const CampListItem: FC<CampListItemInterface> = (props) => {
   return (
-    <ListItem key={`${props.content?.node?.contentId}`} className={""}>
+    <ListItem key={`camp_list_item_${props.content?.node?.contentId}`} className={""}>
       <FlexBox className="flex flex-row p-2.5 border justify-space bg-mono-white border-primary-bordergray rounded-md">
         <Anchor href={`/about/${props.content?.node?.contentId}`} className={""}>
           {props.content?.node?.firstImageUrl ? (
@@ -56,9 +56,15 @@ const CampListItem: FC<CampListItemInterface> = (props) => {
               {`${props.content?.node?.addr1} `}
             </Span>
           )}
-          <FlexBox className={"p-2 rounded-sm border border-primary-bordergray bg-primary-lightgray"}>
-            {props.content?.node?.sbrsCl && <AmenityList sbrsCl={props.content?.node?.sbrsCl} gap={"mr-4"} />}
-          </FlexBox>
+          {props.content?.node?.sbrsCl && (
+            <FlexBox className={"p-2 rounded-sm border border-primary-bordergray bg-primary-lightgray"}>
+              <AmenityList
+                sbrsCl={props.content?.node?.sbrsCl}
+                gap={"mr-4"}
+                contentId={`${props.content?.node?.contentId}`}
+              />
+            </FlexBox>
+          )}
         </FlexBox>
       </FlexBox>
     </ListItem>

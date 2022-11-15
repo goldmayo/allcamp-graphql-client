@@ -39,12 +39,15 @@ const ButtonGroup: FC<ButtonGroupProps> = (props) => {
       animalCmgCl: params.etcinfo.includes("반려동물 동반가능") ? "가능" : null,
     };
 
-    router.push({
-      pathname: "/search",
-      query: {
-        searchParams: JSON.stringify(searchParams),
+    router.push(
+      {
+        pathname: "/search",
+        query: {
+          searchParams: JSON.stringify(searchParams),
+        },
       },
-    });
+      "/search"
+    );
   };
   return (
     <FlexBox className={`${props.className} flex-row font-bold`}>

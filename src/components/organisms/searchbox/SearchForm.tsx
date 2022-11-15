@@ -5,7 +5,7 @@ import SelectBox from "../../atoms/selectbox/SelectBox";
 import Button from "../../atoms/button/Button";
 import Input from "../../atoms/input/Input";
 import { DONAME_VALUE } from "../../../types/administrativeDivision";
-import { doSelectData, campThemeSelectData, sigunguNmOptionsData } from "../../../core/formdata/SearchFormData";
+import { doSelectData, sigunguNmOptionsData } from "../../../core/formdata/SearchFormData";
 import { MdMap, MdSearch } from "react-icons/md";
 import { FaTags } from "react-icons/fa";
 import Modal from "../../atoms/modal/Modal";
@@ -19,13 +19,11 @@ interface SearchFormProps {
 const SearchForm: FC<SearchFormProps> = ({ type }) => {
   const router = useRouter();
   const DoData = doSelectData;
-  const CampThemeData = campThemeSelectData;
 
   const modalRef = useRef<HTMLDialogElement>(null);
   const keywordRef = useRef<HTMLInputElement>(null);
   const doNameRef = useRef<HTMLSelectElement>(null);
   const sigunguNameRef = useRef<HTMLSelectElement>(null);
-  const campThemeRef = useRef<HTMLSelectElement>(null);
 
   const [selected, setSelected] = useState<DONAME_VALUE | "">("");
 
@@ -34,12 +32,11 @@ const SearchForm: FC<SearchFormProps> = ({ type }) => {
     fontSize: type === "landing" ? "text-headline3 font-semibold" : "text-body1",
     space: type === "landing" ? "mb-4" : "mx-1",
     width: {
-      keywordInput: type === "landing" ? "w-full" : " w-3/12",
+      keywordInput: type === "landing" ? "w-full" : " w-4/12",
       dosiSelect: type === "landing" ? "w-full" : "w-4/12",
-      themeSelect: type === "landing" ? "w-full" : "w-2/12",
-      button: type === "landing" ? "w-full" : "w-3/12",
+      button: type === "landing" ? "w-full" : "w-4/12",
     },
-    buttonSize: type === "landing" ? "lg" : "sm",
+    buttonSize: type === "landing" ? "lg" : "base",
   };
   const openModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -58,16 +55,18 @@ const SearchForm: FC<SearchFormProps> = ({ type }) => {
       facltNm: keywordRef.current?.value === "" ? null : keywordRef.current?.value,
       doNm: doNameRef.current?.value === "" ? null : doNameRef.current?.value,
       sigunguNm: sigunguNameRef.current?.value === "" ? null : sigunguNameRef.current?.value,
-      themaEnvrnCl: campThemeRef.current?.value === "" ? null : campThemeRef.current?.value,
     };
     // console.log(params);
-    router.push({
-      pathname: "/search",
-      // query: params,
-      query: {
-        searchParams: JSON.stringify(params),
+    router.push(
+      {
+        pathname: "/search",
+        // query: params,
+        query: {
+          searchParams: JSON.stringify(params),
+        },
       },
-    });
+      "/search"
+    );
   };
 
   return (
@@ -116,29 +115,16 @@ const SearchForm: FC<SearchFormProps> = ({ type }) => {
             />
           </FlexBox>
         </FlexBox>
-
-        <FlexBox className={`items-center justify-around ${SHAPE.width.themeSelect} h-12 ${SHAPE.space} graybox`}>
-          <FaTags className="px-1" size={"32px"} />
-          <SelectBox
-            id={CampThemeData.id}
-            ref={campThemeRef}
-            options={CampThemeData.options}
-            name={CampThemeData.name}
-            className={`${SHAPE.fontSize}`}
-            placeholder={"전체/테마"}
-          />
-        </FlexBox>
-
         <FlexBox className={`justify-center ${SHAPE.width.button} h-12`}>
           <Button
             type="submit"
-            size={`${SHAPE.buttonSize as "lg" | "sm"}`}
+            size={`${SHAPE.buttonSize as "lg" | "base"}`}
             className="font-semibold btn-primary"
             onClick={openModal}
           >
             상세검색
           </Button>
-          <Button type="submit" size={`${SHAPE.buttonSize as "lg" | "sm"}`} className="font-semibold btn-primary">
+          <Button type="submit" size={`${SHAPE.buttonSize as "lg" | "base"}`} className="font-semibold btn-primary">
             검색하기
           </Button>
         </FlexBox>

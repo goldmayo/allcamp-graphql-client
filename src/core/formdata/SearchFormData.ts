@@ -7,7 +7,6 @@ import {
   KEY_OF_DONAME,
   KEY_OF_SIGUNGUNAME,
 } from "../../types/administrativeDivision";
-import { CAMP_THEME } from "../../types/campTheme";
 
 export const doNmOptionsData: SelectBoxOptionsData[] = [
   { id: "doName1", value: DONAME.Seoul },
@@ -81,22 +80,4 @@ const convertDonameKRtoEN = (doNameKR: DONAME_VALUE): KEY_OF_SIGUNGUNAME => {
     case "제주도":
       return "Jeju";
   }
-};
-
-export const campThemeOptionsData: SelectBoxOptionsData[] = [
-  { id: "campTheme1", value: CAMP_THEME.Beach },
-  { id: "campTheme2", value: CAMP_THEME.Island },
-  { id: "campTheme3", value: CAMP_THEME.Mountain },
-  { id: "campTheme4", value: CAMP_THEME.Forest },
-  { id: "campTheme5", value: CAMP_THEME.Velley },
-  { id: "campTheme6", value: CAMP_THEME.River },
-  { id: "campTheme7", value: CAMP_THEME.Lake },
-  { id: "campTheme8", value: CAMP_THEME.Downtown },
-];
-
-export const campThemeSelectData: SelectBoxData = {
-  id: "campTheme",
-  options: campThemeOptionsData,
-  labelText: "테마",
-  name: "campTheme",
 };

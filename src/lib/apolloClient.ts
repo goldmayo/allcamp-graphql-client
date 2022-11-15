@@ -31,8 +31,7 @@ function createApolloClient() {
     //   typePolicies: {
     //     Query: {
     //       fields: {
-    //         searchCampsForward: relayStylePagination(),
-    //         searchCampsBackward: relayStylePagination(),
+    //         searchCamps: relayStylePagination(),
     //       },
     //     },
     //   },
