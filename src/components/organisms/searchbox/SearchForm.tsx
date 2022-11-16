@@ -32,9 +32,9 @@ const SearchForm: FC<SearchFormProps> = ({ type }) => {
     fontSize: type === "landing" ? "text-headline3 font-semibold" : "text-body1",
     space: type === "landing" ? "mb-4" : "mx-1",
     width: {
-      keywordInput: type === "landing" ? "w-full" : " w-4/12",
-      dosiSelect: type === "landing" ? "w-full" : "w-4/12",
-      button: type === "landing" ? "w-full" : "w-4/12",
+      keywordInput: type === "landing" ? "w-full" : " w-3/12",
+      dosiSelect: type === "landing" ? "w-full" : "w-3/12",
+      button: type === "landing" ? "w-full" : "w-2/12",
     },
     buttonSize: type === "landing" ? "lg" : "base",
   };
@@ -68,12 +68,17 @@ const SearchForm: FC<SearchFormProps> = ({ type }) => {
       "/search"
     );
   };
-
   return (
-    <>
+    <section
+      className={`${
+        type === "landing"
+          ? "drop-shadow-md py-4 px-12 flex items-center justify-center border rounded-md bg-primary-lightgray border-primary-bordergray max-w-[1080px] w-11/12 mb-10"
+          : "flex items-center p-3 justify-center w-full bg-primary-navy sticky top-0 z-50"
+      }`}
+    >
       <Form
         method={"get"}
-        className={`flex flex-${SHAPE.flexDirection} items-center justify-around w-full `}
+        className={`flex flex-${SHAPE.flexDirection} items-center justify-center w-10/12 `}
         onSubmit={handleSubmit}
       >
         <FlexBox className={`items-center justify-around ${SHAPE.width.keywordInput} h-12 ${SHAPE.space} graybox`}>
@@ -135,7 +140,7 @@ const SearchForm: FC<SearchFormProps> = ({ type }) => {
           <AdvancedSearchForm />
         </FlexBox>
       </Modal>
-    </>
+    </section>
   );
 };
 

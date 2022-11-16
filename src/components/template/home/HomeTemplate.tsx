@@ -20,67 +20,43 @@ interface HomeTemplateProps {
 }
 const HomeTemplate: FC<HomeTemplateProps> = (props) => {
   return (
-    <FlexBox className="flex-col justify-center">
-      <Header />
-      <main className="flex flex-col items-center justify-around bg-mono-white">
-        <section className="mt-1 mb-10">
-          <Banner
-            // imageSrc={"/LandingBanner.jpg"}
-            imageSrc={`${props.bannerImage}`}
-            className={"w-[1440px] h-[340px] flex-col justify-center items-center relative text-mono-white"}
-            // className={"w-[1440px] h-[340px] flex-col justify-center items-center relative text-mono-black"}
-            slogan={"야영장, 차박, 글램핑, 카라반 등 다양한 캠핑장 정보"}
-            sloganStyle={"text-headline1 mb-4 "}
-            subSlogan={"한국 관광공사에 등록된 캠핑장 정보를 쉽고 빠르게 찾아보세요"}
-            subSloganStyle={"text-headline3"}
-          />
-        </section>
-        <section className="drop-shadow-md py-4 px-12 items-center justify-center border rounded-md bg-primary-lightgray border-primary-bordergray max-w-[1080px] w-11/12 mb-10">
-          <SearchForm type={"landing"} />
-        </section>
-        <article className="flex flex-col items-center justify-center mb-10 max-w-[1080px] w-11/12">
-          <Span className="p-4 font-semibold text-headline2 text-mono-black">
-            다양한 캠핑장에서 만끽하는 더 특별한 추억
-          </Span>
-          {/* <CardList data={CampSiteType} /> */}
-          <CardList data={props.campsiteTypeContent} />
-        </article>
-        <article className="flex flex-col items-center justify-center w-11/12 mb-10 max-w-[1080px]">
-          <Span className="p-4 font-semibold text-headline2 text-mono-black">낭만 넘치는 캠핑장 추천</Span>
-          <Carousel className="flex-col justify-center w-full bg-mono-white">
-            {/* {RecommandCarouselData.map((camp) => (
-              <Card
-                key={camp.contentId}
-                className=""
-                data={{
-                  title: `${camp.facltNm}`,
-                  subTitle: `${camp.lineIntro}`,
-                  // subTitle: `${camp.doNm} ${camp.sigunguNm}`,
-                  thumbnailUrl: `${camp.firstImageUrl}`,
-                  thumnailAlt: `${camp.facltNm}`,
-                  contentId: camp.contentId,
-                }}
-              />
-            ))} */}
-            {props.carouselContent.map((camp) => (
-              <Card
-                key={camp.contentId}
-                className=""
-                data={{
-                  title: `${camp.facltNm}`,
-                  subTitle: `${camp.lineIntro}`,
-                  // subTitle: `${camp.doNm} ${camp.sigunguNm}`,
-                  thumbnailUrl: `${camp.firstImageUrl}`,
-                  thumnailAlt: `${camp.facltNm}`,
-                  contentId: camp.contentId,
-                }}
-              />
-            ))}
-          </Carousel>
-        </article>
-      </main>
-      <Footer />
-    </FlexBox>
+    <main className="flex flex-col items-center justify-around bg-mono-white">
+      <section className="mt-1 mb-10">
+        <Banner
+          imageSrc={`${props.bannerImage}`}
+          className={"w-[1440px] h-[340px] flex-col justify-center items-center relative text-mono-white"}
+          slogan={"야영장, 차박, 글램핑, 카라반 등 다양한 캠핑장 정보"}
+          sloganStyle={"text-headline1 mb-4 "}
+          subSlogan={"한국 관광공사에 등록된 캠핑장 정보를 쉽고 빠르게 찾아보세요"}
+          subSloganStyle={"text-headline3"}
+        />
+      </section>
+      <SearchForm type={"landing"} />
+      <section className="flex flex-col items-center justify-center mb-10 max-w-[1080px] w-11/12">
+        <Span className="p-4 font-semibold text-headline2 text-mono-black">
+          다양한 캠핑장에서 만끽하는 더 특별한 추억
+        </Span>
+        <CardList data={props.campsiteTypeContent} />
+      </section>
+      <section className="flex flex-col items-center justify-center w-11/12 mb-10 max-w-[1080px]">
+        <Span className="p-4 font-semibold text-headline2 text-mono-black">낭만 넘치는 캠핑장 추천</Span>
+        <Carousel className="flex-col justify-center w-full bg-mono-white">
+          {props.carouselContent.map((camp) => (
+            <Card
+              key={camp.contentId}
+              className=""
+              data={{
+                title: `${camp.facltNm}`,
+                subTitle: `${camp.lineIntro}`,
+                thumbnailUrl: `${camp.firstImageUrl}`,
+                thumnailAlt: `${camp.facltNm}`,
+                contentId: camp.contentId,
+              }}
+            />
+          ))}
+        </Carousel>
+      </section>
+    </main>
   );
 };
 

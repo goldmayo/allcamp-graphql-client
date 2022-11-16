@@ -19,42 +19,41 @@ const Pagination: FC<PaginationProps> = ({ onLoadMore, limit = 10, ...props }) =
     e.preventDefault();
     if (pageNumber === numberOfPages - 1) {
       console.log("ceiling up");
-      onLoadMore("foward", props.pageInfo.endCursor as string, props.totalCounts % limit);
+      onLoadMore(
+        "foward",
+        props.pageInfo.endCursor as string,
+        props.totalCounts % limit === 0 ? limit : props.totalCounts % limit
+      );
     } else {
       onLoadMore("foward", props.pageInfo.endCursor as string, limit);
     }
     setPageNunmber((prev) => prev + 1);
   };
   const handlePaginateBackWard = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (pageNumber === numberOfPages) {
-      console.log("ceiling down");
-      onLoadMore("backward", props.pageInfo.startCursor as string, limit);
-    } else {
-      onLoadMore("backward", props.pageInfo.startCursor as string, limit);
-    }
+    onLoadMore("backward", props.pageInfo.startCursor as string, limit);
     setPageNunmber((prev) => prev - 1);
   };
   return (
     <>
-      <nav className="flex flex-row items-center justify-between w-full">
+      <nav className="flex flex-row items-center justify-between w-full pb-4">
         <Button
           type="button"
           size="sm"
-          className="btn-primary disabled:opacity-75"
+          className="btn-primary disabled:opacity-50"
           onClick={handlePaginateBackWard}
           disabled={pageNumber === 1 || !props.pageInfo.hasPreviousPage}
         >
-          이전
+          이전 페이지로
         </Button>
-        <Span className="">{`${pageNumber}/${numberOfPages}`}</Span>
+        <Span className="font-semibold text-body1">{`${pageNumber}/${numberOfPages}`}</Span>
         <Button
           type="button"
           size="sm"
-          className="btn-primary disabled:opacity-75"
+          className="btn-primary disabled:opacity-50"
           onClick={handlePaginateForWard}
           disabled={pageNumber === numberOfPages || !props.pageInfo.hasNextPage}
         >
-          다음
+          다음 페이지로
         </Button>
       </nav>
     </>

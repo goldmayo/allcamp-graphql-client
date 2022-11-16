@@ -12,11 +12,12 @@ import Anchor from "../../atoms/anchor/Anchor";
 
 interface CampListItemInterface {
   content: CampInfoEdge;
+  className: string;
 }
 
 const CampListItem: FC<CampListItemInterface> = (props) => {
   return (
-    <ListItem key={`camp_list_item_${props.content?.node?.contentId}`} className={""}>
+    <ListItem key={`camp_list_item_${props.content?.node?.contentId}`} className={props.className}>
       <FlexBox className="flex flex-row p-2.5 border justify-space bg-mono-white border-primary-bordergray rounded-md">
         <Anchor href={`/about/${props.content?.node?.contentId}`} className={""}>
           {props.content?.node?.firstImageUrl ? (

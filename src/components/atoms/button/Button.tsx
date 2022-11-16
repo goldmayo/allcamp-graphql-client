@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 interface ButtonProps {
   type?: "button" | "submit" | "reset";
-  size?: "xs" | "sm" | "base" | "md" | "lg" | "xl";
+  size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "custom";
   className?: string | undefined;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -11,6 +11,8 @@ interface ButtonProps {
 
 const getSpaceSize = (size: string) => {
   switch (size) {
+    case "custom":
+      return "text-center";
     case "xs":
       return "py-2 px-2 text-body2 text-center";
     case "sm":
