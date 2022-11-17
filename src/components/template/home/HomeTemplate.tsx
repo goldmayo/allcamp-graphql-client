@@ -31,7 +31,21 @@ const HomeTemplate: FC<HomeTemplateProps> = (props) => {
           subSloganStyle={"text-headline3"}
         />
       </section>
-      <SearchForm type={"landing"} />
+      <section className="drop-shadow-md py-4 px-12 flex items-center justify-center border rounded-md bg-primary-lightgray border-primary-bordergray max-w-[1080px] w-11/12 mb-10">
+        <SearchForm
+          type={"landing"}
+          flexDirection={"col"}
+          fontSize={"text-headline3 font-semibold"}
+          space={"mb-4"}
+          formWidth={"w-10/12"}
+          width={{
+            keywordInput: "w-full",
+            dosiSelect: "w-full",
+            button: "w-full",
+          }}
+          buttonSize={"lg"}
+        />
+      </section>
       <section className="flex flex-col items-center justify-center mb-10 max-w-[1080px] w-11/12">
         <Span className="p-4 font-semibold text-headline2 text-mono-black">
           다양한 캠핑장에서 만끽하는 더 특별한 추억

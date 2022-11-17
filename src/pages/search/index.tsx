@@ -1,10 +1,8 @@
-import { useLazyQuery, useQuery } from "@apollo/client";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SearchTemplate from "../../components/template/search/SearchTemplate";
-import { searchAllCampsBackward, searchAllCampsForward } from "../../lib/query/searchAllcamps";
-import { CampInfoEdge, CampSearchParamsDto } from "../../types/campType";
+import { CampSearchParamsDto } from "../../types/campType";
 
 interface SearchProps {}
 

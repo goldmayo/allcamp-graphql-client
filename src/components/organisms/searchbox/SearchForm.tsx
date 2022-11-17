@@ -7,16 +7,25 @@ import Input from "../../atoms/input/Input";
 import { DONAME_VALUE } from "../../../types/administrativeDivision";
 import { doSelectData, sigunguNmOptionsData } from "../../../core/formdata/SearchFormData";
 import { MdMap, MdSearch } from "react-icons/md";
-import { FaTags } from "react-icons/fa";
 import Modal from "../../atoms/modal/Modal";
 import AdvancedSearchForm from "../advanced_searchbox/AdvancedSearchForm";
 import { useRouter } from "next/router";
 
 interface SearchFormProps {
   type: "landing" | "default";
+  flexDirection: string;
+  fontSize: string;
+  space: string;
+  formWidth: string;
+  width: {
+    keywordInput: string;
+    dosiSelect: string;
+    button: string;
+  };
+  buttonSize: string;
 }
 
-const SearchForm: FC<SearchFormProps> = ({ type }) => {
+const SearchForm: FC<SearchFormProps> = ({ type, ...props }) => {
   const router = useRouter();
   const DoData = doSelectData;
 
@@ -27,17 +36,6 @@ const SearchForm: FC<SearchFormProps> = ({ type }) => {
 
   const [selected, setSelected] = useState<DONAME_VALUE | "">("");
 
-  const SHAPE = {
-    flexDirection: type === "landing" ? "col" : "row",
-    fontSize: type === "landing" ? "text-headline3 font-semibold" : "text-body1",
-    space: type === "landing" ? "mb-4" : "mx-1",
-    width: {
-      keywordInput: type === "landing" ? "w-full" : " w-3/12",
-      dosiSelect: type === "landing" ? "w-full" : "w-3/12",
-      button: type === "landing" ? "w-full" : "w-2/12",
-    },
-    buttonSize: type === "landing" ? "lg" : "base",
-  };
   const openModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     modalRef.current?.showModal();
@@ -69,19 +67,13 @@ const SearchForm: FC<SearchFormProps> = ({ type }) => {
     );
   };
   return (
-    <section
-      className={`${
-        type === "landing"
-          ? "drop-shadow-md py-4 px-12 flex items-center justify-center border rounded-md bg-primary-lightgray border-primary-bordergray max-w-[1080px] w-11/12 mb-10"
-          : "flex items-center p-3 justify-center w-full bg-primary-navy sticky top-0 z-50"
-      }`}
-    >
+    <>
       <Form
         method={"get"}
-        className={`flex flex-${SHAPE.flexDirection} items-center justify-center w-10/12 `}
+        className={`flex flex-${props.flexDirection} items-center justify-center ${props.formWidth}`}
         onSubmit={handleSubmit}
       >
-        <FlexBox className={`items-center justify-around ${SHAPE.width.keywordInput} h-12 ${SHAPE.space} graybox`}>
+        <FlexBox className={`items-center justify-around ${props.width.keywordInput} h-12 ${props.space} graybox`}>
           <MdSearch className="px-1" size={"32px"} />
           <Input
             id={"keyword"}
@@ -89,13 +81,13 @@ const SearchForm: FC<SearchFormProps> = ({ type }) => {
             name={"keyword"}
             type={"text"}
             placeholder={"캠핑장명을 입력해주세요"}
-            className={`${SHAPE.fontSize}`}
+            className={`${props.fontSize}`}
             required={false}
             // pattern={}
           />
         </FlexBox>
 
-        <FlexBox className={`items-center justify-center w-full ${SHAPE.width.dosiSelect} ${SHAPE.space} graybox`}>
+        <FlexBox className={`items-center justify-center w-full ${props.width.dosiSelect} ${props.space} graybox`}>
           <FlexBox className="items-center w-6/12 h-12 ">
             <MdMap className="px-1" size={"32px"} />
             <SelectBox
@@ -103,7 +95,7 @@ const SearchForm: FC<SearchFormProps> = ({ type }) => {
               ref={doNameRef}
               options={DoData.options}
               name={DoData.name}
-              className={`${SHAPE.fontSize}`}
+              className={`${props.fontSize}`}
               placeholder={"전체/도"}
               onChange={handleChange}
             />
@@ -115,21 +107,21 @@ const SearchForm: FC<SearchFormProps> = ({ type }) => {
               ref={sigunguNameRef}
               options={sigunguNmOptionsData(selected as DONAME_VALUE)}
               name={"sigunguName"}
-              className={`${SHAPE.fontSize}`}
+              className={`${props.fontSize}`}
               placeholder={"전체/시/군"}
             />
           </FlexBox>
         </FlexBox>
-        <FlexBox className={`justify-center ${SHAPE.width.button} h-12`}>
+        <FlexBox className={`justify-center ${props.width.button} h-12`}>
           <Button
             type="submit"
-            size={`${SHAPE.buttonSize as "lg" | "base"}`}
+            size={`${props.buttonSize as "lg" | "base"}`}
             className="font-semibold btn-primary"
             onClick={openModal}
           >
             상세검색
           </Button>
-          <Button type="submit" size={`${SHAPE.buttonSize as "lg" | "base"}`} className="font-semibold btn-primary">
+          <Button type="submit" size={`${props.buttonSize as "lg" | "base"}`} className="font-semibold btn-primary">
             검색하기
           </Button>
         </FlexBox>
@@ -140,7 +132,7 @@ const SearchForm: FC<SearchFormProps> = ({ type }) => {
           <AdvancedSearchForm />
         </FlexBox>
       </Modal>
-    </section>
+    </>
   );
 };
 

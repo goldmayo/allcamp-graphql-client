@@ -8,6 +8,8 @@ import Pagination from "../../molecules/pagination/Pagination";
 import CampListItem from "../camp_list_item/CampListItem";
 
 interface SearchResultDisplayProps {
+  announcementStyle: string;
+  displayStyle: string;
   params: CampSearchParamsDto;
 }
 interface queryResultProps {
@@ -111,8 +113,8 @@ const SearchResultDisplay: FC<SearchResultDisplayProps> = (props) => {
   //   }
   // };
   return (
-    <section className="flex flex-col w-10/12 p-1">
-      <Span className="self-start p-4 font-semibold text-headline3">
+    <section className={`${props.displayStyle} flex flex-col`}>
+      <Span className={`${props.announcementStyle} self-start`}>
         {`${data ? (data.searchCamps.totalCounts as number) : 0}`}개의 검색결과
       </Span>
       <FlexBox className="flex-col items-center justify-center w-full">
