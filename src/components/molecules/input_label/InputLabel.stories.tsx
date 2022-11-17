@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import InputLabel from "./InputLabel";
 import { useState } from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { MdMap } from "react-icons/md";
+import InputLabel from "@/components/molecules/input_label/InputLabel";
 
 export default {
   title: "Molecules/InputLabel",

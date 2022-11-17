@@ -1,5 +1,5 @@
 import { FC, RefObject, useEffect, useState } from "react";
-import Button from "../../atoms/button/Button";
+import Button from "@/components/atoms/button/Button";
 
 interface ScrollButtonProps {
   target: RefObject<HTMLElement>;

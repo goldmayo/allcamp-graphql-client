@@ -1,7 +1,7 @@
 import React, { FC, HTMLInputTypeAttribute } from "react";
-import Flexbox from "../../atoms/flexbox/FlexBox";
-import Input from "../../atoms/input/Input";
-import Label from "../../atoms/label/Label";
+import Flexbox from "@/components/atoms/flexbox/FlexBox";
+import Input from "@/components/atoms/input/Input";
+import Label from "@/components/atoms/label/Label";
 
 interface InputLabelProps {
   id: string | undefined;

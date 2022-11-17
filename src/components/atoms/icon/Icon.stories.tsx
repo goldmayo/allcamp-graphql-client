@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Icon from "./Icon";
+import Icon from "@/components/atoms/icon/Icon";
 
 export default {
   title: "Atoms/Icon",

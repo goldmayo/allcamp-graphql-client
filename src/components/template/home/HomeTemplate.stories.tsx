@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import HomeTemplate from "./HomeTemplate";
-import { RecommandCarouselData } from "../../../core/carousel_data/CarouselRecommandData";
-import { CampSiteType } from "../../../core/card_list_data/CardListData";
+import HomeTemplate from "@/components/template/home/HomeTemplate";
+import { RecommandCarouselData } from "@/core/carousel_data/CarouselRecommandData";
+import { CampSiteType } from "@/core/card_list_data/CardListData";
 
 export default {
   title: "templates/HomeTemplate",

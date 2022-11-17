@@ -1,5 +1,5 @@
 import React, { FC, forwardRef } from "react";
-import { SelectBoxOptionsData } from "../../../types/selectBoxData";
+import { SelectBoxOptionsData } from "@/types/selectBoxData";
 
 interface SelectBox {
   ref?: React.Ref<HTMLSelectElement> | null;

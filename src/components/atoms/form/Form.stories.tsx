@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Form from "./Form";
-import Input from "../input/Input";
-import Label from "../label/Label";
-import Button from "../button/Button";
 import React, { useRef } from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import Form from "@/components/atoms/form/Form";
+import Input from "@/components/atoms/input/Input";
+import Label from "@/components/atoms/label/Label";
+import Button from "@/components/atoms/button/Button";
 
 export default {
   title: "Atoms/Form",

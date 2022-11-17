@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { SelectBoxOptionsData } from "../../../types/selectBoxData";
-import Flexbox from "../../atoms/flexbox/FlexBox";
-import Label from "../../atoms/label/Label";
-import SelectBox from "../../atoms/selectbox/SelectBox";
+import { SelectBoxOptionsData } from "@/types/selectBoxData";
+import Flexbox from "@/components/atoms/flexbox/FlexBox";
+import Label from "@/components/atoms/label/Label";
+import SelectBox from "@/components/atoms/selectbox/SelectBox";
 
 interface SelectBoxLabelProps {
   id: string | undefined;

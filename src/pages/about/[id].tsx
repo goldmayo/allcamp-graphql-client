@@ -1,12 +1,9 @@
-import { useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
-import searchDetailById from "../../lib/query/searchDetailById";
-import { CampInfo, CampInfoEdge, CampInfoConnection } from "../../types/campType";
 import Image from "next/image";
-import { GetStaticProps, GetStaticPaths, GetStaticPathsResult, NextPage } from "next";
-import { initializeApollo } from "../../lib/apolloClient";
-import { searchAllCampsBackward, searchAllCampsForward } from "../../lib/query/searchAllcamps";
-import { RecommandCarouselData } from "../../core/carousel_data/CarouselRecommandData";
+import { GetStaticProps, NextPage } from "next";
+import searchDetailById from "@/lib/query/searchDetailById";
+import { initializeApollo } from "@/lib/apolloClient";
+import { RecommandCarouselData } from "@/core/carousel_data/CarouselRecommandData";
+import { CampInfo } from "@/types/campType";
 
 interface CampDetailProps {
   data: {
@@ -122,14 +119,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-  // const apolloClient = initializeApollo();
-  // const { data } = await apolloClient.query({
-  //   query: searchAllCampsForward,
-  //   variables: {
-  //     first: 5,
-  //     params: {},
-  //   },
-  // });
   const paths = RecommandCarouselData.map((el) => {
     return { params: { id: el.contentId.toString() } };
   });

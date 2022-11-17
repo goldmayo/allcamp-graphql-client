@@ -1,10 +1,10 @@
 import { FC, useRef } from "react";
-import SearchForm from "../../organisms/searchbox/SearchForm";
-import { CampSearchParamsDto } from "../../../types/campType";
-import SearchResultDisplay from "../../organisms/search_result_display/SearchResultDisplay";
-import Span from "../../atoms/span/Span";
-import ScrollButton from "../../molecules/scrollButton/ScrollButton";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
+import Span from "@/components/atoms/span/Span";
+import ScrollButton from "@/components/molecules/scrollButton/ScrollButton";
+import SearchForm from "@/components/organisms/common/searchbox/SearchForm";
+import SearchResultDisplay from "@/components/organisms/search/search_result_display/SearchResultDisplay";
+import { CampSearchParamsDto } from "@/types/campType";
 
 interface SearchTemplateProps {
   params: CampSearchParamsDto;

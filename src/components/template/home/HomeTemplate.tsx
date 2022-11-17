@@ -1,23 +1,18 @@
-import Banner from "../../organisms/banner/Banner";
-import Header from "../../organisms/header/Header";
-import SearchForm from "../../organisms/searchbox/SearchForm";
-import Carousel from "../../organisms/carousel/Carousel";
-import CardList from "../../organisms/card_list/CardList";
-import Footer from "../../organisms/footer/Footer";
-import { RecommandCarouselData } from "../../../core/carousel_data/CarouselRecommandData";
-import { CampSiteType } from "../../../core/card_list_data/CardListData";
-
-import Card from "../../molecules/card/Card";
-import FlexBox from "../../atoms/flexbox/FlexBox";
-import Span from "../../atoms/span/Span";
-import { RecommendCampsiteData, CardData } from "../../../types/cardDataType";
 import { FC } from "react";
+import Span from "@/components/atoms/span/Span";
+import Card from "@/components/molecules/card/Card";
+import Banner from "@/components/molecules/banner/Banner";
+import Carousel from "@/components/molecules/carousel/Carousel";
+import CardList from "@/components/molecules/card_list/CardList";
+import SearchForm from "@/components/organisms/common/searchbox/SearchForm";
+import { RecommendCampsiteData, CardData } from "@/types/cardDataType";
 
 interface HomeTemplateProps {
   bannerImage: string;
   carouselContent: RecommendCampsiteData[];
   campsiteTypeContent: CardData[];
 }
+
 const HomeTemplate: FC<HomeTemplateProps> = (props) => {
   return (
     <main className="flex flex-col items-center justify-around bg-mono-white">

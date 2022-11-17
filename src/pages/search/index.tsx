@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import SearchTemplate from "../../components/template/search/SearchTemplate";
-import { CampSearchParamsDto } from "../../types/campType";
+import SearchTemplate from "@/components/template/search/SearchTemplate";
+import { CampSearchParamsDto } from "@/types/campType";
 
 interface SearchProps {}
 

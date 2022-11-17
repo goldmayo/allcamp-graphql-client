@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import ListItem from "./ListItem";
-import Icon from "../icon/Icon";
-import Span from "../span/Span";
+import ListItem from "@/components/atoms/list_item/ListItem";
+import Icon from "@/components/atoms//icon/Icon";
+import Span from "@/components/atoms//span/Span";
 
 export default {
   title: "Atoms/ListItem",

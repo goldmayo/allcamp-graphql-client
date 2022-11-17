@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import Anchor from "../../atoms/anchor/Anchor";
-import Icon from "../../atoms/icon/Icon";
-import FlexBox from "../../atoms/flexbox/FlexBox";
-import Span from "../../atoms/span/Span";
-import { CardData } from "../../../types/cardDataType";
+import Anchor from "@/components/atoms/anchor/Anchor";
+import Icon from "@/components/atoms/icon/Icon";
+import FlexBox from "@/components/atoms/flexbox/FlexBox";
+import Span from "@/components/atoms/span/Span";
+import { CardData } from "@/types/cardDataType";
 
 interface CardInterface {
   className: string;

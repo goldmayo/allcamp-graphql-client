@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import GridBox from "./GridBox";
+import GridBox from "@/components/atoms/gridbox/GridBox";
 
 export default {
   title: "Atoms/GridBox",

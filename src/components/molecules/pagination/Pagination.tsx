@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
-import Button from "../../atoms/button/Button";
-import Span from "../../atoms/span/Span";
-import { PageInfo } from "../../../types/campType";
+import Button from "@/components/atoms/button/Button";
+import Span from "@/components/atoms/span/Span";
+import { PageInfo } from "@/types/campType";
 
 interface PaginationProps {
   totalCounts: number;

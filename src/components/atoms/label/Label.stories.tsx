@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Label from "./Label";
+import Label from "@/components/atoms/label/Label";
 
 export default {
   title: "Atoms/Label",

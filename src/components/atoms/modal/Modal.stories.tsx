@@ -1,11 +1,11 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Button from "../button/Button";
-import Modal from "./Modal";
 import { ChangeEvent, UIEvent, useRef } from "react";
-import FlexBox from "../flexbox/FlexBox";
-import Form from "../form/Form";
-import CheckBoxLabel from "../../molecules/checkbox_label/CheckBoxLabel";
-import AdvancedSearchForm from "../../organisms/advanced_searchbox/AdvancedSearchForm";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import Button from "@/components/atoms/button/Button";
+import Modal from "@/components/atoms/modal/Modal";
+import FlexBox from "@/components/atoms/flexbox/FlexBox";
+import Form from "@/components/atoms/form/Form";
+import CheckBoxLabel from "@/components/molecules/checkbox_label/CheckBoxLabel";
+import AdvancedSearchForm from "@/components/organisms/common/advanced_searchbox/AdvancedSearchForm";
 
 export default {
   title: "atoms/Modal",

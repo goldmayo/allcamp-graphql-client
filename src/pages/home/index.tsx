@@ -1,8 +1,8 @@
 import type { GetStaticProps, NextPage } from "next";
-import HomeTemplate from "../../components/template/home/HomeTemplate";
-import { RecommandCarouselData } from "../../core/carousel_data/CarouselRecommandData";
-import { CampSiteType } from "../../core/card_list_data/CardListData";
-import { CardData, RecommendCampsiteData } from "../../types/cardDataType";
+import HomeTemplate from "@/components/template/home/HomeTemplate";
+import { RecommandCarouselData } from "@/core/carousel_data/CarouselRecommandData";
+import { CampSiteType } from "@/core/card_list_data/CardListData";
+import { CardData, RecommendCampsiteData } from "@/types/cardDataType";
 
 interface HomeInterface {
   data: {

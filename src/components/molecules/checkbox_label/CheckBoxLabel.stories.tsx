@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import CheckBoxLabel from "./CheckBoxLabel";
+import CheckBoxLabel from "@/components/molecules/checkbox_label/CheckBoxLabel";
 
 export default {
   title: "Molecules/CheckBoxLabel",

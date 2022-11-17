@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import FlexBox from "./FlexBox";
+import FlexBox from "@/components/atoms/flexbox/FlexBox";
 
 export default {
   title: "Atoms/FlexBox",

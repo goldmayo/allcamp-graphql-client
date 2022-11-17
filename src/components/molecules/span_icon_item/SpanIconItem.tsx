@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import ListItem from "../../atoms/list_item/ListItem";
-import Span from "../../atoms/span/Span";
+import ListItem from "@/components/atoms/list_item/ListItem";
+import Span from "@/components/atoms/span/Span";
 
 interface SpanIconItemProps {
   children: React.ReactNode;

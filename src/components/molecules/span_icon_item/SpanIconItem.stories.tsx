@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import SpanIconItem from "./SpanIconItem";
+import SpanIconItem from "@/components/molecules/span_icon_item/SpanIconItem";
 
 import {
   FaWifi,

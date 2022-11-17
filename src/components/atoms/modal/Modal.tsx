@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
 import { MdClose } from "react-icons/md";
-import Button from "../button/Button";
-import FlexBox from "../flexbox/FlexBox";
-import Span from "../span/Span";
+import Button from "@/components/atoms/button/Button";
+import FlexBox from "@/components/atoms/flexbox/FlexBox";
+import Span from "@/components/atoms/span/Span";
 
 interface ModalProps {
   children: React.ReactNode;
