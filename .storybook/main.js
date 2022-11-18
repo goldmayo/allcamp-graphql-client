@@ -1,3 +1,4 @@
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 module.exports = {
   core: {
     builder: "@storybook/builder-webpack5",
@@ -33,6 +34,11 @@ module.exports = {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
+  },
+  //tsconfig path alias solve
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.plugins = [new TsconfigPathsPlugin()];
+    return config;
   },
   // typescript: {
   //   reactDocgen: 'react-docgen-typescript',

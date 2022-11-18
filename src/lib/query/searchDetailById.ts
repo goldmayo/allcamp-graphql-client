@@ -3,54 +3,64 @@ import { gql } from "@apollo/client";
 const searchDetailById = gql`
   query searchDetailById($contentId: Int!) {
     findCampById(contentId: $contentId) {
+      firstImageUrl
+      facltNm
+      lineIntro
+      tel
       addr1
       addr2
-      facltNm
-      induty
-      lineIntro
-      themaEnvrnCl
-      firstImageUrl
-      tel
-      lctCl
-      facltDivNm
-      gnrlSiteCo
-      autoSiteCo
-      caravSiteCo
-      glampSiteCo
-      operPdCl
-      operDeCl
-      homepage
       resveCl
       resveUrl
-      posblFcltyCl
-      Intro
+      homepage
       modifiedtime
+
+      Intro
+
+      facltDivNm
+      featureNm
+      induty
+      trlerAcmpnyAt
+      caravAcmpnyAt
+      animalCmgCl
+      themaEnvrnCl
+
+      gnrlSiteCo
+      autoSiteCo
+      indvdlCaravSiteCo
+      caravSiteCo
+      caravInnerFclty
+      glampSiteCo
+      glampInnerFclty
+
+      eqpmnLendCl
+
       sbrsCl
+
       sbrsEtc
       wtrplCo
       toiletCo
       swrmCo
-      trlerAcmpnyAt
-      caravAcmpnyAt
-      animalCmgCl
-      sitedStnc
+      brazierCl
+
+      posblFcltyCl
       posblFcltyEtc
+
       siteBottomCl1
       siteBottomCl2
       siteBottomCl3
       siteBottomCl4
       siteBottomCl5
-      siteMg1Vrticl
-      siteMg1Width
-      siteMg1Co
-      eqpmnLendCl
-      brazierCl
-      caravInnerFclty
-      glampInnerFclty
+
       extshrCo
       frprvtWrppCo
       frprvtSandCo
       fireSensorCo
+
+      clturEventAt
+      clturEvent
+      exprnProgrmAt
+      exprnProgrm
+
       tooltip
     }
   }

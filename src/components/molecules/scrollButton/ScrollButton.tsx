@@ -32,9 +32,7 @@ const ScrollButton: FC<ScrollButtonProps> = (props) => {
     <Button
       type="button"
       size="custom"
-      className={`text-title1 ${
-        showScrollButton ? "visible" : "invisible"
-      } absolute bottom-10 right-10 btn-reverse rounded-full`}
+      className={`${props.className} ${showScrollButton ? "visible" : "invisible"}`}
       onClick={handleScrollTop}
     >
       {props.children}

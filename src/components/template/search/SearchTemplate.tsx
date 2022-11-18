@@ -1,5 +1,5 @@
 import { FC, useRef } from "react";
-import { HiOutlineChevronDoubleUp } from "react-icons/hi";
+import { GoArrowUp } from "react-icons/go";
 import Span from "@/components/atoms/span/Span";
 import ScrollButton from "@/components/molecules/scrollButton/ScrollButton";
 import SearchForm from "@/components/organisms/common/searchbox/SearchForm";
@@ -40,8 +40,11 @@ const SearchTemplate: FC<SearchTemplateProps> = (props) => {
         ) : (
           <Span className="">0개의 검색결과</Span>
         )}
-        <ScrollButton target={mref} className="">
-          <HiOutlineChevronDoubleUp size={"40px"} />
+        <ScrollButton
+          target={mref}
+          className="absolute border rounded-lg text-title1 bottom-10 right-10 text-mono-white border-primary-bordergray bg-secondary-lightblue"
+        >
+          <GoArrowUp size={"2rem"} />
         </ScrollButton>
       </article>
     </main>
