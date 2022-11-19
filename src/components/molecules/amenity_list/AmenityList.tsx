@@ -8,6 +8,7 @@ interface AmenityListInterface {
   sbrsCl: string;
   gap: string;
   contentId: string;
+  textStyle?: string;
 }
 const getAmenityIcon = (amenity: string) => {
   switch (amenity) {
@@ -37,14 +38,19 @@ const getAmenityIcon = (amenity: string) => {
       break;
   }
 };
-const AmenityList: FC<AmenityListInterface> = (props) => {
+const AmenityList: FC<AmenityListInterface> = ({ textStyle = "text-body4", ...props }) => {
   return (
     <>
       {props.sbrsCl && (
         <ul className="flex flex-row flex-wrap justify-start">
           {props.sbrsCl.split(",").map((el, i) => {
             return (
-              <SpanIconItem key={`camp_amenity_list_${props.contentId}_${i}`} iconName={`${el}`} gapSize={props.gap}>
+              <SpanIconItem
+                key={`camp_amenity_list_${props.contentId}_${i}`}
+                iconName={`${el}`}
+                gapSize={props.gap}
+                textStyle={`${textStyle}`}
+              >
                 {getAmenityIcon(el)}
               </SpanIconItem>
             );

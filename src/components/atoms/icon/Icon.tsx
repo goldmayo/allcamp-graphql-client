@@ -3,8 +3,8 @@ import Image from "next/image";
 
 interface IconProps {
   path: string;
-  width: number;
-  height: number;
+  width: number | string;
+  height: number | string;
   alt: string;
   className: string;
   onClick?: React.MouseEventHandler<HTMLDivElement>;

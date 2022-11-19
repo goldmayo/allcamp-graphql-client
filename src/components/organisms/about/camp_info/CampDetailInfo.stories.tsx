@@ -20,6 +20,7 @@ Default.args = {
     tel: "033-260-2568",
     address: "주소 강원 춘천시 남산면 북한강변길 688",
     reservation: "온라인실시간예약",
+    reservationUrl: "https://home-ticket.co.kr/elysian/mall/?siteFlag=room&id=&com=",
     homepage: "https://www.elysian.co.kr/gangchon/restaurant/restaurant.asp?facility_id=FCT00000000000000201",
   },
   campNameTextStyle: "text-headline3 font-semibold",

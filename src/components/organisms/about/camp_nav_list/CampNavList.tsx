@@ -17,7 +17,7 @@ const CampNavList = forwardRef<Ref, CampNavListProps>((props, ref) => {
   };
 
   return (
-    <ListItem className="" onClick={() => handleClick(ref as MutableRefObject<Ref>)}>
+    <ListItem className={`${props.listStyle}`} onClick={() => handleClick(ref as MutableRefObject<Ref>)}>
       {props.children}
     </ListItem>
   );

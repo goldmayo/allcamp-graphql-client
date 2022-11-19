@@ -133,6 +133,8 @@ export type CampInfo = {
   caravInnerFclty?: Maybe<Scalars["String"]>;
   clturEvent?: Maybe<Scalars["String"]>;
   tourEraCl?: Maybe<Scalars["String"]>;
+  extclturEventAtshrCo?: Maybe<Scalars["String"]>;
+  posblFcltyClEtc?: Maybe<Scalars["String"]>;
 };
 
 export type CampSearchParamsDto = {

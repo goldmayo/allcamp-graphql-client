@@ -6,13 +6,14 @@ interface SpanIconItemProps {
   children: React.ReactNode;
   iconName: string;
   gapSize: string;
+  textStyle?: string;
 }
 
-const SpanIconItem: FC<SpanIconItemProps> = ({ children, iconName, gapSize }) => {
+const SpanIconItem: FC<SpanIconItemProps> = ({ children, iconName, gapSize, textStyle = "text-body4" }) => {
   return (
     <ListItem className={`text-mono-black flex flex-col justify-center items-center ${gapSize}`}>
       {children}
-      <Span className={"text-body4"}>{iconName}</Span>
+      <Span className={`${textStyle}`}>{iconName}</Span>
     </ListItem>
   );
 };

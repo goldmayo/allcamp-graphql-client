@@ -11,7 +11,7 @@ interface CampDetailSectionContainer {
 
 const CampDetailSectionContainer: FC<CampDetailSectionContainer> = (props) => {
   return (
-    <FlexBox className={`${props.containerStyle} flex flex-col`}>
+    <FlexBox className={`flex flex-col ${props.containerStyle}`}>
       <Span className={`${props.titleStyle}`}>{props.title}</Span>
       {props.children}
     </FlexBox>

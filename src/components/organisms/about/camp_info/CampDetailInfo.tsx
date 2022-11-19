@@ -7,6 +7,7 @@ import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import Span from "@/components/atoms/span/Span";
 import Anchor from "@/components/atoms/anchor/Anchor";
 import Icon from "@/components/atoms/icon/Icon";
+import Image from "next/image";
 
 interface CampDetailInfoInterface {
   content: {
@@ -16,6 +17,7 @@ interface CampDetailInfoInterface {
     tel: string;
     address: string;
     reservation: string;
+    reservationUrl: string;
     homepage: string;
   };
   campNameTextStyle: string;
@@ -24,38 +26,58 @@ interface CampDetailInfoInterface {
 
 const CampDetailInfo: FC<CampDetailInfoInterface> = (props) => {
   return (
-    <FlexBox className={"flex flex-row"}>
-      <Icon
-        path={props.content.campImage}
-        width={480}
-        height={320}
-        alt={`${props.content.campName}`}
-        className={""}
-      ></Icon>
-      <section className={`${props.TextStyle} flex flex-col`}>
-        <h1 className={props.campNameTextStyle}>{props.content.campName}</h1>
-        <Span className="">{props.content.lineIntro}</Span>
-        <Span className="flex flex-row items-center">
+    <section className="flex flex-row justify-start w-6/12 p-4 mb-4 border rounded-md bg-mono-white border-primary-bordergray">
+      {props.content.campImage !== "" ? (
+        <FlexBox className="relative w-5/12">
+          <Image
+            src={props.content.campImage}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            alt={`${props.content.campName}`}
+            className={"rounded-md"}
+          />
+        </FlexBox>
+      ) : (
+        <FlexBox className="relative w-5/12">
+          <Image
+            src={"/defaultCamp.svg"}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            alt={`${props.content.campName}`}
+            className={"rounded-md"}
+          />
+        </FlexBox>
+      )}
+      <article className={`${props.TextStyle} flex flex-col p-4`}>
+        <h1 className={`${props.campNameTextStyle} mb-1`}>{props.content.campName}</h1>
+        <Span className="mb-1 ">{props.content.lineIntro}</Span>
+        <Span className="flex flex-row items-center mb-1">
           <FaPhoneAlt className="mx-1.5" size={"1rem"} />
           {props.content.tel}
         </Span>
-        <Span className="flex flex-row items-center">
+        <Span className="flex flex-row items-center mb-1">
           <MdLocationOn className="mx-1" size={"1.2rem"} />
           {props.content.address}
         </Span>
-        <Span className="flex flex-row items-center">
+        <Span className="flex flex-row items-center mb-1">
           <FaRegCalendarCheck className="mx-1" size={"1.2rem"} />
           {props.content.reservation}
-        </Span>
-        <Span className="flex flex-row items-center">
-          <HiHome className="mx-1.5" size={"1rem"} />
-          <Anchor href={props.content.homepage} className={""}>
-            홈페이지 바로가기
+          <Anchor href={props.content.reservationUrl} className={""}>
+            (바로가기)
           </Anchor>
           <ImNewTab size={"1rem"} />
         </Span>
-      </section>
-    </FlexBox>
+        <Span className="flex flex-row items-center mb-1">
+          <HiHome className="mx-1.5" size={"1rem"} />
+          <Anchor href={props.content.homepage} className={""}>
+            홈페이지
+          </Anchor>
+          <ImNewTab size={"1rem"} />
+        </Span>
+      </article>
+    </section>
   );
 };
 
