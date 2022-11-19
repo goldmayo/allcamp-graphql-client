@@ -1,6 +1,4 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import FlexBox from "@/components/atoms/flexbox/FlexBox";
-import Span from "@/components/atoms/span/Span";
 import CampDetailNav from "./CampDetailNav";
 import ListItem from "@/components/atoms/list_item/ListItem";
 
