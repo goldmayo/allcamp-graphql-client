@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Span from "@/components/atoms/span/Span";
+import FlexBox from "@/components/atoms/flexbox/FlexBox";
 
 interface CampDetailSectionContainer {
   title: string;
@@ -10,10 +11,10 @@ interface CampDetailSectionContainer {
 
 const CampDetailSectionContainer: FC<CampDetailSectionContainer> = (props) => {
   return (
-    <section className={`${props.containerStyle} flex flex-col`}>
+    <FlexBox className={`${props.containerStyle} flex flex-col`}>
       <Span className={`${props.titleStyle}`}>{props.title}</Span>
       {props.children}
-    </section>
+    </FlexBox>
   );
 };
 
