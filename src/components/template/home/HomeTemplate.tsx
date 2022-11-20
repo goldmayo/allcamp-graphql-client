@@ -16,10 +16,10 @@ interface HomeTemplateProps {
 const HomeTemplate: FC<HomeTemplateProps> = (props) => {
   return (
     <main className="flex flex-col items-center justify-around bg-mono-white">
-      <section className="mt-1 mb-10">
+      <section className="mt-1 mb-10 max-w-[1080px] w-11/12">
         <Banner
           imageSrc={`${props.bannerImage}`}
-          className={"w-[1440px] h-[340px] flex-col justify-center items-center relative text-mono-white"}
+          className={" w-full h-[340px] flex-col justify-center items-center relative text-mono-white"}
           slogan={"야영장, 차박, 글램핑, 카라반 등 다양한 캠핑장 정보"}
           sloganStyle={"text-headline1 mb-4 "}
           subSlogan={"한국 관광공사에 등록된 캠핑장 정보를 쉽고 빠르게 찾아보세요"}
@@ -60,6 +60,9 @@ const HomeTemplate: FC<HomeTemplateProps> = (props) => {
                 thumbnailUrl: `${camp.firstImageUrl}`,
                 thumnailAlt: `${camp.facltNm}`,
                 contentId: camp.contentId,
+              }}
+              linkpath={{
+                pathname: `/about/${camp.contentId}`,
               }}
             />
           ))}

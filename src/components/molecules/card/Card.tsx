@@ -4,18 +4,19 @@ import Icon from "@/components/atoms/icon/Icon";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import Span from "@/components/atoms/span/Span";
 import { CardData } from "@/types/cardDataType";
+import { UrlObject } from "url";
 
 interface CardInterface {
   className: string;
   data: CardData;
+  linkpath: UrlObject;
 }
 
 const Card: FC<CardInterface> = (props) => {
   return (
-    <Anchor href={`/about/${props.data.contentId}`} className="">
+    <Anchor href={props.linkpath} className="">
       <FlexBox className="flex-col mx-1 border bg-mono-white border-primary-bordergray">
         <Icon
-          // path={`${props.data.thumbnailUrl}`}
           path={props.data.thumbnailUrl !== null ? `${props.data.thumbnailUrl}` : "/defaultCamp.svg"}
           width={250}
           height={150}

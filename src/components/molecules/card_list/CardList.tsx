@@ -15,7 +15,16 @@ const CardList: FC<CardListInterface> = (props) => {
         {props.data &&
           props.data.map((campType) => (
             <ListItem key={campType.contentId} className={"mx-2"}>
-              <Card className={""} data={campType} />
+              <Card
+                className={""}
+                data={campType}
+                linkpath={{
+                  pathname: "/search",
+                  query: {
+                    searchParams: JSON.stringify({ induty: campType.title }),
+                  },
+                }}
+              />
             </ListItem>
           ))}
       </ul>

@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 import Link from "next/link";
+import { UrlObject } from "url";
 
 interface AnchorProps {
-  href: string;
+  href: string | UrlObject;
   className: string;
   children: React.ReactNode;
 }
