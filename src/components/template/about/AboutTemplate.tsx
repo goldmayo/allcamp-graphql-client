@@ -19,9 +19,13 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
   const featureRef = useRef<HTMLElement>(null);
   const facilitiesRef = useRef<HTMLElement>(null);
   const ownEventRef = useRef<HTMLElement>(null);
+  const searhBarRef = useRef<HTMLElement>(null);
   return (
     <main className="relative flex flex-col items-center justify-around bg-primary-lightgray">
-      <section className="sticky top-0 z-50 flex items-center justify-center w-full p-3 mb-4 bg-primary-navy">
+      <section
+        ref={searhBarRef}
+        className="sticky top-0 z-50 flex items-center justify-center w-full p-3 mb-4 bg-primary-navy"
+      >
         <SearchForm
           type={"default"}
           flexDirection={"row"}
@@ -53,7 +57,9 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
       />
       {/* </section> */}
       <CampDetailNav
-        navStyle={"flex flex-row  bg-mono-white border border-primary-bordergray p-4 rounded-md w-6/12 mb-4"}
+        navStyle={`flex flex-row sticky z-50 top-[${
+          searhBarRef.current?.getBoundingClientRect().height
+        }px] bg-mono-white border border-primary-bordergray p-4 rounded-md w-6/12 mb-4 leading-relaxed`}
       >
         {props.content.Intro !== "" && (
           <CampNavList ref={summaryRef} listStyle={"mr-4 cursor-pointer text-title3 font-semibold"}>
@@ -75,7 +81,7 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
       </CampDetailNav>
 
       {props.content.Intro !== "" && (
-        <section ref={summaryRef} className="w-6/12 mb-4">
+        <section ref={summaryRef} className="w-6/12 mb-4 leading-relaxed">
           <CampDetailSectionContainer
             title={"개요"}
             titleStyle={"text-body1 font-semibold"}
@@ -87,7 +93,7 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
           </CampDetailSectionContainer>
         </section>
       )}
-      <section className="w-6/12 mb-4" ref={featureRef}>
+      <section className="w-6/12 mb-4 leading-relaxed" ref={featureRef}>
         <CampDetailSectionContainer
           title={"주요 특징"}
           titleStyle={"text-body1 font-semibold"}
@@ -104,7 +110,7 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
           </FlexBox>
         </CampDetailSectionContainer>
       </section>
-      <section className="w-6/12 mb-4" ref={facilitiesRef}>
+      <section className="w-6/12 mb-4 leading-relaxed" ref={facilitiesRef}>
         <CampDetailSectionContainer
           title={"편의시설 / 서비스"}
           titleStyle={"text-body1 font-semibold"}
@@ -228,7 +234,7 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
       </section>
       {props.content.clturEventAt === "Y" ||
         (props.content.exprnProgrmAt === "Y" && (
-          <section className="w-6/12 mb-4" ref={ownEventRef}>
+          <section className="w-6/12 mb-4 leading-relaxed" ref={ownEventRef}>
             <CampDetailSectionContainer
               title={"자체 문화 행사 및 체험"}
               titleStyle={"py-2 font-semibold text-body2 font-medium"}
@@ -241,7 +247,7 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
             </CampDetailSectionContainer>
           </section>
         ))}
-      <section className="w-6/12 mb-4">
+      <section className="w-6/12 mb-4 leading-relaxed">
         <CampDetailSectionContainer
           title={"주의사항"}
           titleStyle={"text-body1 font-semibold"}

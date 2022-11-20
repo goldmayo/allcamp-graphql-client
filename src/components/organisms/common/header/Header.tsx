@@ -19,7 +19,11 @@ const Header: FC = () => {
 
   return (
     <header className="flex items-center justify-center bg-mono-white">
-      <section className="flex flex-row items-center justify-between w-6/12 max-w-[1080px]">
+      <section
+        className={`flex flex-row items-center ${
+          router.asPath !== "/home" ? "justify-between" : "justify-center"
+        }  w-6/12 max-w-[1080px]`}
+      >
         {router.asPath !== "/home" && (
           <Button type="button" size="custom" className="">
             <HiOutlineChevronLeft size={"2rem"} />
@@ -28,9 +32,11 @@ const Header: FC = () => {
         <Anchor href={"/"} className={""}>
           <Icon path={"/header_logo.svg"} width={150} height={75} alt={"allcamping logo"} className={""} />
         </Anchor>
-        <button type="button" className="invisible">
-          <HiOutlineBell size={"2rem"} />
-        </button>
+        {router.asPath !== "/home" && (
+          <button type="button" className="invisible">
+            <HiOutlineBell size={"2rem"} />
+          </button>
+        )}
       </section>
     </header>
   );
