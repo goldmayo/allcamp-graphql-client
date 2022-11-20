@@ -19,7 +19,6 @@ interface CarouselProps {
   loop?: boolean;
   autoplaySpeed?: number;
 }
-// 추가작업
 const Carousel: FC<CarouselProps> = ({
   children,
   className = "",

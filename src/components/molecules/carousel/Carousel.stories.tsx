@@ -123,14 +123,14 @@ FamillyRecommended.args = {
       data={{
         title: `${camp.facltNm}`,
         subTitle: `${camp.lineIntro}`,
-        // subTitle: `${camp.doNm} ${camp.sigunguNm}`,
+
         thumbnailUrl: `${camp.firstImageUrl}`,
         thumnailAlt: `${camp.facltNm}`,
         contentId: camp.contentId,
       }}
+      linkpath={{}}
     />
   )),
-  // className: "w-8/12 pt-3 pb-6 px-7 bg-mono-white flex-col justify-center",
   className: "w-full bg-mono-white flex-col justify-center",
   autoplay: false,
   speed: 500,

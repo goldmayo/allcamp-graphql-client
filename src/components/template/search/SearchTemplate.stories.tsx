@@ -14,9 +14,4 @@ const Template: ComponentStory<typeof SearchTemplate> = (args) => {
 };
 
 export const Default = Template.bind({});
-Default.args = {
-  // edges: ,
-  // totalCounts:,
-  // pageInfo:,
-  // page: 1,
-};
+Default.args = {};

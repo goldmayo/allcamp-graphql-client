@@ -29,7 +29,6 @@ const getSpaceSize = (size: string) => {
       return "py-2 px-6 text-title3 text-center";
   }
 };
-// mx-1 rounded-md text-body1 bg-secondary-lightblue text-mono-white
 const Button: FC<ButtonProps> = ({ type = "button", children, onClick, disabled, className, size = "sm" }) => {
   return (
     <button type={type} className={`${getSpaceSize(size)} ${className}`} disabled={disabled} onClick={onClick}>

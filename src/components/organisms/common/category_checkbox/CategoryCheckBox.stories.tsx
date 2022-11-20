@@ -23,7 +23,6 @@ const Template: ComponentStory<typeof CategoryCheckBox> = (args) => {
 export const ByRegion = Template.bind({});
 ByRegion.args = {
   option: AdvancedSearchFormParams.region.content,
-  // content: RegionData,
   id: "category_region",
   title: "지역별",
   name: "region",

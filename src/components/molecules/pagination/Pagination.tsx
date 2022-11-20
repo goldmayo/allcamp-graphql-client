@@ -7,7 +7,6 @@ interface PaginationProps {
   totalCounts: number;
   pageInfo: PageInfo;
   limit?: number;
-  // page: number;
   onLoadMore: (direction: "foward" | "backward", cursor: string, limit: number) => void;
 }
 
@@ -18,7 +17,6 @@ const Pagination: FC<PaginationProps> = ({ onLoadMore, limit = 10, ...props }) =
   const handlePaginateForWard = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (pageNumber === numberOfPages - 1) {
-      console.log("ceiling up");
       onLoadMore(
         "foward",
         props.pageInfo.endCursor as string,

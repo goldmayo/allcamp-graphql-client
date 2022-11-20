@@ -28,7 +28,6 @@ module.exports = {
   typescript: {
     check: false,
     checkOptions: {},
-    // reactDocgen: false,
     reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
@@ -40,13 +39,4 @@ module.exports = {
     config.resolve.plugins = [new TsconfigPathsPlugin()];
     return config;
   },
-  // typescript: {
-  //   reactDocgen: 'react-docgen-typescript',
-  //   reactDocgenTypescriptOptions: {
-  //     compilerOptions: {
-  //       allowSyntheticDefaultImports: false,
-  //       esModuleInterop: false,
-  //     },
-  //   }
-  // }
 };

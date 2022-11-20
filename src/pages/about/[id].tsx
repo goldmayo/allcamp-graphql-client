@@ -38,7 +38,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (!data.findCampById) {
     return { notFound: true };
   }
-  console.log(data);
   return {
     props: {
       data,
@@ -50,7 +49,6 @@ export const getStaticPaths = async () => {
   const paths = RecommandCarouselData.map((el) => {
     return { params: { id: el.contentId.toString() } };
   });
-  console.log(paths);
 
   return {
     paths,

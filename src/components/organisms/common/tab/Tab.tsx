@@ -36,7 +36,6 @@ const Tab: FC<TabProps> = ({ params, className }) => {
             option={params[`${index}`].content}
             id={params[`${index}`].id}
             title={params[`${index}`].title}
-            // name={params[`${index}`].name}
             name={index}
             className={""}
             warningMsg={params[`${index}`].warningMsg}

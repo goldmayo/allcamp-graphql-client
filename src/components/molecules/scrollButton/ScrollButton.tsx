@@ -3,7 +3,6 @@ import Button from "@/components/atoms/button/Button";
 
 interface ScrollButtonProps {
   target: RefObject<HTMLElement>;
-  //   target: HTMLElement;
   children: React.ReactNode;
   className: string;
 }

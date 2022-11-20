@@ -49,12 +49,6 @@ module.exports = {
         "system-warning": "#EBC812",
         "system-danger": "#FB3939",
       },
-      // dropShadow:{
-      //   '':'',
-      //   '':'',
-      //   '':'',
-      //   '':'',
-      // }
     },
   },
   plugins: [],

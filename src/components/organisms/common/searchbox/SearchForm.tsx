@@ -54,11 +54,9 @@ const SearchForm: FC<SearchFormProps> = ({ type, ...props }) => {
       doNm: doNameRef.current?.value === "" ? null : doNameRef.current?.value,
       sigunguNm: sigunguNameRef.current?.value === "" ? null : sigunguNameRef.current?.value,
     };
-    // console.log(params);
     router.push(
       {
         pathname: "/search",
-        // query: params,
         query: {
           searchParams: JSON.stringify(params),
         },
@@ -83,7 +81,6 @@ const SearchForm: FC<SearchFormProps> = ({ type, ...props }) => {
             placeholder={"캠핑장명을 입력해주세요"}
             className={`${props.fontSize}`}
             required={false}
-            // pattern={}
           />
         </FlexBox>
 

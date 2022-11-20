@@ -21,7 +21,6 @@ const SearchResultDisplay: FC<SearchResultDisplayProps> = (props) => {
   const { loading, error, data, refetch } = useQuery<queryResultProps>(searchAllCamps, {
     variables: { first: 10, after: null, params: props.params },
     onCompleted(data) {
-      console.log("data", data);
       window.scrollTo(0, 0);
     },
   });
@@ -32,7 +31,6 @@ const SearchResultDisplay: FC<SearchResultDisplayProps> = (props) => {
   const pageInfo = data?.searchCamps.pageInfo;
 
   const handlePagination = (direction: "foward" | "backward", cursor: string, limit: number) => {
-    console.log(direction, cursor);
     switch (direction) {
       case "foward":
         handleForwardQuery(cursor, limit);
@@ -47,7 +45,6 @@ const SearchResultDisplay: FC<SearchResultDisplayProps> = (props) => {
   };
 
   const handleForwardQuery = (cursor: string, limit: number) => {
-    console.log(cursor);
     if (pageInfo?.hasNextPage) {
       refetch({
         first: limit,

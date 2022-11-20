@@ -25,7 +25,6 @@ export default function createFastContext<Store>(initialState: Store) {
     }, []);
 
     const dispatch = useCallback((action: Action, value?: Partial<Store>) => {
-      // console.log("before mutaion :", store.current);
       switch (action.type) {
         case "SET":
           store.current = {
@@ -33,16 +32,13 @@ export default function createFastContext<Store>(initialState: Store) {
             // @ts-ignore
             [action.name]: [action.params],
           };
-          // console.log("after set mutaion :", store.current);
           break;
         case "SELECT":
           store.current = {
             ...store.current,
-            // ...value,
             // @ts-ignore
             [action.name]: [...store.current[action.name], action.params],
           };
-          // console.log("after select mutaion :", store.current);
           break;
         case "DELETE":
           store.current = {
@@ -50,14 +46,12 @@ export default function createFastContext<Store>(initialState: Store) {
             // @ts-ignore
             [action.name]: store.current[action.name].filter((el) => el !== action.params),
           };
-          // console.log("after delete mutaion :", store.current);
           break;
         case "RESET":
           store.current = {
             ...store.current,
             ...initialState,
           };
-          // console.log("after reset mutaion :", store.current);
           break;
         default:
           throw new Error("Unhandled action");
@@ -88,7 +82,6 @@ export default function createFastContext<Store>(initialState: Store) {
 
   function useStore<SelectorOutput>(
     selector: (store: Store) => SelectorOutput
-    // ): [SelectorOutput, (value: Partial<Store>) => void] {
   ): [SelectorOutput, (action: Action, value?: Partial<Store>) => void] {
     const store = useContext(StoreContext);
     if (!store) {
@@ -101,7 +94,6 @@ export default function createFastContext<Store>(initialState: Store) {
       () => selector(initialState)
     );
 
-    // return [state, store.set];
     return [state, store.dispatch];
   }
 

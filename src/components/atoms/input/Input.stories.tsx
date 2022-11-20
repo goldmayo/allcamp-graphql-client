@@ -18,7 +18,6 @@ const Template: ComponentStory<typeof Input> = (args) => {
         {...args}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           args.onChange && args.onChange(e);
-          console.log(e.currentTarget.value);
         }}
         ref={TestRef}
       />

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import Tab from "@/components/organisms/common/tab/Tab";
-import CategoryDisplayContainer from "@/components/organisms/common//category_display_container/CategoryDisplayContainer";
-import ButtonGroup from "@/components/organisms/common//button_group/ButtonGroup";
+import CategoryDisplayContainer from "@/components/organisms/common/category_display_container/CategoryDisplayContainer";
+import ButtonGroup from "@/components/organisms/common/button_group/ButtonGroup";
 import Form from "@/components/atoms/form/Form";
 import { AdvancedSearchFormParams } from "@/core/formdata/AdvancedSearchFormData";
 import { Category } from "@/types/searchFormType";

@@ -10,12 +10,7 @@ const Header: FC = () => {
 
   useEffect(() => {
     if (!router.isReady) return;
-    if (router.asPath === "/home") {
-      console.log(router.asPath);
-    } else {
-      console.log("none");
-    }
-  }, [router.isReady, router.asPath]);
+  }, [router.isReady]);
 
   return (
     <header className="flex items-center justify-center bg-mono-white">
