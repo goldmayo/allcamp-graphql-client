@@ -25,18 +25,52 @@
 > npm run storybook
 ```
 
-## 사용 예제
+## 프로젝트 화면
+
+- 랜딩 페이지
+  ![LandingPage Screen Shot1][product-landingpagescreenshot1]
+
+  ![LandingPage Screen Shot2][product-landingpagescreenshot2]
+
+- 검색 결과 페이지
+  ![SearchResultPage Screen Shot1][product-searchresultpagescreenshot1]
+
+  ![SearchResultPage Screen Shot2][product-searchresultpagescreenshot2]
+
+- 캠프 정보 페이지
+  ![CampInfoPage Screen Shot1][product-campinfopagescreenshot1]
+
+  ![CampInfoPage Screen Shot2][product-campinfopagescreenshot2]
+
+## 주요 기능
+
+- 검색 / 상세검색
+  ![SearchResultPage Screen Shot3][product-searchresultpagescreenshot3]
+  선택된 검색 조건이 바로 표기됩니다.
+
+- 페이지네이션
+  relay-cursor-base형식 페이지네이션을 구현하였습니다.
 
 ## 정보
 
 현승재 - dudtod1596@gmail.com
 
-[https://github.com/goldmayo/allcamp-graphql-client](https://github.com/goldmayo/allcamp-graphql-client)
+[github repository](https://github.com/goldmayo/allcamp-graphql-client)
+
+[Figma 목업, 프로토타입]([figma-allcamping-design-url])
+[Figma 디자인 시스템]([figma-allcamping-design-system-url])
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[product-screenshot]: image/allcamping_screenshot.PNG
+[product-screenshot]: public/HighResolutionLogo.png
+[product-landingpagescreenshot1]: capture/landing.PNG
+[product-landingpagescreenshot2]: capture/landing2.PNG
+[product-searchresultpagescreenshot1]: capture/search2.PNG
+[product-searchresultpagescreenshot2]: capture/search.PNG
+[product-searchresultpagescreenshot3]: capture/search3.PNG
+[product-campinfopagescreenshot1]: capture/about2.PNG
+[product-campinfopagescreenshot2]: capture/about.PNG
 [ubuntu]: https://img.shields.io/badge/Ubuntu-18.04-E95420?style=flat-square&logo=Ubuntu&logoColor=white
 [ubuntu-url]: https://ubuntu.com/
 [graphql]: https://img.shields.io/badge/GraphQL-E10098?style=flat-square&logo=GraphQL&logoColor=white
@@ -57,3 +91,5 @@
 [apollographql-url]: https://www.apollographql.com/docs/react/api/core/ApolloClient/
 [figma]: https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=white
 [figma-url]: https://www.figma.com/
+[figma-allcamping-design-url]: https://www.figma.com/file/1ivtyaKdvwzIpYIaEZEt4c/ALLCamping?node-id=0%3A1&t=2sdvxQcWecAW2dPH-1
+[figma-allcamping-design-system-url]: https://www.figma.com/file/0ewF1KPQhOy7FPkBOUPNrj/%5BStyleGuide%5DALLCamping?t=2sdvxQcWecAW2dPH-1
