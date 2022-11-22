@@ -3,7 +3,7 @@ import CategoryDisplayContainer from "@/components/organisms/common/category_dis
 import { AdvancedSearchParamsContextProvider } from "@/context/AdvancedSearchParamsContext";
 
 export default {
-  title: "organisms/CategoryDisplayContainer",
+  title: "organisms/common/CategoryDisplayContainer",
   Component: CategoryDisplayContainer,
   argTypes: {
     onChange: { action: "checkbox" },

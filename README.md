@@ -42,6 +42,9 @@
 
   ![CampInfoPage Screen Shot2][product-campinfopagescreenshot2]
 
+- 스토리북 페이지
+  ![storybook-screenshot][storybook-screenshot]
+
 ## 주요 기능
 
 - 검색 / 상세검색
@@ -71,6 +74,7 @@
 [product-searchresultpagescreenshot3]: capture/search3.PNG
 [product-campinfopagescreenshot1]: capture/about2.PNG
 [product-campinfopagescreenshot2]: capture/about.PNG
+[storybook-screenshot]: capture/storybook.PNG
 [ubuntu]: https://img.shields.io/badge/Ubuntu-18.04-E95420?style=flat-square&logo=Ubuntu&logoColor=white
 [ubuntu-url]: https://ubuntu.com/
 [graphql]: https://img.shields.io/badge/GraphQL-E10098?style=flat-square&logo=GraphQL&logoColor=white

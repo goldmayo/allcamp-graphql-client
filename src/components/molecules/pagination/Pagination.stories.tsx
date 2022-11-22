@@ -9,4 +9,12 @@ export default {
 const Template: ComponentStory<typeof Pagination> = (args) => <Pagination {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  totalCounts: 310,
+  pageInfo: {
+    hasNextPage: true,
+    hasPreviousPage: false,
+  },
+  limit: 10,
+  onLoadMore: () => {},
+};

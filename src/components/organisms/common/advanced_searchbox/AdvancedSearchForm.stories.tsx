@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import AdvancedSearchForm from "@/components/organisms/common/advanced_searchbox/AdvancedSearchForm";
 
 export default {
-  title: "organisms/AdvancedSearchForm",
+  title: "organisms/common/AdvancedSearchForm",
   Component: AdvancedSearchForm,
   argTypes: {
     onChange: { action: "checkbox" },

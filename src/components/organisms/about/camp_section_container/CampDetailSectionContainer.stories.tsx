@@ -4,7 +4,7 @@ import Span from "@/components/atoms/span/Span";
 import CampDetailSectionContainer from "./CampDetailSectionContainer";
 
 export default {
-  title: "organisms/CampDetailSectionContainer",
+  title: "organisms/about/CampDetailSectionContainer",
   Component: CampDetailSectionContainer,
   argTypes: {},
 } as ComponentMeta<typeof CampDetailSectionContainer>;

@@ -3,7 +3,7 @@ import CampDetailNav from "./CampDetailNav";
 import ListItem from "@/components/atoms/list_item/ListItem";
 
 export default {
-  title: "organisms/CampDetailNav",
+  title: "organisms/about/CampDetailNav",
   Component: CampDetailNav,
   argTypes: {},
 } as ComponentMeta<typeof CampDetailNav>;

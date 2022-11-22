@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import CampDetailInfo from "./CampDetailInfo";
 
 export default {
-  title: "organisms/CampDetailInfo",
+  title: "organisms/about/CampDetailInfo",
   Component: CampDetailInfo,
   argTypes: {},
 } as ComponentMeta<typeof CampDetailInfo>;

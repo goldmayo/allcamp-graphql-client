@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import AmenityList from "@/components/molecules/amenity_list/AmenityList";
 
 export default {
-  title: "organisms/AmenityList",
+  title: "Molecules/AmenityList",
   Component: AmenityList,
   argTypes: {},
 } as ComponentMeta<typeof AmenityList>;

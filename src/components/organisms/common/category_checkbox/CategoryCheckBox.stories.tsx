@@ -5,7 +5,7 @@ import { AdvancedSearchFormParams } from "@/core/formdata/AdvancedSearchFormData
 import { AdvancedSearchParamsContextProvider } from "@/context/AdvancedSearchParamsContext";
 
 export default {
-  title: "organisms/CategoryCheckBox",
+  title: "organisms/common/CategoryCheckBox",
   Component: CategoryCheckBox,
   argTypes: {
     onChange: { action: "checkbox" },

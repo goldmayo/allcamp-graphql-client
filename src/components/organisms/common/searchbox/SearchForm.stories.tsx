@@ -4,7 +4,7 @@ import SearchForm from "@/components/organisms/common/searchbox/SearchForm";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
 
 export default {
-  title: "organisms/SearchForm",
+  title: "organisms/common/SearchForm",
   Component: SearchForm,
   argTypes: {
     onSubmit: { action: "SearchForm submitted" },

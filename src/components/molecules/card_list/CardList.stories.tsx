@@ -3,7 +3,7 @@ import { CampSiteType } from "@/core/card_list_data/CardListData";
 import CardList from "@/components/molecules/card_list/CardList";
 
 export default {
-  title: "organisms/CardList",
+  title: "Molecules/CardList",
   Component: CardList,
   argTypes: {},
 } as ComponentMeta<typeof CardList>;

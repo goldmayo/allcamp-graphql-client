@@ -3,7 +3,7 @@ import ButtonGroup from "@/components/organisms/common/button_group/ButtonGroup"
 import { AdvancedSearchParamsContextProvider } from "@/context/AdvancedSearchParamsContext";
 
 export default {
-  title: "organisms/ButtonGroup",
+  title: "organisms/common/ButtonGroup",
   Component: ButtonGroup,
   argTypes: {
     onChange: { action: "button" },

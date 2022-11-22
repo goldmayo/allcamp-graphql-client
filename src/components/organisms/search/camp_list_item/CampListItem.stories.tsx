@@ -3,7 +3,7 @@ import { CampInfoEdge } from "@/types/campType";
 import CampListItem from "@/components/organisms/search/camp_list_item/CampListItem";
 
 export default {
-  title: "organisms/CampListItem",
+  title: "organisms/search/CampListItem",
   Component: CampListItem,
   argTypes: {},
 } as ComponentMeta<typeof CampListItem>;

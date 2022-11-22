@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Card from "@/components/molecules/card/Card";
 
 export default {
-  title: "organisms/Card",
+  title: "Molecules/Card",
   Component: Card,
   argTypes: {},
 } as ComponentMeta<typeof Card>;
@@ -27,5 +27,8 @@ Default.args = {
     thumbnailUrl: `${defaultData.firstImageUrl}`,
     thumnailAlt: `${defaultData.facltNm}`,
     contentId: defaultData.contentId,
+  },
+  linkpath: {
+    pathname: `/`,
   },
 };

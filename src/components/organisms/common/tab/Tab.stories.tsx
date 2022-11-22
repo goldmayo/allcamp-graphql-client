@@ -4,7 +4,7 @@ import { AdvancedSearchParamsContextProvider } from "@/context/AdvancedSearchPar
 import Tab from "@/components/organisms/common/tab/Tab";
 
 export default {
-  title: "organisms/Tab",
+  title: "organisms/common/Tab",
   Component: Tab,
   argTypes: {
     onChange: { action: "checkbox" },

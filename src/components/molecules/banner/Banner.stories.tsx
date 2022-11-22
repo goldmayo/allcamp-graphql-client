@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Banner from "@/components/molecules/banner/Banner";
 
 export default {
-  title: "organisms/Banner",
+  title: "Molecules/Banner",
   Component: Banner,
 } as ComponentMeta<typeof Banner>;
 
