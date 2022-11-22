@@ -13,7 +13,6 @@ interface CheckBoxProps {
 const CheckBox: FC<CheckBoxProps> = ({ name, onChange, id, value, className, required = false, checked = false }) => {
   return (
     <input
-      // checked={true}
       className={className}
       name={name}
       type={"checkbox"}

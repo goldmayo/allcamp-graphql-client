@@ -20,6 +20,7 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
   const facilitiesRef = useRef<HTMLElement>(null);
   const ownEventRef = useRef<HTMLElement>(null);
   const searhBarRef = useRef<HTMLElement>(null);
+
   return (
     <main className="relative flex flex-col items-center justify-around bg-primary-lightgray">
       <section
@@ -40,7 +41,6 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
           buttonSize={"base"}
         />
       </section>
-      {/* <section className="w-6/12 p-4 mb-4"> */}
       <CampDetailInfo
         content={{
           campImage: props.content.firstImageUrl ? props.content.firstImageUrl : "",
@@ -55,13 +55,13 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
         campNameTextStyle={"text-headline3 font-semibold"}
         TextStyle={"text-body1 font-medium"}
       />
-      {/* </section> */}
       <CampDetailNav
-        navStyle={`flex flex-row sticky z-50 top-[${
-          searhBarRef.current?.getBoundingClientRect().height
-        }px] bg-mono-white border border-primary-bordergray p-4 rounded-md w-6/12 mb-4 leading-relaxed`}
+        ref={searhBarRef}
+        navStyle={
+          "z-50 flex flex-row bg-mono-white border border-primary-bordergray p-4 rounded-md w-6/12 mb-4 leading-relaxed"
+        }
       >
-        {props.content.Intro !== "" && (
+        {props.content.Intro && (
           <CampNavList ref={summaryRef} listStyle={"mr-4 cursor-pointer text-title3 font-semibold"}>
             개요
           </CampNavList>
@@ -80,7 +80,7 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
           ))}
       </CampDetailNav>
 
-      {props.content.Intro !== "" && (
+      {props.content.Intro && (
         <section ref={summaryRef} className="w-6/12 mb-4 leading-relaxed">
           <CampDetailSectionContainer
             title={"개요"}
@@ -100,10 +100,10 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
           containerStyle={"bg-mono-white border border-primary-bordergray p-4 rounded-md"}
         >
           <FlexBox className="flex-col p-2 rounded-md bg-primary-lightgray">
-            {props.content.induty !== "" && <Span>{`${props.content.induty}`}</Span>}
-            {props.content.featureNm !== "" && <Span>{`${props.content.featureNm}`}</Span>}
-            {props.content.tooltip !== "" && <Span>{`${props.content.tooltip}`}</Span>}
-            {props.content.themaEnvrnCl !== "" && <Span>{`${props.content.themaEnvrnCl}`}</Span>}
+            {props.content.induty && <Span>{`${props.content.induty}`}</Span>}
+            {props.content.featureNm && <Span>{`${props.content.featureNm}`}</Span>}
+            {props.content.tooltip && <Span>{`${props.content.tooltip}`}</Span>}
+            {props.content.themaEnvrnCl && <Span>{`${props.content.themaEnvrnCl}`}</Span>}
             <Span>{`개인 트레일러 입장 ${props.content.trlerAcmpnyAt === "N" ? "불가능" : "가능"}`}</Span>
             <Span>{`개인 캠핑카 입장 ${props.content.caravAcmpnyAt === "N" ? "불가능" : "가능"}`}</Span>
             <Span>{`반려동물 동반 ${props.content.animalCmgCl}`}</Span>
@@ -125,17 +125,13 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
               {props.content.gnrlSiteCo !== 0 && <Span>{`일반야영장(${props.content.gnrlSiteCo})`}</Span>}
               {props.content.autoSiteCo !== 0 && <Span>{`자동차야영장(${props.content.autoSiteCo})`}</Span>}
               {props.content.glampSiteCo !== 0 && <Span>{`글램핑(${props.content.glampSiteCo})`}</Span>}
-              {props.content.glampInnerFclty !== "" && (
-                <Span>{` - 글램핑내부시설: ${props.content.glampInnerFclty}`}</Span>
-              )}
+              {props.content.glampInnerFclty && <Span>{` - 글램핑내부시설: ${props.content.glampInnerFclty}`}</Span>}
               {props.content.caravSiteCo !== 0 && <Span>{`카라반(${props.content.caravSiteCo})`}</Span>}
-              {props.content.caravInnerFclty !== "" && (
-                <Span>{` - 카라반내부시설: ${props.content.caravInnerFclty}`}</Span>
-              )}
+              {props.content.caravInnerFclty && <Span>{` - 카라반내부시설: ${props.content.caravInnerFclty}`}</Span>}
               {props.content.indvdlCaravSiteCo !== 0 && <Span>{`개인카라반(${props.content.indvdlCaravSiteCo})`}</Span>}
             </CampDetailSectionContainer>
           </section>
-          {props.content.eqpmnLendCl !== "" && (
+          {props.content.eqpmnLendCl && (
             <section className="w-full mb-4">
               <CampDetailSectionContainer
                 title={"캠핑장비대여 품목"}
@@ -146,7 +142,7 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
               </CampDetailSectionContainer>
             </section>
           )}
-          {props.content.sbrsCl !== "" && (
+          {props.content.sbrsCl && (
             <section className="w-full mb-4">
               <CampDetailSectionContainer
                 title={"부대시설"}
@@ -162,7 +158,7 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
               </CampDetailSectionContainer>
             </section>
           )}
-          {(props.content.sbrsEtc !== "" ||
+          {(props.content.sbrsEtc !== null ||
             props.content.wtrplCo !== 0 ||
             props.content.toiletCo !== 0 ||
             props.content.swrmCo !== 0 ||
@@ -173,11 +169,11 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
                 titleStyle={"py-2 font-semibold text-body2 font-medium"}
                 containerStyle={" p-2 rounded-md bg-primary-lightgray"}
               >
-                {props.content.sbrsEtc !== "" && <Span>{`기타부대시설:${props.content.sbrsEtc}`}</Span>}
-                {props.content.wtrplCo !== 0 && <Span>{`개수대(${props.content.wtrplCo})`}</Span>}
-                {props.content.toiletCo !== 0 && <Span>{`화장실(${props.content.toiletCo})`}</Span>}
-                {props.content.swrmCo !== 0 && <Span>{`샤워장(${props.content.swrmCo})`}</Span>}
-                {props.content.brazierCl !== null && <Span>{`화로형태: ${props.content.brazierCl}`}</Span>}
+                {props.content.sbrsEtc && <Span>{`기타부대시설:${props.content.sbrsEtc}`}</Span>}
+                {props.content.wtrplCo != 0 && <Span>{`개수대(${props.content.wtrplCo})`}</Span>}
+                {props.content.toiletCo != 0 && <Span>{`화장실(${props.content.toiletCo})`}</Span>}
+                {props.content.swrmCo != 0 && <Span>{`샤워장(${props.content.swrmCo})`}</Span>}
+                {props.content.brazierCl && <Span>{`화로형태: ${props.content.brazierCl}`}</Span>}
               </CampDetailSectionContainer>
             </section>
           )}
@@ -188,8 +184,8 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
                 titleStyle={"py-2 font-semibold text-body2 font-medium"}
                 containerStyle={" p-2 rounded-md bg-primary-lightgray"}
               >
-                {props.content.posblFcltyCl !== undefined && <Span>{`${props.content.posblFcltyCl}`}</Span>}
-                {props.content.posblFcltyClEtc !== undefined && <Span>{`${props.content.posblFcltyClEtc}`}</Span>}
+                {props.content.posblFcltyCl && <Span>{`${props.content.posblFcltyCl}`}</Span>}
+                {props.content.posblFcltyClEtc && <Span>{`${props.content.posblFcltyClEtc}`}</Span>}
               </CampDetailSectionContainer>
             </section>
           )}
@@ -205,11 +201,11 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
                 containerStyle={" p-2 rounded-md bg-primary-lightgray"}
               >
                 <Span>{`바닥형태(단위:면)`}</Span>
-                {props.content.siteBottomCl1 !== 0 && <Span>{`잔디(${props.content.siteBottomCl1})`}</Span>}
-                {props.content.siteBottomCl2 !== 0 && <Span>{`폐쇄석(${props.content.siteBottomCl2})`}</Span>}
-                {props.content.siteBottomCl3 !== 0 && <Span>{`데크(${props.content.siteBottomCl3})`}</Span>}
-                {props.content.siteBottomCl4 !== 0 && <Span>{`자갈(${props.content.siteBottomCl4})`}</Span>}
-                {props.content.siteBottomCl5 !== 0 && <Span>{`맨흙(${props.content.siteBottomCl5})`}</Span>}
+                {props.content.siteBottomCl1 != 0 && <Span>{`잔디(${props.content.siteBottomCl1})`}</Span>}
+                {props.content.siteBottomCl2 != 0 && <Span>{`폐쇄석(${props.content.siteBottomCl2})`}</Span>}
+                {props.content.siteBottomCl3 != 0 && <Span>{`데크(${props.content.siteBottomCl3})`}</Span>}
+                {props.content.siteBottomCl4 != 0 && <Span>{`자갈(${props.content.siteBottomCl4})`}</Span>}
+                {props.content.siteBottomCl5 != 0 && <Span>{`맨흙(${props.content.siteBottomCl5})`}</Span>}
               </CampDetailSectionContainer>
             </section>
           )}
@@ -223,10 +219,10 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
                 titleStyle={"py-2 font-semibold text-body2 font-medium"}
                 containerStyle={" p-2 rounded-md bg-primary-lightgray"}
               >
-                {props.content.extshrCo !== 0 && <Span>{`소화기(${props.content.extshrCo})`}</Span>}
-                {props.content.frprvtWrppCo !== 0 && <Span>{`방화수(${props.content.frprvtWrppCo})`}</Span>}
-                {props.content.frprvtSandCo !== 0 && <Span>{`방화사(${props.content.frprvtSandCo})`}</Span>}
-                {props.content.fireSensorCo !== 0 && <Span>{`화재감지기(${props.content.fireSensorCo})`}</Span>}
+                {props.content.extshrCo != 0 && <Span>{`소화기(${props.content.extshrCo})`}</Span>}
+                {props.content.frprvtWrppCo != 0 && <Span>{`방화수(${props.content.frprvtWrppCo})`}</Span>}
+                {props.content.frprvtSandCo != 0 && <Span>{`방화사(${props.content.frprvtSandCo})`}</Span>}
+                {props.content.fireSensorCo != 0 && <Span>{`화재감지기(${props.content.fireSensorCo})`}</Span>}
               </CampDetailSectionContainer>
             </section>
           )}

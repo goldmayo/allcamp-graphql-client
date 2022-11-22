@@ -50,11 +50,3 @@ const Modal = forwardRef<HTMLDialogElement, ModalProps>(({ className, children, 
 Modal.displayName = "Modal";
 
 export default Modal;
-
-// <dialog
-//   aria-labelledby="dialog-personal-info-heading"
-//   ref={modalRef}
-// >
-//   <h3 id="dialog-personal-info-heading">Personal Information</h3>
-//   <form method="dialog"></form>
-// </dialog>
