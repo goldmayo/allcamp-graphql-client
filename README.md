@@ -1,4 +1,4 @@
-# 올캠핑(AllCamping) Graphql Server
+# 올캠핑(AllCamping) Graphql Client
 
 ![AllCamping Screen Shot][product-screenshot]
 
