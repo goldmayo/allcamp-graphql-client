@@ -4,6 +4,7 @@ import Span from "@/components/atoms/span/Span";
 import SpanListItem from "@/components/molecules/span_list_item/SpanListItem";
 import { Category, CategoryName } from "@/types/searchFormType";
 import { useAdvancedSearchParams } from "@/context/AdvancedSearchParamsContext";
+import useStore from "store/store";
 
 interface CategoryDisplayContainerProps {
   category: Category;
@@ -12,6 +13,8 @@ interface CategoryDisplayContainerProps {
 const CategoryDisplayContainer: FC<CategoryDisplayContainerProps> = (props) => {
   const [seletedOptions, _] = useAdvancedSearchParams((store) => store);
   const initialCount = 0;
+  const selected = useStore((state) => state.AdvancedSearchParams);
+  console.log(selected);
   const seletedOptionsCount = Object.values(seletedOptions)
     .map((categoryName) => {
       return categoryName.length;
