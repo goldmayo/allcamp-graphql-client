@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useRouter } from "next/router";
 import Button from "@/components/atoms/button/Button";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
-import { useAdvancedSearchParams } from "@/context/AdvancedSearchParamsContext";
+import useStore from "store/store";
 
 interface ButtonGroupProps {
   className: string;
@@ -10,16 +10,15 @@ interface ButtonGroupProps {
 
 const ButtonGroup: FC<ButtonGroupProps> = (props) => {
   const router = useRouter();
-  const [selectedOptions, dispatch] = useAdvancedSearchParams((store) => store);
+
+  const { AdvancedSearchParams, resetSearchParams } = useStore((state) => state);
+
   const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
-    dispatch({
-      type: "RESET",
-      params: selectedOptions,
-    });
+    resetSearchParams();
   };
 
   const handleSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const params = selectedOptions;
+    const params = AdvancedSearchParams;
 
     const searchParams = {
       doNm: params.region.length !== 0 ? params.region.join(",") : null,
@@ -48,6 +47,7 @@ const ButtonGroup: FC<ButtonGroupProps> = (props) => {
       "/search"
     );
   };
+
   return (
     <FlexBox className={`${props.className} flex-row font-bold`}>
       <Button

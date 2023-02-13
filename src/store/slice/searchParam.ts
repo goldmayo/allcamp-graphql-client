@@ -1,12 +1,12 @@
 import { AdvancedSearchParamsInterface } from "@/types/searchFormType";
 import { StateCreator } from "zustand";
 
-interface SearchParamsSlice {
+export interface SearchParamsSlice {
   AdvancedSearchParams: AdvancedSearchParamsInterface;
   setSearchParams: (name: string, value: string) => void;
   selectSearchParams: (name: string, value: string) => void;
   deleteSearchParams: (name: string, value: string) => void;
-  resetSearchParams: (name: string, value: string) => void;
+  resetSearchParams: () => void;
 }
 
 const InitialAdvancedSearchParams: AdvancedSearchParamsInterface = {

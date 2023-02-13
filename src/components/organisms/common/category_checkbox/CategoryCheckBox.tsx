@@ -3,8 +3,8 @@ import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import Span from "@/components/atoms/span/Span";
 import CheckBoxLabel from "@/components/molecules/checkbox_label/CheckBoxLabel";
 import ListItem from "@/components/atoms/list_item/ListItem";
-import { useAdvancedSearchParams } from "@/context/AdvancedSearchParamsContext";
 import { CategoryName } from "@/types/searchFormType";
+import useStore from "store/store";
 
 interface CategoryCheckBoxProps {
   option: { id: string; name: string; value: string }[];
@@ -16,22 +16,15 @@ interface CategoryCheckBoxProps {
 }
 
 const CategoryCheckBox: FC<CategoryCheckBoxProps> = (props) => {
-  const [checkedOptions, dispatch] = useAdvancedSearchParams((store) => store[props.name]);
+  const checkedSearchParams = useStore((state) => state.AdvancedSearchParams[props.name]);
+  const { selectSearchParams, deleteSearchParams } = useStore((state) => state);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { checked, value } = e.target;
     if (checked) {
-      dispatch({
-        type: "SELECT",
-        name: props.name,
-        params: value,
-      });
+      selectSearchParams(props.name, value);
     } else {
-      dispatch({
-        type: "DELETE",
-        name: props.name,
-        params: value,
-      });
+      deleteSearchParams(props.name, value);
     }
   };
 
@@ -46,7 +39,7 @@ const CategoryCheckBox: FC<CategoryCheckBoxProps> = (props) => {
               value={item.value}
               onChange={handleChange}
               className={"mx-1"}
-              checked={checkedOptions.includes(item.value) ? true : false}
+              checked={checkedSearchParams.includes(item.value) ? true : false}
             />
           </ListItem>
         ))}
