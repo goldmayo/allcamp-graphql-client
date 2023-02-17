@@ -7,8 +7,8 @@
 ## 기술스택
 
 [![Ubuntu][ubuntu]][ubuntu-url]
-[![Next.js][next.js]][next.js-url][![React][react]][react-url][![Typescript][typescript]][typescript-url][![Storybook][storybook]][storybook-url]
-[![GraphQL][graphql]][graphql-url][![Relay][relay]][relay-url][![ApolloGraphQL][apollographql]][apollographql-url]
+[![Next.js][next.js]][next.js-url][![React][react]][react-url][![Typescript][typescript]][typescript-url][![zustand][zustand]][zustand-url][![Storybook][storybook]][storybook-url]
+[![GraphQL][graphql]][graphql-url][![ApolloGraphQL][apollographql]][apollographql-url]
 [![Tailwindcss][tailwindcss]][tailwindcss-url][![Figma][figma]][figma-url]
 
 ## 설치 방법
@@ -75,12 +75,12 @@
 [product-campinfopagescreenshot1]: capture/about2.PNG
 [product-campinfopagescreenshot2]: capture/about.PNG
 [storybook-screenshot]: capture/storybook.PNG
-[ubuntu]: https://img.shields.io/badge/Ubuntu-18.04-E95420?style=flat-square&logo=Ubuntu&logoColor=white
+[ubuntu]: https://img.shields.io/badge/Ubuntu-22.04-E95420?style=flat-square&logo=Ubuntu&logoColor=white
 [ubuntu-url]: https://ubuntu.com/
 [graphql]: https://img.shields.io/badge/GraphQL-E10098?style=flat-square&logo=GraphQL&logoColor=white
 [graphql-url]: https://graphql.org/
-[relay]: https://img.shields.io/badge/Relay-F26B00?style=flat-square&logo=Relay&logoColor=white
-[relay-url]: https://relay.dev/
+[zustand]: https://img.shields.io/badge/zustand-F26B00?style=flat-square&logo=zustand&logoColor=white
+[zustand-url]: https://github.com/pmndrs/zustand
 [typescript]: https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white
 [typescript-url]: https://www.typescriptlang.org/
 [next.js]: https://img.shields.io/badge/next.js-000000?style=flat-square&logo=next.js&logoColor=white
