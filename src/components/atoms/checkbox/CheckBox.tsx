@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-interface CheckBoxProps {
+interface CheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value: string;
   name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
