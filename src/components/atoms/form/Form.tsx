@@ -10,7 +10,7 @@ interface FormProps {
 
 const Form: FC<FormProps> = ({ formRef, method, className, children, onSubmit }) => {
   return (
-    <form ref={formRef} method={method} className={className} onSubmit={onSubmit}>
+    <form role="form" ref={formRef} method={method} className={className} onSubmit={onSubmit}>
       {children}
     </form>
   );
