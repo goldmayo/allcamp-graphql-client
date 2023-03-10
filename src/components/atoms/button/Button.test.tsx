@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 
 describe("Button", () => {
   let mockOnClick: jest.Mock;
-  let ButtonEl: HTMLButtonElement;
+  let ButtonElement: HTMLButtonElement;
 
   const setup = () => {
     render(
@@ -13,7 +13,7 @@ describe("Button", () => {
         click me
       </Button>
     );
-    ButtonEl = screen.getByText(/click Me/i) as HTMLButtonElement;
+    ButtonElement = screen.getByText(/click Me/i) as HTMLButtonElement;
   };
 
   beforeEach(() => {
@@ -22,13 +22,13 @@ describe("Button", () => {
 
   it("renders a Button", () => {
     setup();
-    expect(ButtonEl).toBeInTheDocument();
+    expect(ButtonElement).toBeInTheDocument();
   });
 
   it("simulates click event", async () => {
     setup();
-    expect(ButtonEl).toBeInTheDocument();
-    await userEvent.click(ButtonEl);
+    expect(ButtonElement).toBeInTheDocument();
+    await userEvent.click(ButtonElement);
     expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
 });

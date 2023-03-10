@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 
 describe("CheckBox", () => {
-  let CheckBoxEl: HTMLInputElement;
+  let CheckBoxElement: HTMLInputElement;
 
   const setup = () => {
     const Wrap = () => {
@@ -30,26 +30,26 @@ describe("CheckBox", () => {
     };
     render(<Wrap />);
 
-    CheckBoxEl = screen.getByLabelText("A") as HTMLInputElement;
+    CheckBoxElement = screen.getByLabelText("A") as HTMLInputElement;
   };
 
   // beforeEach(() => {});
 
   it("renders a CheckBox", () => {
     setup();
-    expect(CheckBoxEl).toBeInTheDocument();
+    expect(CheckBoxElement).toBeInTheDocument();
   });
 
   it("toggle checkbox when clicked", async () => {
     setup();
 
-    expect(CheckBoxEl.checked).toEqual(false);
-    await userEvent.click(CheckBoxEl);
-    expect(CheckBoxEl.checked).toEqual(true);
+    expect(CheckBoxElement.checked).toEqual(false);
+    await userEvent.click(CheckBoxElement);
+    expect(CheckBoxElement.checked).toEqual(true);
   });
 
   it("get value from checkbox", async () => {
     setup();
-    expect(CheckBoxEl.value).toBe("A");
+    expect(CheckBoxElement.value).toBe("A");
   });
 });
