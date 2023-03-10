@@ -4,27 +4,29 @@ import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 
 describe("Button", () => {
-  it("renders a Button", () => {
-    const mockOnClick = jest.fn();
+  let mockOnClick: jest.Mock;
+  let ButtonEl: HTMLButtonElement;
+
+  const setup = () => {
     render(
       <Button type={"button"} size={"base"} className={""} disabled={false} onClick={mockOnClick}>
         click me
       </Button>
     );
+    ButtonEl = screen.getByText(/click Me/i) as HTMLButtonElement;
+  };
 
-    const ButtonEl = screen.getByText(/click Me/i);
+  beforeEach(() => {
+    mockOnClick = jest.fn();
+  });
+
+  it("renders a Button", () => {
+    setup();
     expect(ButtonEl).toBeInTheDocument();
   });
 
   it("simulates click event", async () => {
-    const mockOnClick = jest.fn();
-    render(
-      <Button type={"button"} size={"base"} className={""} disabled={false} onClick={mockOnClick}>
-        click me
-      </Button>
-    );
-
-    const ButtonEl = screen.getByText(/click Me/i);
+    setup();
     expect(ButtonEl).toBeInTheDocument();
     await userEvent.click(ButtonEl);
     expect(mockOnClick).toHaveBeenCalledTimes(1);

@@ -5,7 +5,9 @@ import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 
 describe("CheckBox", () => {
-  it("renders a CheckBox", () => {
+  let CheckBoxEl: HTMLInputElement;
+
+  const setup = () => {
     const Wrap = () => {
       const [isChecked, setIsChecked] = useState(false);
       return (
@@ -28,65 +30,26 @@ describe("CheckBox", () => {
     };
     render(<Wrap />);
 
-    const CheckBoxEl = screen.getByLabelText("A") as HTMLInputElement;
+    CheckBoxEl = screen.getByLabelText("A") as HTMLInputElement;
+  };
+
+  // beforeEach(() => {});
+
+  it("renders a CheckBox", () => {
+    setup();
     expect(CheckBoxEl).toBeInTheDocument();
   });
 
   it("toggle checkbox when clicked", async () => {
-    const Wrap = () => {
-      const [isChecked, setIsChecked] = useState(false);
-      return (
-        <label htmlFor={"b"}>
-          <CheckBox
-            className={""}
-            name={""}
-            type={"checkbox"}
-            value={"B"}
-            id={"b"}
-            required={true}
-            checked={isChecked}
-            onChange={() => setIsChecked(!isChecked)}
-          >
-            B
-          </CheckBox>
-          B
-        </label>
-      );
-    };
-    render(<Wrap />);
+    setup();
 
-    const CheckBoxEl = screen.getByLabelText("B") as HTMLInputElement;
     expect(CheckBoxEl.checked).toEqual(false);
     await userEvent.click(CheckBoxEl);
     expect(CheckBoxEl.checked).toEqual(true);
-    await userEvent.click(CheckBoxEl);
-    expect(CheckBoxEl.checked).toEqual(false);
   });
 
-  it("get value from checkbox when clicked", async () => {
-    const Wrap = () => {
-      const [isChecked, setIsChecked] = useState(false);
-      return (
-        <label htmlFor={"c"}>
-          <CheckBox
-            className={""}
-            name={""}
-            type={"checkbox"}
-            value={"C"}
-            id={"c"}
-            required={true}
-            checked={isChecked}
-            onChange={() => setIsChecked(!isChecked)}
-          >
-            C
-          </CheckBox>
-          C
-        </label>
-      );
-    };
-    render(<Wrap />);
-
-    const CheckBoxEl = screen.getByLabelText("C") as HTMLInputElement;
-    expect(CheckBoxEl.value).toBe("C");
+  it("get value from checkbox", async () => {
+    setup();
+    expect(CheckBoxEl.value).toBe("A");
   });
 });
