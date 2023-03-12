@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   type?: "button" | "submit" | "reset";
   size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "custom";
   className?: string | undefined;

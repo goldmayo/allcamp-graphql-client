@@ -1,6 +1,6 @@
 import React, { forwardRef, FC, HTMLInputTypeAttribute, RefObject } from "react";
 
-interface InputProps {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>{
   ref?: React.Ref<HTMLInputElement> | null;
   value?: string;
   name: string;
