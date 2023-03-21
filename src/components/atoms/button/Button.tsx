@@ -39,7 +39,13 @@ const Button: FC<ButtonProps> = ({
   ...props
 }) => {
   return (
-    <button type={type} className={`${getSpaceSize(size)} ${className}`} disabled={disabled} onClick={onClick}>
+    <button
+      type={type}
+      className={`${getSpaceSize(size)} ${className}`}
+      disabled={disabled}
+      onClick={onClick}
+      aria-label={`${props["aria-label"]}`}
+    >
       {children}
     </button>
   );

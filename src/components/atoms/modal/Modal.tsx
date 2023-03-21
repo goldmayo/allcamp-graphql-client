@@ -4,7 +4,7 @@ import Button from "@/components/atoms/button/Button";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import Span from "@/components/atoms/span/Span";
 
-interface ModalProps {
+interface ModalProps extends React.DialogHTMLAttributes<HTMLDialogElement> {
   children: React.ReactNode;
   className: string;
   title: string;
@@ -37,7 +37,7 @@ const Modal = forwardRef<HTMLDialogElement, ModalProps>(({ className, children, 
             //@ts-ignore
             ref.current.close();
           }}
-          aria-label="Close"
+          aria-label="close"
         >
           <MdClose className="p-0" size={"30px"} />
         </Button>
