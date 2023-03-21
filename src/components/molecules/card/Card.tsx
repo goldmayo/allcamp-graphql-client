@@ -14,7 +14,7 @@ interface CardInterface {
 
 const Card: FC<CardInterface> = (props) => {
   return (
-    <Anchor href={props.linkpath} className="">
+    <Anchor href={`${props.linkpath}`} className="">
       <FlexBox className="flex-col mx-1 border bg-mono-white border-primary-bordergray">
         <Icon
           path={props.data.thumbnailUrl !== null ? `${props.data.thumbnailUrl}` : "/defaultCamp.svg"}

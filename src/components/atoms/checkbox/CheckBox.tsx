@@ -10,7 +10,16 @@ interface CheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   checked?: boolean;
 }
 
-const CheckBox: FC<CheckBoxProps> = ({ name, onChange, id, value, className, required = false, checked = false }) => {
+const CheckBox: FC<CheckBoxProps> = ({
+  name,
+  onChange,
+  id,
+  value,
+  className,
+  required = false,
+  checked = false,
+  ...props
+}) => {
   return (
     <input
       className={className}
