@@ -1,7 +1,7 @@
 import React, { FC, forwardRef } from "react";
 import { SelectBoxOptionsData } from "@/types/selectBoxData";
 
-interface SelectBox {
+interface SelectBox extends React.SelectHTMLAttributes<HTMLSelectElement> {
   ref?: React.Ref<HTMLSelectElement> | null;
   id: string | undefined;
   options: SelectBoxOptionsData[];
