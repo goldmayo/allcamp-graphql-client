@@ -13,13 +13,15 @@ const Search: NextPage<SearchProps> = () => {
 
   useEffect(() => {
     if (!router.isReady) return;
-    setParams(JSON.parse(router.query.searchParams as string));
+    router.query.searchParams === undefined
+      ? setParams({ facltNm: null, doNm: null, sigunguNm: null })
+      : setParams(JSON.parse(router.query.searchParams as string));
   }, [router, router.isReady]);
 
   return (
     <>
       <SeoHead title={"검색결과"} description={"올캠핑 검색결과 AllCamping search result"} />
-      <SearchTemplate params={JSON.parse(router.query.searchParams as string)} />;
+      {params && <SearchTemplate params={params} />}
     </>
   );
 };
