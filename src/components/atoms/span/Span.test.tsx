@@ -1,9 +1,6 @@
-import { RenderHookResult, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Span from "./Span";
 import "@testing-library/jest-dom";
-import userEvent from "@testing-library/user-event";
-import { renderHook } from "@testing-library/react";
-import { createRef, RefObject } from "react";
 
 describe("Span", () => {
   let SpanElement: HTMLElement;

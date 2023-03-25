@@ -8,8 +8,8 @@ interface SeoHeadInterface {
 const SeoHead: React.FC<SeoHeadInterface> = ({ title, description }) => {
   return (
     <Head>
-      <title>AllCamping | {title}</title>
-      <meta name="description" content={description} />
+      <title>AllCamping | {`${title}`}</title>
+      <meta name="description" content={`${description}`} />
     </Head>
   );
 };

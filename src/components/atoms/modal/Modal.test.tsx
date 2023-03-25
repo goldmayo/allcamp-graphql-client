@@ -1,8 +1,7 @@
-import { RenderHookResult, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Modal from "./Modal";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
-import { renderHook } from "@testing-library/react";
 import { createRef, RefObject } from "react";
 
 describe("Modal", () => {

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import Input from "./Input";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
-import { HTMLInputTypeAttribute, useState } from "react";
+import { HTMLInputTypeAttribute } from "react";
 
 describe("Input", () => {
   let InputElement: HTMLInputElement;
