@@ -11,7 +11,7 @@ describe("Icon component", () => {
   const setup = () => {
     render(
       <Icon
-        path={"/defaultCamp.svg"}
+        src={"/defaultCamp.svg"}
         width={250}
         height={150}
         alt={`default camp image`}

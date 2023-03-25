@@ -14,27 +14,18 @@ interface CampListItemInterface {
 }
 
 const CampListItem: FC<CampListItemInterface> = (props) => {
+  const defaultCampImage = "/defaultCamp.svg";
   return (
     <ListItem key={`camp_list_item_${props.content?.node?.contentId}`} className={props.className}>
       <FlexBox className="flex flex-row p-2.5 border justify-space bg-mono-white border-primary-bordergray rounded-md">
         <Anchor href={`/about/${props.content?.node?.contentId}`} className={""}>
-          {props.content?.node?.firstImageUrl ? (
-            <Icon
-              path={`${props.content?.node?.firstImageUrl}`}
-              width={300}
-              height={210}
-              alt={`${props.content?.node?.facltNm} cover image`}
-              className={""}
-            />
-          ) : (
-            <Icon
-              path={`/defaultCamp.svg`}
-              width={300}
-              height={210}
-              alt={`${props.content?.node?.facltNm} cover image`}
-              className={""}
-            />
-          )}
+          <Icon
+            src={props.content?.node?.firstImageUrl ? `${props.content?.node?.firstImageUrl}` : defaultCampImage}
+            width={300}
+            height={210}
+            alt={`${props.content?.node?.facltNm} cover image`}
+            className={""}
+          />
         </Anchor>
         <FlexBox className="flex flex-col justify-around ml-5 ">
           <Anchor href={`/about/${props.content?.node?.contentId}`} className={""}>

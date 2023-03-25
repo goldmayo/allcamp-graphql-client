@@ -75,6 +75,7 @@ const SearchResultDisplay: FC<SearchResultDisplayProps> = (props) => {
       </Span>
       <FlexBox className="flex-col items-center justify-center w-full">
         <ul className="w-full">
+          {/* campInfoEdge.node에서 필요한 것만 전달한다*/}
           {data &&
             data.searchCamps.edges?.map((node: Maybe<CampInfoEdge>, i) => (
               <CampListItem

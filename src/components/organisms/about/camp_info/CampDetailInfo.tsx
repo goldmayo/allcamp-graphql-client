@@ -7,7 +7,6 @@ import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import Span from "@/components/atoms/span/Span";
 import Anchor from "@/components/atoms/anchor/Anchor";
 import Icon from "@/components/atoms/icon/Icon";
-import Image from "next/image";
 
 interface CampDetailInfoInterface {
   content: {
@@ -25,31 +24,20 @@ interface CampDetailInfoInterface {
 }
 
 const CampDetailInfo: FC<CampDetailInfoInterface> = (props) => {
+  const defaultCampImage = "/defaultCamp.svg";
   return (
     <section className="flex flex-row justify-start w-6/12 p-4 mb-4 border rounded-md bg-mono-white border-primary-bordergray">
-      {props.content.campImage !== "" ? (
-        <FlexBox className="relative w-5/12">
-          <Image
-            src={props.content.campImage}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-            alt={`${props.content.campName}`}
-            className={"rounded-md"}
-          />
-        </FlexBox>
-      ) : (
-        <FlexBox className="relative w-5/12">
-          <Image
-            src={"/defaultCamp.svg"}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-            alt={`${props.content.campName}`}
-            className={"rounded-md"}
-          />
-        </FlexBox>
-      )}
+      <FlexBox className="relative w-5/12">
+        {/* Image > Icon CampCard로 통합하기위해 변경 */}
+        <Icon
+          src={props.content.campImage ? props.content.campImage : defaultCampImage}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+          alt={`${props.content.campName}`}
+          className={"rounded-md"}
+        />
+      </FlexBox>
       <article className={`${props.TextStyle} flex flex-col p-4`}>
         <h1 className={`${props.campNameTextStyle} mb-1`}>{props.content.campName}</h1>
         <Span className="mb-1 ">{props.content.lineIntro}</Span>

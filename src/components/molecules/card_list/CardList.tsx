@@ -20,9 +20,10 @@ const CardList: FC<CardListInterface> = (props) => {
                 data={campType}
                 linkpath={{
                   pathname: "/search",
-                  query: {
-                    searchParams: JSON.stringify({ induty: campType.title }),
-                  },
+                  query: JSON.stringify({ induty: campType.title }),
+                  // query: {
+                  //   searchParams: JSON.stringify({ induty: campType.title }),
+                  // },
                 }}
               />
             </ListItem>

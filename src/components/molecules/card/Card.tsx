@@ -13,11 +13,13 @@ interface CardInterface {
 }
 
 const Card: FC<CardInterface> = (props) => {
+  console.log(props.linkpath);
+
   return (
-    <Anchor href={`${props.linkpath}`} className="">
+    <Anchor href={`${props.linkpath.pathname}`} className="">
       <FlexBox className="flex-col mx-1 border bg-mono-white border-primary-bordergray">
         <Icon
-          path={props.data.thumbnailUrl !== null ? `${props.data.thumbnailUrl}` : "/defaultCamp.svg"}
+          src={props.data.thumbnailUrl !== null ? `${props.data.thumbnailUrl}` : "/defaultCamp.svg"}
           width={250}
           height={150}
           alt={`${props.data.thumnailAlt}`}

@@ -13,9 +13,11 @@ const Search: NextPage<SearchProps> = () => {
 
   useEffect(() => {
     if (!router.isReady) return;
+
     router.query.searchParams === undefined
       ? setParams({ facltNm: null, doNm: null, sigunguNm: null })
       : setParams(JSON.parse(router.query.searchParams as string));
+    console.log(params);
   }, [router, router.isReady]);
 
   return (
