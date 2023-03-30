@@ -13,11 +13,11 @@ interface CardInterface {
 }
 
 const Card: FC<CardInterface> = (props) => {
-  console.log(props.linkpath);
+  // console.log(props.linkpath);
 
   return (
-    <Anchor href={`${props.linkpath.pathname}`} className="">
-      <FlexBox className="flex-col mx-1 border bg-mono-white border-primary-bordergray">
+    <FlexBox className="flex-col mx-1 border bg-mono-white border-primary-bordergray">
+      <Anchor href={`${props.linkpath.pathname}`} className="">
         <Icon
           src={props.data.thumbnailUrl !== null ? `${props.data.thumbnailUrl}` : "/defaultCamp.svg"}
           width={250}
@@ -25,14 +25,14 @@ const Card: FC<CardInterface> = (props) => {
           alt={`${props.data.thumnailAlt}`}
           className="flex items-center justify-center"
         />
-        <FlexBox className="flex-col text-center">
-          {props.data.title && (
-            <Span className="px-2 pt-1 font-semibold truncate text-body1">{`${props.data.title}`}</Span>
-          )}
-          {props.data.subTitle && <Span className="px-4 pb-1 truncate text-body3">{props.data.subTitle}</Span>}
-        </FlexBox>
+      </Anchor>
+      <FlexBox className="flex-col text-center">
+        {props.data.title && (
+          <Span className="px-2 pt-1 font-semibold truncate text-body1">{`${props.data.title}`}</Span>
+        )}
+        {props.data.subTitle && <Span className="px-4 pb-1 truncate text-body3">{props.data.subTitle}</Span>}
       </FlexBox>
-    </Anchor>
+    </FlexBox>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { FaMapMarkerAlt, FaPhoneAlt, FaRegCalendarCheck } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import { HiHome } from "react-icons/hi";
@@ -11,52 +11,61 @@ import Image from "next/image";
 import { CardData } from "@/types/cardDataType";
 import { UrlObject } from "url";
 import ListItem from "@/components/atoms/list_item/ListItem";
-import { CampInfoEdge } from "@/types/campType";
+import { CampInfo, CampInfoEdge } from "@/types/campType";
 import AmenityList from "@/components/molecules/amenity_list/AmenityList";
-// CampListItemInterface > CampDetailInfoInterface > CardInterface >
-// type integrete = {
-//   title: string;
-//   subTitle: string;
-//   thumbnailUrl: string;
-//   thumnailAlt: string;
-//   contentId: number;
-//   lineIntro?: string;
+import CampCardContext from "./context/CampCardContext";
+import CampCardInfo from "./camp_card_info/CampCardInfo";
+import CampCardTitle from "./camp_card_info/camp_card_title/CampCardTitle";
+// - card
+//[
+// <CampCard.ImageAnchor/>
+// contentId
+// firstImageUrl
+// thumnailAlt(facltNm)
+//]
+// title()1
+// subTitle()2
+// className
 
-//   contentId: number;
-//   firstImageUrl: string;
-//   doNm: string;
-//   sigunguNm: string;
-//   facltNm: string;
-//   lineIntro: string;
+// - cardlist
+//[
+// <CampCard.ImageAnchor/>
+// contentId
+// firstImageUrl
+// thumnailAlt(facltNm)
+//]
+// title()
+// lineIntro3
+// className
 
-//   className: string;
-//   data: {
-//     title: string;
-//     subTitle: string;
-//     thumbnailUrl: string;
-//     thumnailAlt: string;
-//     contentId: number;
-//     lineIntro?: string;
-//   }
-//   linkpath: UrlObject;
+// - camplistitem
+//[
+// <CampCard.ImageAnchor/>
+// contentId
+// firstImageUrl
+// thunnailAlt(facltNm)
+//]
+// facltNm4
+// doNm + sigunguNm5
+// addr16
+// tel7
+// sbrsCl8
+// className
 
-//   // content: 필요한것만 전달될것;
-//   content: CampInfoEdge;
-//   className: string;
-
-//   content: {
-//     campImage: string;
-//     campName: string;
-//     lineIntro: string;
-//     tel: string;
-//     address: string;
-//     reservation: string;
-//     reservationUrl: string;
-//     homepage: string;
-//   };
-//   campNameTextStyle: string;
-//   TextStyle: string;
-// }
+// - campdetailinfo
+//[
+// <CampCard.Image/>
+// firstImageUrl: string;
+// thunnailAlt(facltNm)
+//]
+// facltNm: string;
+// lineIntro: string;
+// tel: string;
+// address (addr1 + addr2)
+// resveCl9
+// resveUrl10
+// homepage: string;11
+// className
 
 type CardData2 = {
   title: string;
@@ -102,31 +111,20 @@ interface CampDetailInfoInterface {
 }
 
 const CampDetailInfo: FC<CampDetailInfoInterface> = (props) => {
+  const defaultCampImage = "/defaultCamp.svg";
   return (
     <section className="flex flex-row justify-start w-6/12 p-4 mb-4 border rounded-md bg-mono-white border-primary-bordergray">
-      {props.content.campImage !== "" ? (
-        <FlexBox className="relative w-5/12">
-          <Image
-            src={props.content.campImage}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-            alt={`${props.content.campName}`}
-            className={"rounded-md"}
-          />
-        </FlexBox>
-      ) : (
-        <FlexBox className="relative w-5/12">
-          <Image
-            src={"/defaultCamp.svg"}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-            alt={`${props.content.campName}`}
-            className={"rounded-md"}
-          />
-        </FlexBox>
-      )}
+      <FlexBox className="relative w-5/12">
+        {/* Image > Icon CampCard로 통합하기위해 변경 */}
+        <Icon
+          src={props.content.campImage ? props.content.campImage : defaultCampImage}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+          alt={`${props.content.campName}`}
+          className={"rounded-md"}
+        />
+      </FlexBox>
       <article className={`${props.TextStyle} flex flex-col p-4`}>
         <h1 className={`${props.campNameTextStyle} mb-1`}>{props.content.campName}</h1>
         <Span className="mb-1 ">{props.content.lineIntro}</Span>
@@ -227,24 +225,64 @@ const CampListItem: FC<CampListItemInterface> = (props) => {
     </ListItem>
   );
 };
-
-interface CampCardInfoInterface {
-  content: {
-    campImage: string;
-    campName: string;
-    lineIntro: string;
-    tel: string;
-    address: string;
-    reservation: string;
-    reservationUrl: string;
-    homepage: string;
-  };
-  campNameTextStyle: string;
-  TextStyle: string;
+interface CampCardContainerInterface {
+  cardData: CampInfo;
+  className: string;
 }
 
-const CampCardInfo: FC<CampCardInfoInterface> = (props) => {
-  return <></>;
+const CampCardContainer: FC<CampCardContainerInterface> = (props) => {
+  return (
+    <FlexBox className="relative w-5/12">
+      {/* 5:30초부터 */}
+      <FlexBox className="relative w-5/12">
+        <CampCard
+          campsite={props.cardData}
+          image={<></>}
+          info={
+            <CampCard.Info className="">
+              <CampCard.Title className="" title="" />
+            </CampCard.Info>
+          }
+          action={<></>}
+        />
+      </FlexBox>
+    </FlexBox>
+  );
 };
 
-export default CampCardInfo;
+interface CampCardInterface {
+  campsite: CampInfo;
+  image?: ReactNode;
+  info?: ReactNode;
+  action?: ReactNode;
+}
+
+const CampCard = (props: CampCardInterface) => {
+  return (
+    <CampCardContext.Provider value={props.campsite}>
+      <FlexBox className="relative w-5/12">
+        {props.image}
+        <FlexBox className="relative w-5/12">
+          {props.info}
+          {props.action}
+        </FlexBox>
+      </FlexBox>
+    </CampCardContext.Provider>
+  );
+};
+
+// CampCard.Image = CampImage;
+// CampCard.ImageAnchor = CampImageAnchor;
+CampCard.Title = CampCardTitle;
+// CampCard.Subtitle = CampSubtitle;
+CampCard.Info = CampCardInfo;
+// CampCard.CampName = CampCampName;
+// CampCard.LinIntro = CampLinIntro;
+// CampCard.Adress = CampAdress;
+// CampCard.Region = CampRegion;
+// CampCard.Tel = CampTel;
+// CampCard.Amenity = CampAmenity;
+// CampCard.Homepage = CampHomepage;
+// CampCard.Reservation = CampReservation;
+
+export default CampCard;
