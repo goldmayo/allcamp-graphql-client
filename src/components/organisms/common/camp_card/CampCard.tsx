@@ -4,227 +4,22 @@ import { MdLocationOn } from "react-icons/md";
 import { HiHome } from "react-icons/hi";
 import { ImNewTab } from "react-icons/im";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
-import Span from "@/components/atoms/span/Span";
-import Anchor from "@/components/atoms/anchor/Anchor";
-import Icon from "@/components/atoms/icon/Icon";
-import Image from "next/image";
-import { CardData } from "@/types/cardDataType";
-import { UrlObject } from "url";
-import ListItem from "@/components/atoms/list_item/ListItem";
 import { CampInfo, CampInfoEdge } from "@/types/campType";
-import AmenityList from "@/components/molecules/amenity_list/AmenityList";
 import CampCardContext from "./context/CampCardContext";
 import CampCardInfo from "./camp_card_info/CampCardInfo";
 import CampCardTitle from "./camp_card_info/camp_card_title/CampCardTitle";
-// - card
-//[
-// <CampCard.ImageAnchor/>
-// contentId
-// firstImageUrl
-// thumnailAlt(facltNm)
-//]
-// title()1
-// subTitle()2
-// className
+import CampCardImage from "./camp_card_info/camp_card_image/CampCardImage";
+import CampCardImageAnchor from "./camp_card_info/camp_card_image_anchor/CampCardImageAnchor";
+import CampCardSubtitle from "./camp_card_info/camp_card_subtitle/CampCardSubtitle";
+import CampCardName from "./camp_card_info/camp_card_name/CampCardName";
+import CampCardLineIntro from "./camp_card_info/camp_card_lineintro/CampCardLineIntro";
+import CampCardAdress from "./camp_card_info/camp_card_adress/CampCardAdress";
+import CampCardRegion from "./camp_card_info/camp_card_region/CampCardRegion";
+import CampCardTel from "./camp_card_info/camp_card_tel/CampCardTel";
+import CampCardAmenity from "./camp_card_info/camp_card_amenity/CampCardAmenity";
+import CampCardHomepage from "./camp_card_info/camp_card_homepage/CampCardHomepage";
+import CampCardReservation from "./camp_card_info/camp_card_reservation/CampCardReservation";
 
-// - cardlist
-//[
-// <CampCard.ImageAnchor/>
-// contentId
-// firstImageUrl
-// thumnailAlt(facltNm)
-//]
-// title()
-// lineIntro3
-// className
-
-// - camplistitem
-//[
-// <CampCard.ImageAnchor/>
-// contentId
-// firstImageUrl
-// thunnailAlt(facltNm)
-//]
-// facltNm4
-// doNm + sigunguNm5
-// addr16
-// tel7
-// sbrsCl8
-// className
-
-// - campdetailinfo
-//[
-// <CampCard.Image/>
-// firstImageUrl: string;
-// thunnailAlt(facltNm)
-//]
-// facltNm: string;
-// lineIntro: string;
-// tel: string;
-// address (addr1 + addr2)
-// resveCl9
-// resveUrl10
-// homepage: string;11
-// className
-
-type CardData2 = {
-  title: string;
-  subTitle: string;
-  thumbnailUrl: string;
-  thumnailAlt: string;
-  contentId: number;
-  lineIntro?: string;
-};
-type RecommendCampsiteData2 = {
-  contentId: number;
-  firstImageUrl: string;
-  doNm: string;
-  sigunguNm: string;
-  facltNm: string;
-  lineIntro: string;
-};
-
-interface CardInterface {
-  className: string;
-  data: CardData;
-  linkpath: UrlObject;
-}
-
-interface CampListItemInterface {
-  content: CampInfoEdge;
-  className: string;
-}
-
-interface CampDetailInfoInterface {
-  content: {
-    campImage: string;
-    campName: string;
-    lineIntro: string;
-    tel: string;
-    address: string;
-    reservation: string;
-    reservationUrl: string;
-    homepage: string;
-  };
-  campNameTextStyle: string;
-  TextStyle: string;
-}
-
-const CampDetailInfo: FC<CampDetailInfoInterface> = (props) => {
-  const defaultCampImage = "/defaultCamp.svg";
-  return (
-    <section className="flex flex-row justify-start w-6/12 p-4 mb-4 border rounded-md bg-mono-white border-primary-bordergray">
-      <FlexBox className="relative w-5/12">
-        {/* Image > Icon CampCard로 통합하기위해 변경 */}
-        <Icon
-          src={props.content.campImage ? props.content.campImage : defaultCampImage}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          alt={`${props.content.campName}`}
-          className={"rounded-md"}
-        />
-      </FlexBox>
-      <article className={`${props.TextStyle} flex flex-col p-4`}>
-        <h1 className={`${props.campNameTextStyle} mb-1`}>{props.content.campName}</h1>
-        <Span className="mb-1 ">{props.content.lineIntro}</Span>
-        <Span className="flex flex-row items-center mb-1">
-          <FaPhoneAlt className="mx-1.5" size={"1rem"} />
-          {props.content.tel}
-        </Span>
-        <Span className="flex flex-row items-center mb-1">
-          <MdLocationOn className="mx-1" size={"1.2rem"} />
-          {props.content.address}
-        </Span>
-        <Span className="flex flex-row items-center mb-1">
-          <FaRegCalendarCheck className="mx-1" size={"1.2rem"} />
-          {props.content.reservation}
-          <Anchor href={props.content.reservationUrl} className={""}>
-            (바로가기)
-          </Anchor>
-          <ImNewTab size={"1rem"} />
-        </Span>
-        <Span className="flex flex-row items-center mb-1">
-          <HiHome className="mx-1.5" size={"1rem"} />
-          <Anchor href={props.content.homepage} className={""}>
-            홈페이지
-          </Anchor>
-          <ImNewTab size={"1rem"} />
-        </Span>
-      </article>
-    </section>
-  );
-};
-
-const Card: FC<CardInterface> = (props) => {
-  return (
-    <Anchor href={`${props.linkpath}`} className="">
-      <FlexBox className="flex-col mx-1 border bg-mono-white border-primary-bordergray">
-        <Icon
-          src={props.data.thumbnailUrl !== null ? `${props.data.thumbnailUrl}` : "/defaultCamp.svg"}
-          width={250}
-          height={150}
-          alt={`${props.data.thumnailAlt}`}
-          className="flex items-center justify-center"
-        />
-        <FlexBox className="flex-col text-center">
-          {props.data.title && (
-            <Span className="px-2 pt-1 font-semibold truncate text-body1">{`${props.data.title}`}</Span>
-          )}
-          {props.data.subTitle && <Span className="px-4 pb-1 truncate text-body3">{props.data.subTitle}</Span>}
-        </FlexBox>
-      </FlexBox>
-    </Anchor>
-  );
-};
-
-const CampListItem: FC<CampListItemInterface> = (props) => {
-  const defaultCampImage = "/defaultCamp.svg";
-  return (
-    <ListItem key={`camp_list_item_${props.content?.node?.contentId}`} className={props.className}>
-      <FlexBox className="flex flex-row p-2.5 border justify-space bg-mono-white border-primary-bordergray rounded-md">
-        <Anchor href={`/about/${props.content?.node?.contentId}`} className={""}>
-          <Icon
-            src={props.content?.node?.firstImageUrl ? `${props.content?.node?.firstImageUrl}` : defaultCampImage}
-            width={300}
-            height={210}
-            alt={`${props.content?.node?.facltNm} cover image`}
-            className={""}
-          />
-        </Anchor>
-        <FlexBox className="flex flex-col justify-around ml-5 ">
-          <Anchor href={`/about/${props.content?.node?.contentId}`} className={""}>
-            <Span className="font-bold text-title1">{`${props.content?.node?.facltNm}`}</Span>
-          </Anchor>
-          {props.content?.node?.doNm && props.content?.node?.sigunguNm && (
-            <p className="text-body2">{`${props.content?.node?.doNm} ${props.content?.node?.sigunguNm}`}</p>
-          )}
-          {props.content?.node?.tel && (
-            <Span className="flex flex-row items-center text-body3">
-              <FaPhoneAlt className="mx-1.5" size={"0.875rem"} />
-              {`${props.content?.node?.tel}`}
-            </Span>
-          )}
-          {props.content?.node?.addr1 && (
-            <Span className="flex flex-row items-center text-body3">
-              <FaMapMarkerAlt className="mx-1" size={"0.875rem"} />
-              {`${props.content?.node?.addr1} `}
-            </Span>
-          )}
-          {props.content?.node?.sbrsCl && (
-            <FlexBox className={"p-2 rounded-sm border border-primary-bordergray bg-primary-lightgray"}>
-              <AmenityList
-                sbrsCl={props.content?.node?.sbrsCl}
-                gap={"mr-4"}
-                contentId={`${props.content?.node?.contentId}`}
-              />
-            </FlexBox>
-          )}
-        </FlexBox>
-      </FlexBox>
-    </ListItem>
-  );
-};
 interface CampCardContainerInterface {
   cardData: CampInfo;
   className: string;
@@ -237,10 +32,36 @@ const CampCardContainer: FC<CampCardContainerInterface> = (props) => {
       <FlexBox className="relative w-5/12">
         <CampCard
           campsite={props.cardData}
-          image={<></>}
+          image={
+            <>
+              <CampCard.Image className="" />
+              <CampCard.ImageAnchor className="" width={250} height={150} />
+              <CampCard.ImageAnchor className="" width={300} height={210} />
+            </>
+          }
           info={
             <CampCard.Info className="">
               <CampCard.Title className="" title="" />
+              <CampCard.Subtitle className="" subtitle="" />
+              <CampCard.Name className="" />
+              <CampCard.Name className="" link={true} />
+              <CampCard.LineIntro className="" />
+              <CampCard.Adress className="" icon={<FaMapMarkerAlt className="mx-1" size={"0.875rem"} />} />
+              <CampCard.Adress className="" icon={<MdLocationOn className="mx-1" size={"1.2rem"} />} />
+              <CampCard.Region className="" />
+              <CampCard.Tel className="" icon={<FaPhoneAlt className="mx-1.5" size={"1rem"} />} />
+              <CampCard.Amenity className="" gap="mr-4" />
+              <CampCard.Homepage
+                className=""
+                icon={<HiHome className="mx-1.5" size={"1rem"} />}
+                urlicon={<ImNewTab size={"1rem"} />}
+              />
+              <CampCard.Reservation
+                className=""
+                icon={<FaRegCalendarCheck className="mx-1" size={"1.2rem"} />}
+                urlicon={<ImNewTab size={"1rem"} />}
+                // { size: 'auto' } https://stackoverflow.com/questions/64142418/react-icons-responsive-size
+              />
             </CampCard.Info>
           }
           action={<></>}
@@ -271,18 +92,18 @@ const CampCard = (props: CampCardInterface) => {
   );
 };
 
-// CampCard.Image = CampImage;
-// CampCard.ImageAnchor = CampImageAnchor;
-CampCard.Title = CampCardTitle;
-// CampCard.Subtitle = CampSubtitle;
 CampCard.Info = CampCardInfo;
-// CampCard.CampName = CampCampName;
-// CampCard.LinIntro = CampLinIntro;
-// CampCard.Adress = CampAdress;
-// CampCard.Region = CampRegion;
-// CampCard.Tel = CampTel;
-// CampCard.Amenity = CampAmenity;
-// CampCard.Homepage = CampHomepage;
-// CampCard.Reservation = CampReservation;
+CampCard.Image = CampCardImage;
+CampCard.ImageAnchor = CampCardImageAnchor;
+CampCard.Title = CampCardTitle;
+CampCard.Subtitle = CampCardSubtitle;
+CampCard.Name = CampCardName;
+CampCard.LineIntro = CampCardLineIntro;
+CampCard.Adress = CampCardAdress;
+CampCard.Region = CampCardRegion;
+CampCard.Tel = CampCardTel;
+CampCard.Amenity = CampCardAmenity;
+CampCard.Homepage = CampCardHomepage;
+CampCard.Reservation = CampCardReservation;
 
 export default CampCard;

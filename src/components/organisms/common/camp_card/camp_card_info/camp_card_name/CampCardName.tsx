@@ -4,7 +4,7 @@ import Span from "@/components/atoms/span/Span";
 import Anchor from "@/components/atoms/anchor/Anchor";
 
 interface CampCardNameInterface {
-  link: boolean;
+  link?: boolean;
   className: string;
 }
 
