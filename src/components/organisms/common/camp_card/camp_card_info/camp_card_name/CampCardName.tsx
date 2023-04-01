@@ -8,17 +8,17 @@ interface CampCardNameInterface {
   className: string;
 }
 
-const CampCardName: FC<CampCardNameInterface> = ({ link = false }, props) => {
+const CampCardName: FC<CampCardNameInterface> = ({ link = false, ...props }) => {
   const camp = useCampCardContext();
   return (
     <>
-      {link ? (
-        <>{camp.facltNm && <Span className={`${props.className}`}>{camp.facltNm}</Span>}</>
+      {!link ? (
+        <>{camp.facltNm && <Span className={props.className}>{camp.facltNm}</Span>}</>
       ) : (
         <>
           {camp.facltNm && (
             <Anchor href={`/about/${camp.contentId}`} className={""}>
-              <Span className={`${props.className}`}>{camp.facltNm}</Span>
+              <Span className={props.className}>{camp.facltNm}</Span>
             </Anchor>
           )}
         </>

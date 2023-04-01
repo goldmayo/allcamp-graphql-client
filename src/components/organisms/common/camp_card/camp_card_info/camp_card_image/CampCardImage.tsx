@@ -13,7 +13,7 @@ const CampCardImage: FC<CampCardImageInterface> = (props) => {
   const defaultCampImage = "/defaultCamp.svg";
   const camp = useCampCardContext();
   return (
-    <FlexBox className={`${props.className}`}>
+    <FlexBox className={props.className}>
       {props.width && props.height ? (
         <Icon
           src={camp.firstImageUrl ? `${camp.firstImageUrl}` : defaultCampImage}

@@ -9,9 +9,7 @@ interface CampCardRegionInterface {
 const CampCardRegion: FC<CampCardRegionInterface> = (props) => {
   const camp = useCampCardContext();
   return (
-    <>
-      {camp.doNm && camp.sigunguNm && <Span className={`${props.className}`}>{`${camp.doNm} ${camp.sigunguNm}`}</Span>}
-    </>
+    <>{camp.doNm && camp.sigunguNm && <Span className={props.className}>{`${camp.doNm} ${camp.sigunguNm}`}</Span>}</>
   );
 };
 

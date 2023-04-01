@@ -31,6 +31,7 @@ const CampCardContainer: FC<CampCardContainerInterface> = (props) => {
       {/* 5:30초부터 */}
       <FlexBox className="relative w-5/12">
         <CampCard
+          className=""
           campsite={props.cardData}
           image={
             <>
@@ -51,15 +52,10 @@ const CampCardContainer: FC<CampCardContainerInterface> = (props) => {
               <CampCard.Region className="" />
               <CampCard.Tel className="" icon={<FaPhoneAlt className="mx-1.5" size={"1rem"} />} />
               <CampCard.Amenity className="" gap="mr-4" />
-              <CampCard.Homepage
-                className=""
-                icon={<HiHome className="mx-1.5" size={"1rem"} />}
-                urlicon={<ImNewTab size={"1rem"} />}
-              />
+              <CampCard.Homepage className="" icon={<HiHome className="mx-1.5" size={"1rem"} />} />
               <CampCard.Reservation
                 className=""
                 icon={<FaRegCalendarCheck className="mx-1" size={"1.2rem"} />}
-                urlicon={<ImNewTab size={"1rem"} />}
                 // { size: 'auto' } https://stackoverflow.com/questions/64142418/react-icons-responsive-size
               />
             </CampCard.Info>
@@ -76,17 +72,16 @@ interface CampCardInterface {
   image?: ReactNode;
   info?: ReactNode;
   action?: ReactNode;
+  className: string;
 }
 
 const CampCard = (props: CampCardInterface) => {
   return (
     <CampCardContext.Provider value={props.campsite}>
-      <FlexBox className="relative w-5/12">
+      <FlexBox className={props.className}>
         {props.image}
-        <FlexBox className="relative w-5/12">
-          {props.info}
-          {props.action}
-        </FlexBox>
+        {props.info}
+        {props.action}
       </FlexBox>
     </CampCardContext.Provider>
   );

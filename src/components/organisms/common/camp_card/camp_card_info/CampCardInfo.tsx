@@ -1,3 +1,4 @@
+import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import React, { FC, ReactNode } from "react";
 
 interface CampCardInfoInterface {
@@ -6,7 +7,7 @@ interface CampCardInfoInterface {
 }
 
 const CampCardInfo: FC<CampCardInfoInterface> = (props) => {
-  return <div className="">{props.children}</div>;
+  return <FlexBox className={props.className}>{props.children}</FlexBox>;
 };
 
 export default CampCardInfo;

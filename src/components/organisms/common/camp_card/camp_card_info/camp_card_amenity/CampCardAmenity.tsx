@@ -13,7 +13,7 @@ const CampCardAmenity: FC<CampCardAmenityInterface> = (props) => {
   return (
     <>
       {camp.sbrsCl && (
-        <FlexBox className={`${props.className}`}>
+        <FlexBox className={props.className}>
           <AmenityList sbrsCl={camp.sbrsCl} gap={props.gap} contentId={`${camp.contentId}`} />
         </FlexBox>
       )}

@@ -7,7 +7,7 @@ interface CampCardTitleInterface {
 }
 
 const CampCardTitle: FC<CampCardTitleInterface> = (props) => {
-  return <Span className={`${props.className}`}>{props.title}</Span>;
+  return <Span className={props.className}>{props.title}</Span>;
 };
 
 export default CampCardTitle;

@@ -7,7 +7,6 @@ import { ImNewTab } from "react-icons/im";
 
 interface CampCardReservationInterface {
   icon: ReactNode;
-  urlicon: ReactNode;
   className: string;
 }
 
@@ -22,7 +21,6 @@ const CampCardReservation: FC<CampCardReservationInterface> = (props) => {
           <Anchor href={camp.resveUrl} className={""}>
             (바로가기)
           </Anchor>
-          {props.urlicon}
         </Span>
       )}
     </>

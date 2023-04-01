@@ -5,7 +5,6 @@ import Anchor from "@/components/atoms/anchor/Anchor";
 
 interface CampCardHomepageInterface {
   icon: ReactNode;
-  urlicon: ReactNode;
   className: string;
 }
 
@@ -14,12 +13,11 @@ const CampCardHomepage: FC<CampCardHomepageInterface> = (props) => {
   return (
     <>
       {camp.homepage && (
-        <Span className={`${props.className}`}>
+        <Span className={props.className}>
           {props.icon}
           <Anchor href={camp.homepage} className={""}>
             홈페이지
           </Anchor>
-          {props.urlicon}
         </Span>
       )}
     </>

@@ -28,7 +28,9 @@ const Card: FC<CardInterface> = (props) => {
       </Anchor>
       <FlexBox className="flex-col text-center">
         {props.data.title && (
-          <Span className="px-2 pt-1 font-semibold truncate text-body1">{`${props.data.title}`}</Span>
+          <Anchor href={`${props.linkpath.pathname}`} className="">
+            <Span className="px-2 pt-1 font-semibold truncate text-body1">{`${props.data.title}`}</Span>
+          </Anchor>
         )}
         {props.data.subTitle && <Span className="px-4 pb-1 truncate text-body3">{props.data.subTitle}</Span>}
       </FlexBox>

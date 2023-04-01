@@ -6,6 +6,7 @@ interface AnchorProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   className: string;
   children: React.ReactNode;
+  as?: string;
 }
 
 const Anchor: FC<AnchorProps> = ({ href, className, children, ...props }) => {

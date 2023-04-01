@@ -11,10 +11,10 @@ const CampCardAdress: FC<CampCardAdressInterface> = (props) => {
   const camp = useCampCardContext();
   return (
     <>
-      {(camp.addr1 || camp.addr2) && (
-        <Span className={`${props.className}`}>
+      {camp.addr1 && (
+        <Span className={props.className}>
           {props.icon}
-          {`${camp.addr1}${camp.addr2}`}
+          {camp.addr2 ? `${camp.addr1}${camp.addr2}` : `${camp.addr1}`}
         </Span>
       )}
     </>

@@ -11,7 +11,7 @@ interface CardListInterface {
 
 const CardList: FC<CardListInterface> = (props) => {
   const router = useRouter();
-  const handleClick = (e:React.UIEvent<HTMLAnchorElement>, induty:string) => {
+  const handleClick = (e: React.UIEvent<HTMLAnchorElement>, induty: string) => {
     router.push(
       {
         pathname: "/search",
@@ -20,8 +20,8 @@ const CardList: FC<CardListInterface> = (props) => {
         },
       },
       "/search"
-      );
-  }
+    );
+  };
   return (
     <FlexBox className={""}>
       <ul className="flex flex-row justify-around">

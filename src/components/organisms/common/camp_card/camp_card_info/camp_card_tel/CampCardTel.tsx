@@ -12,7 +12,7 @@ const CampCardTel: FC<CampCardTelInterface> = (props) => {
   return (
     <>
       {camp.tel && (
-        <Span className={`${props.className}`}>
+        <Span className={props.className}>
           {props.icon}
           {camp.tel}
         </Span>

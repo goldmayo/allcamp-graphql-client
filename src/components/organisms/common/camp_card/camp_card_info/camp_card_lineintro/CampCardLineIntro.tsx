@@ -8,7 +8,7 @@ interface CampCardLineIntroInterface {
 
 const CampCardLineIntro: FC<CampCardLineIntroInterface> = (props) => {
   const camp = useCampCardContext();
-  return <>{camp.lineIntro && <Span className={`${props.className}`}>{camp.lineIntro}</Span>}</>;
+  return <>{camp.lineIntro && <Span className={props.className}>{camp.lineIntro}</Span>}</>;
 };
 
 export default CampCardLineIntro;
