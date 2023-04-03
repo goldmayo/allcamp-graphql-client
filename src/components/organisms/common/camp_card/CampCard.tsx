@@ -2,9 +2,8 @@ import React, { FC, ReactNode } from "react";
 import { FaMapMarkerAlt, FaPhoneAlt, FaRegCalendarCheck } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import { HiHome } from "react-icons/hi";
-import { ImNewTab } from "react-icons/im";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
-import { CampInfo, CampInfoEdge } from "@/types/campType";
+import { CampInfo } from "@/types/campType";
 import CampCardContext from "./context/CampCardContext";
 import CampCardInfo from "./camp_card_info/CampCardInfo";
 import CampCardTitle from "./camp_card_info/camp_card_title/CampCardTitle";
@@ -53,11 +52,7 @@ const CampCardContainer: FC<CampCardContainerInterface> = (props) => {
               <CampCard.Tel className="" icon={<FaPhoneAlt className="mx-1.5" size={"1rem"} />} />
               <CampCard.Amenity className="" gap="mr-4" />
               <CampCard.Homepage className="" icon={<HiHome className="mx-1.5" size={"1rem"} />} />
-              <CampCard.Reservation
-                className=""
-                icon={<FaRegCalendarCheck className="mx-1" size={"1.2rem"} />}
-                // { size: 'auto' } https://stackoverflow.com/questions/64142418/react-icons-responsive-size
-              />
+              <CampCard.Reservation className="" icon={<FaRegCalendarCheck className="mx-1" size={"1.2rem"} />} />
             </CampCard.Info>
           }
           action={<></>}

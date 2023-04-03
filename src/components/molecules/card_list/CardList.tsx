@@ -1,43 +1,43 @@
 import React, { FC } from "react";
-import { CardData } from "@/types/cardDataType";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import ListItem from "@/components/atoms/list_item/ListItem";
-import Card from "@/components/molecules/card/Card";
-import { useRouter } from "next/router";
+import { CampInfo } from "@/types/campType";
+import CampCard from "@/components/organisms/common/camp_card/CampCard";
+import Anchor from "@/components/atoms/anchor/Anchor";
 
 interface CardListInterface {
-  data: CardData[];
+  data: CampInfo[];
 }
 
 const CardList: FC<CardListInterface> = (props) => {
-  const router = useRouter();
-  const handleClick = (e: React.UIEvent<HTMLAnchorElement>, induty: string) => {
-    router.push(
-      {
-        pathname: "/search",
-        query: {
-          searchParams: JSON.stringify({ induty: `${induty}` }),
-        },
-      },
-      "/search"
-    );
-  };
   return (
     <FlexBox className={""}>
       <ul className="flex flex-row justify-around">
         {props.data &&
           props.data.map((campType) => (
             <ListItem key={campType.contentId} className={"mx-2"}>
-              <Card
-                className={""}
-                data={campType}
-                linkpath={{
+              <Anchor
+                href={{
                   pathname: "/search",
                   query: {
-                    searchParams: JSON.stringify({ induty: campType.title }),
+                    searchParams: JSON.stringify({ induty: campType.induty }),
                   },
                 }}
-              />
+                as={"/search"}
+                className={""}
+              >
+                <CampCard
+                  className="flex-col mx-1 border bg-mono-white border-primary-bordergray"
+                  campsite={campType}
+                  image={<CampCard.Image className="flex items-center justify-center" width={250} height={150} />}
+                  info={
+                    <CampCard.Info className="flex-col text-center">
+                      <CampCard.Name className="px-2 pt-1 font-semibold truncate text-body1" />
+                      <CampCard.LineIntro className="px-4 pb-1 truncate text-body3" />
+                    </CampCard.Info>
+                  }
+                />
+              </Anchor>
             </ListItem>
           ))}
       </ul>

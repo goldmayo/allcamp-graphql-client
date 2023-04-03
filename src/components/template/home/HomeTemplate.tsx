@@ -1,16 +1,16 @@
 import { FC } from "react";
 import Span from "@/components/atoms/span/Span";
-import Card from "@/components/molecules/card/Card";
 import Banner from "@/components/molecules/banner/Banner";
 import Carousel from "@/components/molecules/carousel/Carousel";
 import CardList from "@/components/molecules/card_list/CardList";
 import SearchForm from "@/components/organisms/common/searchbox/SearchForm";
-import { RecommendCampsiteData, CardData } from "@/types/cardDataType";
+import CampCard from "@/components/organisms/common/camp_card/CampCard";
+import { CampInfo } from "@/types/campType";
 
 interface HomeTemplateProps {
   bannerImage: string;
-  carouselContent: RecommendCampsiteData[];
-  campsiteTypeContent: CardData[];
+  carouselContent: CampInfo[];
+  campsiteTypeContent: CampInfo[];
 }
 
 const HomeTemplate: FC<HomeTemplateProps> = (props) => {
@@ -51,19 +51,17 @@ const HomeTemplate: FC<HomeTemplateProps> = (props) => {
         <Span className="p-4 font-semibold text-headline2 text-mono-black">낭만 넘치는 캠핑장 추천</Span>
         <Carousel className="flex-col justify-center w-full bg-mono-white">
           {props.carouselContent.map((camp) => (
-            <Card
+            <CampCard
               key={camp.contentId}
-              className=""
-              data={{
-                title: `${camp.facltNm}`,
-                subTitle: `${camp.lineIntro}`,
-                thumbnailUrl: `${camp.firstImageUrl}`,
-                thumnailAlt: `${camp.facltNm}`,
-                contentId: camp.contentId,
-              }}
-              linkpath={{
-                pathname: `/about/${camp.contentId}`,
-              }}
+              className="flex-col mx-1 border bg-mono-white border-primary-bordergray"
+              campsite={camp}
+              image={<CampCard.ImageAnchor className="flex items-center justify-center" width={250} height={150} />}
+              info={
+                <CampCard.Info className="flex-col text-center">
+                  <CampCard.Name className="px-2 pt-1 font-semibold truncate text-body1" link={true} />
+                  <CampCard.LineIntro className="px-4 pb-1 truncate text-body3" />
+                </CampCard.Info>
+              }
             />
           ))}
         </Carousel>
