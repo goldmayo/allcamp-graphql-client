@@ -41,20 +41,7 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
           buttonSize={"base"}
         />
       </section>
-      <CampDetailInfo
-        content={{
-          campImage: props.content.firstImageUrl ? props.content.firstImageUrl : "",
-          campName: props.content.facltNm ? props.content.facltNm : "",
-          lineIntro: props.content.lineIntro ? props.content.lineIntro : "",
-          tel: props.content.tel ? props.content.tel : "",
-          address: props.content.addr1 || props.content.addr2 ? `${props.content.addr1}${props.content.addr2}` : "",
-          reservation: props.content.resveCl && props.content.resveUrl ? `${props.content.resveCl}` : "",
-          reservationUrl: props.content.resveCl && props.content.resveUrl ? `${props.content.resveUrl}` : "",
-          homepage: props.content.homepage ? props.content.homepage : "",
-        }}
-        campNameTextStyle={"text-headline3 font-semibold"}
-        TextStyle={"text-body1 font-medium"}
-      />
+      <CampDetailInfo content={props.content} />
       <CampDetailNav
         ref={searhBarRef}
         navStyle={
