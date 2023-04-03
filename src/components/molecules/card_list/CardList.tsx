@@ -35,7 +35,6 @@ const CardList: FC<CardListInterface> = (props) => {
                   pathname: "/search",
                   query: {
                     searchParams: JSON.stringify({ induty: campType.title }),
-                    // searchParams: `${{ induty: campType.title }}`,
                   },
                 }}
               />

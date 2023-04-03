@@ -1,12 +1,8 @@
 import React, { FC } from "react";
 import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
-import FlexBox from "@/components/atoms/flexbox/FlexBox";
-import Icon from "@/components/atoms/icon/Icon";
 import ListItem from "@/components/atoms/list_item/ListItem";
-import Span from "@/components/atoms/span/Span";
-import Anchor from "@/components/atoms/anchor/Anchor";
-import AmenityList from "@/components/molecules/amenity_list/AmenityList";
-import { CampInfoEdge } from "@/types/campType";
+import { CampInfoEdge, CampInfo } from "@/types/campType";
+import CampCard from "@/components/organisms/common/camp_card/CampCard";
 
 interface CampListItemInterface {
   content: CampInfoEdge;
@@ -14,49 +10,31 @@ interface CampListItemInterface {
 }
 
 const CampListItem: FC<CampListItemInterface> = (props) => {
-  const defaultCampImage = "/defaultCamp.svg";
   return (
     <ListItem key={`camp_list_item_${props.content?.node?.contentId}`} className={props.className}>
-      <FlexBox className="flex flex-row p-2.5 border justify-space bg-mono-white border-primary-bordergray rounded-md">
-        <Anchor href={`/about/${props.content?.node?.contentId}`} className={""}>
-          <Icon
-            src={props.content?.node?.firstImageUrl ? `${props.content?.node?.firstImageUrl}` : defaultCampImage}
-            width={300}
-            height={210}
-            alt={`${props.content?.node?.facltNm} cover image`}
-            className={""}
-          />
-        </Anchor>
-        <FlexBox className="flex flex-col justify-around ml-5 ">
-          <Anchor href={`/about/${props.content?.node?.contentId}`} className={""}>
-            <Span className="font-bold text-title1">{`${props.content?.node?.facltNm}`}</Span>
-          </Anchor>
-          {props.content?.node?.doNm && props.content?.node?.sigunguNm && (
-            <p className="text-body2">{`${props.content?.node?.doNm} ${props.content?.node?.sigunguNm}`}</p>
-          )}
-          {props.content?.node?.tel && (
-            <Span className="flex flex-row items-center text-body3">
-              <FaPhoneAlt className="mx-1.5" size={"0.875rem"} />
-              {`${props.content?.node?.tel}`}
-            </Span>
-          )}
-          {props.content?.node?.addr1 && (
-            <Span className="flex flex-row items-center text-body3">
-              <FaMapMarkerAlt className="mx-1" size={"0.875rem"} />
-              {`${props.content?.node?.addr1} `}
-            </Span>
-          )}
-          {props.content?.node?.sbrsCl && (
-            <FlexBox className={"p-2 rounded-sm border border-primary-bordergray bg-primary-lightgray"}>
-              <AmenityList
-                sbrsCl={props.content?.node?.sbrsCl}
-                gap={"mr-4"}
-                contentId={`${props.content?.node?.contentId}`}
-              />
-            </FlexBox>
-          )}
-        </FlexBox>
-      </FlexBox>
+      <CampCard
+        className="flex flex-row p-2.5 border justify-space bg-mono-white border-primary-bordergray rounded-md"
+        campsite={props.content?.node as CampInfo}
+        image={<CampCard.ImageAnchor className="" width={300} height={210} />}
+        info={
+          <CampCard.Info className="flex flex-col justify-around ml-5 ">
+            <CampCard.Name className="font-bold text-title1" link={true} />
+            <CampCard.Region className="text-body2" />
+            <CampCard.Adress
+              className="flex flex-row items-center text-body3"
+              icon={<FaMapMarkerAlt className="mx-1" size={"0.875rem"} />}
+            />
+            <CampCard.Tel
+              className="flex flex-row items-center text-body3"
+              icon={<FaPhoneAlt className="mx-1.5" size={"1rem"} />}
+            />
+            <CampCard.Amenity
+              className="p-2 border rounded-sm border-primary-bordergray bg-primary-lightgray"
+              gap="mr-4"
+            />
+          </CampCard.Info>
+        }
+      />
     </ListItem>
   );
 };
