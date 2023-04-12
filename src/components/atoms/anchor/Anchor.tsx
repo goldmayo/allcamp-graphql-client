@@ -11,8 +11,8 @@ interface AnchorProps extends LinkProps {
 
 const Anchor: FC<AnchorProps> = ({ href, className, children, ...props }) => {
   return (
-    <Link href={href} {...props}>
-      <a className={className}>{children}</a>
+    <Link className={className} href={href} {...props}>
+      {children}
     </Link>
   );
 };

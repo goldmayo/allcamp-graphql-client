@@ -6,7 +6,7 @@ import { MdLocationOn } from "react-icons/md";
 import { HiHome } from "react-icons/hi";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import { CampInfo } from "@/types/campType";
-import { CampSiteType2 } from "@/core/card_list_data/CardListData";
+import { CampSiteType } from "@/core/card_list_data/CardListData";
 import Anchor from "@/components/atoms/anchor/Anchor";
 
 const TestCampInfo: CampInfo = {
