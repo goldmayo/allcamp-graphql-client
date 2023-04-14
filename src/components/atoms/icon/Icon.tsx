@@ -9,9 +9,11 @@ interface IconProps extends ImageProps {
 
 const Icon: FC<IconProps> = ({ className, src, width, height, alt, onClick, ...props }) => {
   return (
-    <div className={className} onClick={onClick}>
-      <Image src={src} width={width} height={height} alt={alt} {...props} />
-    </div>
+    // <div className={`${className}`} onClick={onClick}>
+    //   <Image src={src} width={width} height={height} alt={alt} {...props} />
+    // </div>
+    // <Image src={src} width={width} height={height} alt={alt} {...props} className={className} onClick={onClick} />
+    <Image src={src} width={width} height={height} alt={alt} {...props} className={className} onClick={onClick} />
   );
 };
 

@@ -17,8 +17,8 @@ const CampCardName: FC<CampCardNameInterface> = ({ link = false, ...props }) => 
       ) : (
         <>
           {camp.facltNm && (
-            <Anchor href={`/about/${camp.contentId}`} className={""}>
-              <Span className={props.className}>{camp.facltNm}</Span>
+            <Anchor href={`/about/${camp.contentId}`} className={props.className}>
+              <Span className={""}>{camp.facltNm}</Span>
             </Anchor>
           )}
         </>

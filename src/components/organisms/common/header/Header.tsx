@@ -25,7 +25,14 @@ const Header: FC = () => {
           </Button>
         )}
         <Anchor href={"/"} className={""}>
-          <Icon src={"/header_logo.svg"} width={150} height={75} alt={"allcamping logo"} className={""} />
+          <Icon
+            src={"/header_logo.svg"}
+            style={{ width: 150, height: 75 }}
+            width={150}
+            height={75}
+            alt={"allcamping logo"}
+            className={""}
+          />
         </Anchor>
         {router.asPath !== "/home" && (
           <button type="button" className="invisible">

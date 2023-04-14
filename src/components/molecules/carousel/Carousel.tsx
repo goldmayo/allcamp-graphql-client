@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NextArrow from "@/components/molecules/carousel/NextArrow";
 import PrevArrow from "@/components/molecules/carousel/PrevArrow";
-import FlexBox from "@/components/atoms/flexbox/FlexBox";
 
 interface CarouselProps {
   /** 슬라이더 아이템 요소 */
@@ -43,9 +42,9 @@ const Carousel: FC<CarouselProps> = ({
     [autoplay, loop, speed, autoplaySpeed]
   );
   return (
-    <FlexBox className={className}>
-      <Slider {...settings}>{children}</Slider>
-    </FlexBox>
+    <Slider className={className} {...settings}>
+      {children}
+    </Slider>
   );
 };
 

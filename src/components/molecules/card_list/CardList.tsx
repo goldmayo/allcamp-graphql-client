@@ -12,10 +12,10 @@ interface CardListInterface {
 const CardList: FC<CardListInterface> = (props) => {
   return (
     <FlexBox className={""}>
-      <ul className="flex flex-row justify-around">
+      <ul className="flex flex-row justify-around ">
         {props.data &&
           props.data.map((campType) => (
-            <ListItem key={campType.contentId} className={"mx-2"}>
+            <ListItem key={campType.contentId} className={"mx-1"}>
               <Anchor
                 href={{
                   pathname: "/search",
@@ -29,11 +29,11 @@ const CardList: FC<CardListInterface> = (props) => {
                 <CampCard
                   className="flex-col mx-1 border bg-mono-white border-primary-bordergray"
                   campsite={campType}
-                  image={<CampCard.Image className="flex items-center justify-center" width={250} height={150} />}
+                  image={<CampCard.Image className="relative" width={250} height={150} />}
                   info={
                     <CampCard.Info className="flex-col text-center">
                       <CampCard.Name className="px-2 pt-1 font-semibold truncate text-body1" />
-                      <CampCard.LineIntro className="px-4 pb-1 truncate text-body3" />
+                      {/* <CampCard.LineIntro className="px-4 pb-1 truncate text-body3" /> */}
                     </CampCard.Info>
                   }
                 />

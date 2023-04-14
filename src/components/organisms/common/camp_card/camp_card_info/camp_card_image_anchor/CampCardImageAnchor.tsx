@@ -13,23 +13,23 @@ const CampCardImageAnchor: FC<CampCardImageAnchorInterface> = (props) => {
   const defaultCampImage = "/defaultCamp.svg";
   const camp = useCampCardContext();
   return (
-    <Anchor href={`/about/${camp.contentId}`} className={props.className}>
-      {props.width && props.height ? (
+    <Anchor href={`/about/${camp.contentId}`} className={`${props.className}`}>
+      {Number.isInteger(props.width) && Number.isInteger(props.height) ? (
         <Icon
           src={camp.firstImageUrl ? `${camp.firstImageUrl}` : defaultCampImage}
           width={props.width}
           height={props.height}
+          style={camp.firstImageUrl ? { height: props.height } : {}}
           alt={`${camp.facltNm}`}
           className={""}
         />
       ) : (
         <Icon
           src={camp.firstImageUrl ? `${camp.firstImageUrl}` : defaultCampImage}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
+          fill
+          style={{ objectFit: "fill", objectPosition: "center" }}
           alt={`${camp.facltNm}`}
-          className={"rounded-md"}
+          className={""}
         />
       )}
     </Anchor>

@@ -22,9 +22,8 @@ const Banner: FC<BannerProps> = (props) => {
         className="z-0"
         src={`${props.imageSrc}`}
         alt={"banner image"}
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
+        fill
+        style={{ objectFit: "cover", objectPosition: "center" }}
         priority={true}
       />
     </FlexBox>

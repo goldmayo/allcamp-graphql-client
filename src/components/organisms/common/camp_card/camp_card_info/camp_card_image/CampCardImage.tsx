@@ -12,24 +12,25 @@ interface CampCardImageInterface {
 const CampCardImage: FC<CampCardImageInterface> = (props) => {
   const defaultCampImage = "/defaultCamp.svg";
   const camp = useCampCardContext();
+
   return (
-    <FlexBox className={props.className}>
-      {props.width && props.height ? (
+    <FlexBox className={`${props.className}`}>
+      {Number.isInteger(props.width) && Number.isInteger(props.height) ? (
         <Icon
           src={camp.firstImageUrl ? `${camp.firstImageUrl}` : defaultCampImage}
           width={props.width}
           height={props.height}
+          style={camp.firstImageUrl ? { height: props.height } : {}}
           alt={`${camp.facltNm}`}
-          className={""}
+          className={``}
         />
       ) : (
         <Icon
           src={camp.firstImageUrl ? `${camp.firstImageUrl}` : defaultCampImage}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
+          fill
+          style={{ objectFit: "cover", objectPosition: "center" }}
           alt={`${camp.facltNm}`}
-          className={"rounded-md"}
+          className={""}
         />
       )}
     </FlexBox>

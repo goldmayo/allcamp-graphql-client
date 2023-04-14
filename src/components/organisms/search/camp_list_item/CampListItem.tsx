@@ -13,11 +13,11 @@ const CampListItem: FC<CampListItemInterface> = (props) => {
   return (
     <ListItem key={`camp_list_item_${props.content?.node?.contentId}`} className={props.className}>
       <CampCard
-        className="flex flex-row p-2.5 border justify-space bg-mono-white border-primary-bordergray rounded-md"
+        className="flex flex-row p-2.5 border justify-space items-center bg-mono-white border-primary-bordergray rounded-md "
         campsite={props.content?.node as CampInfo}
-        image={<CampCard.ImageAnchor className="" width={300} height={210} />}
+        image={<CampCard.ImageAnchor className="relative" width={300} height={210} />}
         info={
-          <CampCard.Info className="flex flex-col justify-around ml-5 ">
+          <CampCard.Info className="flex flex-col ml-5 space-y-3">
             <CampCard.Name className="font-bold text-title1" link={true} />
             <CampCard.Region className="text-body2" />
             <CampCard.Adress

@@ -49,13 +49,13 @@ const HomeTemplate: FC<HomeTemplateProps> = (props) => {
       </section>
       <section className="flex flex-col items-center justify-center w-11/12 mb-10 max-w-[1080px]">
         <Span className="p-4 font-semibold text-headline2 text-mono-black">낭만 넘치는 캠핑장 추천</Span>
-        <Carousel className="flex-col justify-center w-full bg-mono-white">
+        <Carousel className="flex-col justify-center w-full">
           {props.carouselContent.map((camp) => (
             <CampCard
               key={camp.contentId}
               className="flex-col mx-1 border bg-mono-white border-primary-bordergray"
               campsite={camp}
-              image={<CampCard.ImageAnchor className="flex items-center justify-center" width={250} height={150} />}
+              image={<CampCard.ImageAnchor className="flex items-center justify-center h-[150px] relative" />}
               info={
                 <CampCard.Info className="flex-col text-center">
                   <CampCard.Name className="px-2 pt-1 font-semibold truncate text-body1" link={true} />
