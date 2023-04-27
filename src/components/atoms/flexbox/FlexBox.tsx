@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-interface FlexBoxProps {
+interface FlexBoxProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className: string;
 }

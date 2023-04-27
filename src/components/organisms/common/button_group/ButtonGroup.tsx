@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Button from "@/components/atoms/button/Button";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import useStore from "store/store";
@@ -37,15 +37,8 @@ const ButtonGroup: FC<ButtonGroupProps> = (props) => {
       animalCmgCl: params.etcinfo.includes("반려동물 동반가능") ? "가능" : null,
     };
 
-    router.push(
-      {
-        pathname: "/search",
-        query: {
-          searchParams: JSON.stringify(searchParams),
-        },
-      },
-      "/search"
-    );
+    const query = encodeURIComponent(JSON.stringify(searchParams));
+    router.push(encodeURI("/search?query=" + query));
   };
 
   return (

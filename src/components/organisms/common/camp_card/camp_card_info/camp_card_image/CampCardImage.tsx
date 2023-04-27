@@ -23,6 +23,7 @@ const CampCardImage: FC<CampCardImageInterface> = (props) => {
           style={camp.firstImageUrl ? { height: props.height } : {}}
           alt={`${camp.facltNm}`}
           className={``}
+          priority
         />
       ) : (
         <Icon
@@ -31,6 +32,7 @@ const CampCardImage: FC<CampCardImageInterface> = (props) => {
           style={{ objectFit: "cover", objectPosition: "center" }}
           alt={`${camp.facltNm}`}
           className={""}
+          priority
         />
       )}
     </FlexBox>

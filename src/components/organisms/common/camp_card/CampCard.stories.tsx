@@ -128,7 +128,6 @@ CampTypes.args = {
   },
   image: <CampCard.Image className="" width={250} height={150} />,
   info: (
-    // link 적용
     <CampCard.Info className="flex-col text-center">
       <Anchor
         href={{

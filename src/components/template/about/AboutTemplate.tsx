@@ -1,3 +1,4 @@
+"use client"
 import Span from "@/components/atoms/span/Span";
 import CampDetailInfo from "@/components/organisms/about/camp_info/CampDetailInfo";
 import CampDetailNav from "@/components/organisms/about/camp_nav/CampDetailNav";

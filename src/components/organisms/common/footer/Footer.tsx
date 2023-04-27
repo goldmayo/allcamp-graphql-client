@@ -11,7 +11,7 @@ const Footer: FC = () => {
       <Icon src={"/footer_logo.svg"} width={200} height={100} alt={"allcamping logo"} className={""} />
       <FlexBox className={"flex-row"}>
         <Span className="text-body2 text-mono-white">ⓒ 2022. SeungJai Hyun All Rights Reserved.</Span>
-        <Anchor href={"/"} className={"ml-2"}>
+        <Anchor href={"https://github.com/goldmayo/allcamp-graphql-client"} className={"ml-2"}>
           <FaGithub color={"#fff"} />
         </Anchor>
       </FlexBox>

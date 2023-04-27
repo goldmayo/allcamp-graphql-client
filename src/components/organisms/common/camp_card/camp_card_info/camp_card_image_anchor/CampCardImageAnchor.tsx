@@ -22,6 +22,7 @@ const CampCardImageAnchor: FC<CampCardImageAnchorInterface> = (props) => {
           style={camp.firstImageUrl ? { height: props.height } : {}}
           alt={`${camp.facltNm}`}
           className={""}
+          priority
         />
       ) : (
         <Icon
@@ -30,6 +31,7 @@ const CampCardImageAnchor: FC<CampCardImageAnchorInterface> = (props) => {
           style={{ objectFit: "fill", objectPosition: "center" }}
           alt={`${camp.facltNm}`}
           className={""}
+          priority
         />
       )}
     </Anchor>

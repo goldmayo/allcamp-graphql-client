@@ -1,25 +1,21 @@
-import { useRouter } from "next/router";
-import { FC, useEffect } from "react";
+"use client";
+import { usePathname } from "next/navigation";
+import { FC } from "react";
 import { HiOutlineBell, HiOutlineChevronLeft } from "react-icons/hi";
 import Anchor from "@/components/atoms/anchor/Anchor";
 import Button from "@/components/atoms/button/Button";
 import Icon from "@/components/atoms/icon/Icon";
 
 const Header: FC = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!router.isReady) return;
-  }, [router.isReady]);
-
+  const pathname = usePathname();
   return (
     <header className="flex items-center justify-center bg-mono-white">
       <section
         className={`flex flex-row items-center ${
-          router.asPath !== "/home" ? "justify-between" : "justify-center"
+          pathname !== "/" ? "justify-between" : "justify-center"
         }  w-6/12 max-w-[1080px]`}
       >
-        {router.asPath !== "/home" && (
+        {pathname !== "/" && (
           <Button type="button" size="custom" className="">
             <HiOutlineChevronLeft size={"2rem"} />
           </Button>
@@ -34,7 +30,7 @@ const Header: FC = () => {
             className={""}
           />
         </Anchor>
-        {router.asPath !== "/home" && (
+        {pathname !== "/" && (
           <button type="button" className="invisible">
             <HiOutlineBell size={"2rem"} />
           </button>

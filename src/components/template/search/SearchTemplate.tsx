@@ -1,3 +1,4 @@
+"use client";
 import { FC, useRef } from "react";
 import { GoArrowUp } from "react-icons/go";
 import Span from "@/components/atoms/span/Span";
@@ -14,7 +15,7 @@ const SearchTemplate: FC<SearchTemplateProps> = (props) => {
   const mref = useRef<HTMLElement>(null);
   return (
     <main ref={mref} className="relative flex flex-col items-center justify-around bg-primary-lightgray">
-      <section className="sticky top-0 z-50 flex items-center justify-center w-full p-3 bg-primary-navy">
+      <section className="sticky top-0 z-40 flex items-center justify-center w-full p-3 bg-primary-navy">
         <SearchForm
           type={"default"}
           flexDirection={"row"}
@@ -29,8 +30,7 @@ const SearchTemplate: FC<SearchTemplateProps> = (props) => {
           buttonSize={"base"}
         />
       </section>
-
-      <article className="flex flex-col items-center justify-center w-6/12">
+      <section className="flex flex-col items-center justify-center w-6/12 ">
         {props.params !== undefined ? (
           <SearchResultDisplay
             params={props.params}
@@ -40,13 +40,13 @@ const SearchTemplate: FC<SearchTemplateProps> = (props) => {
         ) : (
           <Span className="">0개의 검색결과</Span>
         )}
-        <ScrollButton
-          target={mref}
-          className="absolute border rounded-lg text-title1 bottom-10 right-10 text-mono-white border-primary-bordergray bg-secondary-lightblue"
-        >
-          <GoArrowUp size={"2rem"} />
-        </ScrollButton>
-      </article>
+      </section>
+      <ScrollButton
+        target={mref}
+        className="absolute border rounded-lg text-title1 bottom-10 right-10 text-mono-white border-primary-bordergray bg-secondary-lightblue"
+      >
+        <GoArrowUp size={"2rem"} />
+      </ScrollButton>
     </main>
   );
 };

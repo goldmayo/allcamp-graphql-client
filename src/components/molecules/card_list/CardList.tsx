@@ -1,3 +1,4 @@
+"use client";
 import React, { FC } from "react";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import ListItem from "@/components/atoms/list_item/ListItem";
@@ -20,10 +21,9 @@ const CardList: FC<CardListInterface> = (props) => {
                 href={{
                   pathname: "/search",
                   query: {
-                    searchParams: JSON.stringify({ induty: campType.induty }),
+                    query: encodeURIComponent(JSON.stringify({ induty: campType.induty })),
                   },
                 }}
-                as={"/search"}
                 className={""}
               >
                 <CampCard

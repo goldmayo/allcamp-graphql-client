@@ -1,9 +1,12 @@
+"use client";
 import { FC } from "react";
 import { useQuery } from "@apollo/client";
+import { getClient } from "@/lib/apolloClient";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import Span from "@/components/atoms/span/Span";
 import Pagination from "@/components/molecules/pagination/Pagination";
 import CampListItem from "@/components/organisms/search/camp_list_item/CampListItem";
+import Loading from "@/components/atoms/spinner/Spinner";
 import { searchAllCamps } from "@/lib/query/searchAllcamps";
 import { CampInfoConnection, CampInfoEdge, CampSearchParamsDto, Maybe, PageInfo } from "@/types/campType";
 
@@ -13,19 +16,29 @@ interface SearchResultDisplayProps {
   params: CampSearchParamsDto;
 }
 
-interface queryResultProps {
+export interface SearchQueryResultProps {
   searchCamps: CampInfoConnection;
 }
 
 const SearchResultDisplay: FC<SearchResultDisplayProps> = (props) => {
-  const { loading, error, data, refetch } = useQuery<queryResultProps>(searchAllCamps, {
+  const client = getClient();
+  const { loading, error, data, refetch } = useQuery<SearchQueryResultProps>(searchAllCamps, {
+    client,
     variables: { first: 10, after: null, params: props.params },
     onCompleted(data) {
       window.scrollTo(0, 0);
     },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <>
+        <Loading className={"absolute top-[40%]  m-auto translate-y-1/2 translate-x-1/2"} />
+        <div className="flex items-center justify-center w-full h-[1024px] text-center bg-primary-commentgray text-headline1">
+        </div>
+      </>
+    );
+
   if (error) return <p>{`${error}`}</p>;
 
   const pageInfo = data?.searchCamps.pageInfo;
@@ -67,15 +80,13 @@ const SearchResultDisplay: FC<SearchResultDisplayProps> = (props) => {
       });
     }
   };
-
   return (
-    <section className={`${props.displayStyle} flex flex-col`}>
+    <FlexBox className={`${props.displayStyle} flex flex-col`}>
       <Span className={`${props.announcementStyle} self-start`}>
         {`${data ? (data.searchCamps.totalCounts as number) : 0}`}개의 검색결과
       </Span>
-      <FlexBox className="flex-col items-center justify-center w-full">
-        <ul className="w-full">
-          {/* campInfoEdge.node에서 필요한 것만 전달한다*/}
+      <FlexBox className={`flex-col items-center justify-center w-full`}>
+        <ul id={"campsite-list"} className={`w-full`}>
           {data &&
             data.searchCamps.edges?.map((node: Maybe<CampInfoEdge>, i) => (
               <CampListItem
@@ -93,7 +104,7 @@ const SearchResultDisplay: FC<SearchResultDisplayProps> = (props) => {
           />
         )}
       </FlexBox>
-    </section>
+    </FlexBox>
   );
 };
 

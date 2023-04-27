@@ -1,5 +1,6 @@
+"use client";
 import React, { FC, useState, useRef } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { MdMap, MdSearch } from "react-icons/md";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import Form from "@/components/atoms/form/Form";
@@ -54,15 +55,9 @@ const SearchForm: FC<SearchFormProps> = ({ type, ...props }) => {
       doNm: doNameRef.current?.value === "" ? null : doNameRef.current?.value,
       sigunguNm: sigunguNameRef.current?.value === "" ? null : sigunguNameRef.current?.value,
     };
-    router.push(
-      {
-        pathname: "/search",
-        query: {
-          searchParams: JSON.stringify(params),
-        },
-      },
-      "/search"
-    );
+
+    const query = encodeURIComponent(JSON.stringify(params));
+    router.push(encodeURI("/search?query=" + query));
   };
   return (
     <>

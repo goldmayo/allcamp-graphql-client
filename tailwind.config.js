@@ -27,6 +27,7 @@ module.exports = {
       roboto: ["Roboto", "sans-serif"],
     },
     extend: {
+      spacing: {},
       colors: {
         "primary-blue": "#1B4ECE",
         "primary-navy": "#20274D",

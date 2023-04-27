@@ -1,3 +1,4 @@
+"use client";
 import { createContext, useContext } from "react";
 import { CampInfo } from "@/types/campType";
 

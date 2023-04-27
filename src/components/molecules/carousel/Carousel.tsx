@@ -1,3 +1,4 @@
+"use client";
 import React, { FC, useMemo } from "react";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";

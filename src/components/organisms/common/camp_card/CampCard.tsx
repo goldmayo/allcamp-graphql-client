@@ -1,3 +1,4 @@
+"use client";
 import React, { ReactNode } from "react";
 import FlexBox from "@/components/atoms/flexbox/FlexBox";
 import { CampInfo } from "@/types/campType";
@@ -35,6 +36,22 @@ const CampCard = (props: CampCardInterface) => {
     </CampCardContext.Provider>
   );
 };
+
+// const CampCard = Object.assign(CampCards, {
+//   Info: CampCardInfo,
+//   Image: CampCardImage,
+//   ImageAnchor: CampCardImageAnchor,
+//   Title: CampCardTitle,
+//   Subtitle: CampCardSubtitle,
+//   Name: CampCardName,
+//   LineIntro: CampCardLineIntro,
+//   Adress: CampCardAdress,
+//   Region: CampCardRegion,
+//   Tel: CampCardTel,
+//   Amenity: CampCardAmenity,
+//   Homepage: CampCardHomepage,
+//   Reservation: CampCardReservation,
+// });
 
 CampCard.Info = CampCardInfo;
 CampCard.Image = CampCardImage;
